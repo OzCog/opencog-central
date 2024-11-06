@@ -1,0 +1,27 @@
+[workspace]
+members = [
+    "benchmarks/aunt-kg/",
+    "benchmarks/fizzbuzz/",
+    "benchmarks/logic-query/",
+    "benchmarks/oeis/",
+    "experiments/expr/bytestring/",
+    "experiments/expr/dyck/", "experiments/symbol_mapping/bucket_map", "experiments/symbol_mapping/naive_map",
+    "frontend/",
+    #"kernel/" LP: Looks to be in a state of heavy experimentation
+]
+
+[workspace.package]
+edition = "2021"
+
+[workspace.dependencies]
+
+# Internal to MORK
+mork-bytestring = {path = "./experiments/expr/bytestring"}
+mork-frontend = {path = "./frontend"}
+# mork = {path = "./kernel"} LP: Looks to be in a state of heavy experimentation
+
+# External to MORK
+# pathmap = {path = "../PathMap" , features = ["all_dense_nodes"]}
+[workspace.dependencies.pathmap]
+path = "../PathMap" 
+# features = ["all_dense_nodes"]
