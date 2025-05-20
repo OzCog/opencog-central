@@ -7,7 +7,7 @@ on:
       - main  # adjust if your main branch has a different name
 
 jobs:
-  copy-commit-scm:
+  copy-commit-yml:
     runs-on: ubuntu-latest
 
     steps:
