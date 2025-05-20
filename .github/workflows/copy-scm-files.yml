@@ -1,0 +1,22 @@
+name: Copy all .scm files preserving structure
+
+on:
+  workflow_dispatch:   # Allows manual triggering
+  push:
+    branches:
+      - main           # or your default branch
+
+jobs:
+  copy-scm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy .scm files preserving directory structure
+        run: |
+          mkdir -p copied-scm
+          find . -name '*.scm' -print0 | cpio -pdmv0 copied-scm
+
+      - name: List copied files
+        run: find copied-scm -type f
