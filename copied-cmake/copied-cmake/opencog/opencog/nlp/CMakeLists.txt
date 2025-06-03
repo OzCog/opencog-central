@@ -18,6 +18,7 @@ IF (HAVE_NLP)
 	ADD_SUBDIRECTORY (aiml)
 	ADD_SUBDIRECTORY (chatbot)
 	ADD_SUBDIRECTORY (chatbot-psi)
+	ADD_SUBDIRECTORY (prompt-patterns)
 
 	# fuzzy depends on attentionbank
 	IF (HAVE_BANK)
