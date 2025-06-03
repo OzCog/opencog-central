@@ -32,53 +32,64 @@ jobs:
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
         sudo apt update
         sudo apt install gh
+        
+    - name: Verify GitHub CLI Authentication
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Verifying GitHub CLI authentication..."
+        gh auth status
+        echo "GitHub CLI is properly authenticated"
 
     - name: Create Consolidated Structure
       run: |
+        echo "Consolidation mode: ${{ github.event.inputs.consolidate_mode }}"
+        echo "Note: Currently only symlink mode is supported in this automated workflow"
+        
         mkdir -p consolidated/{core,extensions,tools,examples,tests,docs}
         
         # Core components
         echo "Consolidating core components..."
-        ln -sf ../../cogutil consolidated/core/cogutil
-        ln -sf ../../atomspace-org/atomspace consolidated/core/atomspace
-        ln -sf ../../ure consolidated/core/ure
-        ln -sf ../../attention consolidated/core/attention
-        ln -sf ../../spacetime consolidated/core/spacetime
-        ln -sf ../../cogserver consolidated/core/cogserver
-        ln -sf ../../opencog consolidated/core/opencog
+        [ -d "cogutil" ] && ln -sf ../../cogutil consolidated/core/cogutil || echo "Warning: cogutil not found"
+        [ -d "atomspace" ] && ln -sf ../../atomspace consolidated/core/atomspace || echo "Warning: atomspace not found"
+        [ -d "ure" ] && ln -sf ../../ure consolidated/core/ure || echo "Warning: ure not found"
+        [ -d "attention" ] && ln -sf ../../attention consolidated/core/attention || echo "Warning: attention not found"
+        [ -d "spacetime" ] && ln -sf ../../spacetime consolidated/core/spacetime || echo "Warning: spacetime not found"
+        [ -d "cogserver" ] && ln -sf ../../cogserver consolidated/core/cogserver || echo "Warning: cogserver not found"
+        [ -d "opencog" ] && ln -sf ../../opencog consolidated/core/opencog || echo "Warning: opencog not found"
         
         # Extensions
         echo "Consolidating extensions..."
-        ln -sf ../../pln consolidated/extensions/pln
-        ln -sf ../../miner consolidated/extensions/miner
-        ln -sf ../../moses consolidated/extensions/moses
-        ln -sf ../../asmoses consolidated/extensions/asmoses
-        ln -sf ../../unify consolidated/extensions/unify
-        ln -sf ../../generate consolidated/extensions/generate
-        ln -sf ../../pattern-index consolidated/extensions/pattern-index
-        ln -sf ../../vision consolidated/extensions/vision
-        ln -sf ../../cheminformatics consolidated/extensions/cheminformatics
+        [ -d "pln" ] && ln -sf ../../pln consolidated/extensions/pln || echo "Warning: pln not found"
+        [ -d "miner" ] && ln -sf ../../miner consolidated/extensions/miner || echo "Warning: miner not found"
+        [ -d "moses" ] && ln -sf ../../moses consolidated/extensions/moses || echo "Warning: moses not found"
+        [ -d "asmoses" ] && ln -sf ../../asmoses consolidated/extensions/asmoses || echo "Warning: asmoses not found"
+        [ -d "unify" ] && ln -sf ../../unify consolidated/extensions/unify || echo "Warning: unify not found"
+        [ -d "generate" ] && ln -sf ../../generate consolidated/extensions/generate || echo "Warning: generate not found"
+        [ -d "pattern-index" ] && ln -sf ../../pattern-index consolidated/extensions/pattern-index || echo "Warning: pattern-index not found"
+        [ -d "vision" ] && ln -sf ../../vision consolidated/extensions/vision || echo "Warning: vision not found"
+        [ -d "cheminformatics" ] && ln -sf ../../cheminformatics consolidated/extensions/cheminformatics || echo "Warning: cheminformatics not found"
         
         # Tools and utilities
         echo "Consolidating tools..."
-        ln -sf ../../ocpkg consolidated/tools/ocpkg
-        ln -sf ../../benchmark consolidated/tools/benchmark
-        ln -sf ../../external-tools consolidated/tools/external-tools
-        ln -sf ../../docker consolidated/tools/docker
+        [ -d "ocpkg" ] && ln -sf ../../ocpkg consolidated/tools/ocpkg || echo "Warning: ocpkg not found"
+        [ -d "benchmark" ] && ln -sf ../../benchmark consolidated/tools/benchmark || echo "Warning: benchmark not found"
+        [ -d "external-tools" ] && ln -sf ../../external-tools consolidated/tools/external-tools || echo "Warning: external-tools not found"
+        [ -d "docker" ] && ln -sf ../../docker consolidated/tools/docker || echo "Warning: docker not found"
         
         # Language bindings and interfaces
-        ln -sf ../../lg-atomese consolidated/extensions/lg-atomese
-        ln -sf ../../link-grammar consolidated/extensions/link-grammar
-        ln -sf ../../relex consolidated/extensions/relex
+        [ -d "lg-atomese" ] && ln -sf ../../lg-atomese consolidated/extensions/lg-atomese || echo "Warning: lg-atomese not found"
+        [ -d "link-grammar" ] && ln -sf ../../link-grammar consolidated/extensions/link-grammar || echo "Warning: link-grammar not found"
+        [ -d "relex" ] && ln -sf ../../relex consolidated/extensions/relex || echo "Warning: relex not found"
         
         # Examples and documentation
-        ln -sf ../../wiki consolidated/docs/wiki
-        ln -sf ../../test-datasets consolidated/examples/test-datasets
+        [ -d "wiki" ] && ln -sf ../../wiki consolidated/docs/wiki || echo "Info: wiki not found"
+        [ -d "test-datasets" ] && ln -sf ../../test-datasets consolidated/examples/test-datasets || echo "Info: test-datasets found"
         
         # Special projects
-        ln -sf ../../sensory consolidated/extensions/sensory
-        ln -sf ../../agents consolidated/extensions/agents
-        ln -sf ../../rocca consolidated/extensions/rocca
+        [ -d "sensory" ] && ln -sf ../../sensory consolidated/extensions/sensory || echo "Warning: sensory not found"
+        [ -d "agents" ] && ln -sf ../../agents consolidated/extensions/agents || echo "Warning: agents not found"
+        [ -d "rocca" ] && ln -sf ../../rocca consolidated/extensions/rocca || echo "Warning: rocca not found"
 
     - name: Create Unified CMakeLists.txt
       run: |
