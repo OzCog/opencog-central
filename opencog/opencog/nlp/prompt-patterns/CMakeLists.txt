@@ -6,5 +6,7 @@ ADD_GUILE_MODULE (FILES
 	cognitive-patterns.scm
 	integration-patterns.scm
 	examples.scm
+	test-patterns.scm
+	config-template.scm
 	MODULE_DESTINATION "${GUILE_SITE_DIR}/opencog/nlp/prompt-patterns"
 )
