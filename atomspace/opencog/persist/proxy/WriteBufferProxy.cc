@@ -21,6 +21,7 @@
  */
 
 #include <chrono>
+#include <cstdint>
 #include <math.h>
 
 #include <opencog/atoms/core/NumberNode.h>
@@ -303,7 +304,7 @@ void WriteBufferProxy::drain_loop(void)
 	double frac = _ticker / _decay;
 
 	// First time through: after opening, sleep for a little while.
-	uint nappy = 1 + ceil(1000.0 * _ticker);
+	unsigned int nappy = 1 + ceil(1000.0 * _ticker);
 	std::this_thread::sleep_for(milliseconds(nappy));
 
 	// Start with non-zero moving avg, approximating what it should be.
@@ -329,7 +330,7 @@ void WriteBufferProxy::drain_loop(void)
 			double qsz = (double) _atom_queue.size();
 
 			// How many should we write?
-			uint nwrite = ceil(frac * qsz);
+			unsigned int nwrite = ceil(frac * qsz);
 
 			// Moving average of the last ten writes.
 #define WEI 0.1
@@ -338,7 +339,7 @@ void WriteBufferProxy::drain_loop(void)
 			// Whats the min to write? The goal here is to not
 			// dribble out the tail, but to push it out, if its
 			// almost all gone anyway.
-			uint mwr = ceil(0.5 * frac * _mavg_buf_atoms);
+			unsigned int mwr = ceil(0.5 * frac * _mavg_buf_atoms);
 			if (mwr < 1000) mwr = 1000;
 			if (nwrite < mwr) nwrite = mwr;
 
@@ -362,13 +363,13 @@ void WriteBufferProxy::drain_loop(void)
 			double qsz = (double) _value_queue.size();
 
 			// How many should we write?
-			uint nwrite = ceil(frac * qsz);
+			unsigned int nwrite = ceil(frac * qsz);
 
 			// Moving avg.
 			_mavg_buf_values = (1.0-WEI) * _mavg_buf_values + WEI * qsz;
 
 			// Min to write.
-			uint mwr = ceil(0.5 * frac * _mavg_buf_values);
+			unsigned int mwr = ceil(0.5 * frac * _mavg_buf_values);
 			if (mwr < 1000) mwr = 1000;
 			if (nwrite < mwr) nwrite = mwr;
 
@@ -403,10 +404,10 @@ void WriteBufferProxy::drain_loop(void)
 			if (_high_water_mark < HIMAX)
 			{
 				_high_water_mark *= 17;
-				_high_water_mark /= 16;
-			}
-			uint naptime = floor(1000.0 * left);
-			std::this_thread::sleep_for(milliseconds(naptime));
+		_high_water_mark /= 16;
+		}
+		unsigned int naptime = floor(1000.0 * left);
+		std::this_thread::sleep_for(milliseconds(naptime));
 		}
 		else
 		{

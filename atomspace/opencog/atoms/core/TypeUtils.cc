@@ -21,6 +21,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include <cstdint>
 #include <opencog/util/algorithm.h>
 #include <opencog/atoms/base/Link.h>
 #include <opencog/atoms/atom_types/NameServer.h>
@@ -144,7 +145,7 @@ bool value_is_type(const Handle& spec, const ValuePtr& val)
 	if (val->is_atom())
 	{
 		const HandleSeq& vlo = HandleCast(val)->getOutgoingSet();
-		for (uint i=0; i<sz; i++)
+		for (unsigned int i=0; i<sz; i++)
 		{
 			if (not value_is_type(dpo[i+off], vlo[i])) return false;
 		}
@@ -152,7 +153,7 @@ bool value_is_type(const Handle& spec, const ValuePtr& val)
 	else
 	{
 		const std::vector<ValuePtr>& vlo = LinkValueCast(val)->value();
-		for (uint i=0; i<sz; i++)
+		for (unsigned int i=0; i<sz; i++)
 		{
 			if (not value_is_type(dpo[i+off], vlo[i])) return false;
 		}
