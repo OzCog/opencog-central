@@ -1,0 +1,78 @@
+name: Purge Rogue Submodules
+
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  purge-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout Repository Without Submodules
+      - name: Checkout Repository Without Submodules
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0            # Fetch full history
+          submodules: 'false'       # Avoid initializing submodules
+
+      # Step 2: Inspect and Remove Submodule Config Entries
+      - name: Remove Submodule Config Entries
+        run: |
+          echo "Checking for rogue submodules in .git/config..."
+
+          # Search for specific submodule entries in .git/config
+          if grep -q '\[submodule' .git/config; then
+            echo "Submodule entries found in .git/config. Removing..."
+
+            # Deinitialize all submodules
+            git submodule deinit -f --all || true
+          else
+            echo "No submodule entries found in .git/config."
+          fi
+
+      # Step 3: Remove Submodules from Git Index
+      - name: Remove Submodules from Git Index
+        run: |
+          echo "Looking for rogue submodule references in Git index..."
+
+          # Explicitly target the rogue submodule paths
+          git rm -f --cached koboldcpp || true
+          git rm -f --cached repos || true
+
+          # Double-check for any other submodule references (marked with 160000)
+          git ls-files --stage | grep ^160000 | awk '{print $4}' | while read -r submodule; do
+            echo "Removing detected submodule: $submodule"
+            git rm -f --cached "$submodule" || true
+          done
+
+      # Step 4: Remove Submodule Directories from Working Tree
+      - name: Remove Submodule Directories
+        run: |
+          echo "Removing rogue submodule directories from working tree..."
+          
+          # Explicitly remove the directories
+          rm -rf koboldcpp || true
+          rm -rf repos || true
+
+      # Step 5: Commit the Changes
+      - name: Commit Changes
+        run: |
+          echo "Committing changes if necessary..."
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Commit only if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Removed rogue submodules: koboldcpp and repos"
+          else
+            echo "No changes to commit. Repository is clean."
+          fi
+
+      # Step 6: Push to New Branch (Optional)
+      - name: Push Changes to a New Branch
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          BRANCH_NAME="purged-submodules"
+          echo "Pushing changes to branch: $BRANCH_NAME"
+          git push origin HEAD:$BRANCH_NAME
