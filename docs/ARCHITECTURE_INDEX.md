@@ -10,8 +10,8 @@ This index provides a comprehensive guide to the architectural documentation of 
 ## Core System Documentation
 
 ### AtomSpace - Central Knowledge Representation
-- [AtomSpace README](../atomspace/README.md) - Core hypergraph knowledge store
-- [AtomSpace Documentation](../atomspace/doc/) - Detailed implementation docs
+- [AtomSpace README](../orc-as/atomspace/README.md) - Core hypergraph knowledge store
+- [AtomSpace Documentation](../orc-as/atomspace/doc/) - Detailed implementation docs
 
 ### Probabilistic Logic Network (PLN)
 - [PLN README](../pln/README.md) - Probabilistic reasoning engine

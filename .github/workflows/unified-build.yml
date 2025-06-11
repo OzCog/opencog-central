@@ -69,7 +69,7 @@ jobs:
 
     - name: Build AtomSpace (Core)
       run: |
-        cd atomspace-org/atomspace
+        cd orc-as/atomspace
         mkdir -p build && cd build
         cmake .. \
           -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
