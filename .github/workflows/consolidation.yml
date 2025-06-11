@@ -51,7 +51,7 @@ jobs:
         # Core components
         echo "Consolidating core components..."
         [ -d "cogutil" ] && ln -sf ../../cogutil consolidated/core/cogutil || echo "Warning: cogutil not found"
-        [ -d "atomspace" ] && ln -sf ../../atomspace consolidated/core/atomspace || echo "Warning: atomspace not found"
+        [ -d "orc-as/atomspace" ] && ln -sf ../../orc-as/atomspace consolidated/core/atomspace || echo "Warning: atomspace not found"
         [ -d "ure" ] && ln -sf ../../ure consolidated/core/ure || echo "Warning: ure not found"
         [ -d "attention" ] && ln -sf ../../attention consolidated/core/attention || echo "Warning: attention not found"
         [ -d "spacetime" ] && ln -sf ../../spacetime consolidated/core/spacetime || echo "Warning: spacetime not found"

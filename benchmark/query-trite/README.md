@@ -62,7 +62,7 @@ apt-get install linux-tools
 
 From the build folder run:
 ```
-QUERY_BENCHMARK="./atomspace/query/query_benchmark -d ../atomspace/query"
+QUERY_BENCHMARK="./orc-as/atomspace/query/query_benchmark -d ../orc-as/atomspace/query"
 perf record $QUERY_BENCHMARK
 perf report
 ```
