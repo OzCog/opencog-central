@@ -57,8 +57,8 @@ echo ""
 # Core foundation
 build_component "cogutil" "../cogutil"
 
-# AtomSpace core
-build_component "atomspace" "../atomspace-org/atomspace"
+# AtomSpace orchestration - all components in proper order
+build_component "atomspace-orchestration" "../orc-as"
 
 # URE (depends on atomspace)
 build_component "ure" "../ure"
