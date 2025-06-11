@@ -1,3 +1,24 @@
+# OpenCog Central
+
+A comprehensive cognitive architecture implementing artificial general intelligence through neural-symbolic integration and hypergraph-based knowledge representation.
+
+## 🏛️ Architecture Documentation
+
+- **[📋 Architecture Overview](ARCHITECTURE.md)** - Comprehensive architecture documentation with Mermaid diagrams
+- **[📚 Architecture Index](docs/ARCHITECTURE_INDEX.md)** - Complete documentation navigation guide
+
+## 🚀 Quick Start
+
+The OpenCog Central system consists of multiple integrated cognitive components:
+
+- **AtomSpace**: Hypergraph knowledge representation and query engine
+- **PLN**: Probabilistic Logic Network for uncertain reasoning
+- **Sensory-Motor**: Link Grammar-based environment interaction
+- **Learning**: Structure discovery and pattern learning systems
+- **Agents**: Interactive cognitive agents with adaptive behavior
+
+## 🧠 Cognitive Components
+
 Below are tailored prompts for each of the OpenCog chatbots listed in the "oc/" folder.
 These prompts are designed to align with the specific purpose, features, and integration points of each chatbot implementation.
 They aim to guide the chatbot's behavior, test its capabilities, and provide context for meaningful interaction.
