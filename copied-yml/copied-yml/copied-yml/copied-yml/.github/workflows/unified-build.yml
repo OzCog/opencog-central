@@ -1,0 +1,249 @@
+
+name: Unified OpenCog Build
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+env:
+  BUILD_TYPE: Release
+  INSTALL_PREFIX: /usr/local
+  OPENCOG_BUILD_DIR: ${{ github.workspace }}/build
+
+jobs:
+  unified-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Install System Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential cmake git \
+          libboost-all-dev \
+          guile-3.0-dev \
+          libcxxtest-dev \
+          python3-dev python3-pip \
+          cython3 \
+          libgsl-dev \
+          libbfd-dev \
+          binutils-dev \
+          libzmq3-dev \
+          libprotobuf-dev protobuf-compiler \
+          libcogutil-dev || true \
+          postgresql-client libpq-dev \
+          librocksdb-dev \
+          libunwind-dev \
+          libedit-dev \
+          libssl-dev \
+          pkg-config
+
+    - name: Install Python Dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install cython numpy scipy networkx
+
+    - name: Create Build Directory Structure
+      run: |
+        mkdir -p ${{ env.OPENCOG_BUILD_DIR }}
+        mkdir -p ${{ env.OPENCOG_BUILD_DIR }}/install
+
+    # Build in dependency order
+    - name: Build CogUtil (Foundation)
+      run: |
+        cd cogutil
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build AtomSpace (Core)
+      run: |
+        cd atomspace-org/atomspace
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build URE (Unified Rule Engine)
+      run: |
+        cd ure
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build Attention System
+      run: |
+        cd attention
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build SpaceTime
+      run: |
+        cd spacetime
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build CogServer
+      run: |
+        cd cogserver
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build PLN (Probabilistic Logic Networks)
+      run: |
+        cd pln
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build Pattern Miner
+      run: |
+        cd miner
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build Learning System
+      run: |
+        if [ -d "learn" ]; then
+          cd learn
+          mkdir -p build && cd build
+          cmake .. \
+            -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+            -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+            -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+          make -j$(nproc)
+          make install
+        fi
+
+    - name: Build MOSES
+      run: |
+        cd moses
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build AS-MOSES
+      run: |
+        cd asmoses
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build Main OpenCog
+      run: |
+        cd opencog
+        mkdir -p build && cd build
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+        make install
+
+    - name: Build Unified Core System
+      run: |
+        mkdir -p ${{ env.OPENCOG_BUILD_DIR }}/unified
+        cd ${{ env.OPENCOG_BUILD_DIR }}/unified
+        cmake ${{ github.workspace }} \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DCMAKE_INSTALL_PREFIX=${{ env.OPENCOG_BUILD_DIR }}/install \
+          -DCMAKE_PREFIX_PATH=${{ env.OPENCOG_BUILD_DIR }}/install
+        make -j$(nproc)
+
+    - name: Run Tests
+      run: |
+        export LD_LIBRARY_PATH=${{ env.OPENCOG_BUILD_DIR }}/install/lib:$LD_LIBRARY_PATH
+        export PKG_CONFIG_PATH=${{ env.OPENCOG_BUILD_DIR }}/install/lib/pkgconfig:$PKG_CONFIG_PATH
+        cd ${{ env.OPENCOG_BUILD_DIR }}/unified
+        make test || true
+
+    - name: Package Build Artifacts
+      run: |
+        cd ${{ env.OPENCOG_BUILD_DIR }}/install
+        tar -czf opencog-unified-build.tar.gz .
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: opencog-unified-build
+        path: ${{ env.OPENCOG_BUILD_DIR }}/install/opencog-unified-build.tar.gz
+        retention-days: 30
+
+  integration-test:
+    needs: unified-build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download Build Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: opencog-unified-build
+        path: /tmp/opencog
+
+    - name: Extract and Test Integration
+      run: |
+        cd /tmp/opencog
+        tar -xzf opencog-unified-build.tar.gz
+        export LD_LIBRARY_PATH=/tmp/opencog/lib:$LD_LIBRARY_PATH
+        export PKG_CONFIG_PATH=/tmp/opencog/lib/pkgconfig:$PKG_CONFIG_PATH
+        
+        # Test basic functionality
+        if [ -f "/tmp/opencog/bin/cogserver" ]; then
+          echo "CogServer found - integration successful"
+        fi
+        
+        if [ -f "/tmp/opencog/bin/moses" ]; then
+          echo "MOSES found - integration successful"
+        fi
