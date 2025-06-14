@@ -17,16 +17,36 @@ The OpenCog Central system consists of multiple integrated cognitive components:
 - **Learning**: Structure discovery and pattern learning systems
 - **Agents**: Interactive cognitive agents with adaptive behavior
 
+## 📁 Repository Organization
+
+The repository is organized into functional categories with descriptive prefixes:
+
+- **orc-as/**: AtomSpace - hypergraph knowledge representation core
+- **orc-oc/**: OpenCog Core - main cognitive architecture components
+- **orc-ai/**: AI & Learning - reasoning engines and machine learning algorithms
+- **orc-nl/**: Natural Language - language processing and computational linguistics
+- **orc-ro/**: Robotics - perception, embodiment, and motor control systems
+- **orc-bi/**: Bioinformatics - biological and chemical data processing
+- **orc-em/**: Emotion AI - emotional intelligence and affective computing
+- **orc-ct/**: Cognitive Tools - attention, reasoning, and visualization utilities
+- **orc-sv/**: Servers & Agents - distributed processing and autonomous agents
+- **orc-wb/**: Web & APIs - web interfaces and client libraries
+- **orc-gm/**: Games - educational and interactive cognitive applications
+- **orc-dv/**: Development - testing, benchmarking, and development tools
+- **orc-in/**: Infrastructure - build tools, dependencies, and system utilities
+
+Each directory contains a README.md explaining its purpose and components.
+
 ## 🧠 Cognitive Components
 
-Below are tailored prompts for each of the OpenCog chatbots listed in the "oc/" folder.
+Below are tailored prompts for each of the OpenCog chatbots listed in the "orc-oc/" folder.
 These prompts are designed to align with the specific purpose, features, and integration points of each chatbot implementation.
 They aim to guide the chatbot's behavior, test its capabilities, and provide context for meaningful interaction.
 
 ---
 
 ### 1. GHOST (General Holistic Organism Sentience Template)
-**Location**: opencog/opencog/ghost  
+**Location**: orc-oc/opencog/opencog/ghost  
 **Purpose**: A ChatScript-compatible chatbot engine with enhanced capabilities for sensory input, emotional modeling, and robot control.
 
 **Prompt**:  
@@ -41,7 +61,7 @@ They aim to guide the chatbot's behavior, test its capabilities, and provide con
 ---
 
 ### 2. RelEx Chatbot
-**Location**: opencog/relex  
+**Location**: orc-nl/relex  
 **Purpose**: Natural language parsing and relationship extraction for logical expression conversion.
 
 **Prompt**:  
@@ -56,7 +76,7 @@ They aim to guide the chatbot's behavior, test its capabilities, and provide con
 ---
 
 ### 3. Eva Robot Chatbot
-**Location**: opencog/ros-behavior-scripting  
+**Location**: orc-ro/ros-behavior-scripting  
 **Purpose**: Embodied chatbot for controlling the Hanson Robotics Eva robot with emotional expression and sensory integration.
 
 **Prompt**:  
@@ -71,7 +91,7 @@ They aim to guide the chatbot's behavior, test its capabilities, and provide con
 ---
 
 ### 4. Loving AI Chatbot
-**Location**: opencog/loving-ai-ghost  
+**Location**: orc-em/loving-ai-ghost  
 **Purpose**: Port of the Loving AI ChatScripts to GHOST format for supportive and mindful conversations.
 
 **Prompt**:  
@@ -86,7 +106,7 @@ They aim to guide the chatbot's behavior, test its capabilities, and provide con
 ---
 
 ### 5. Game Character Chatbot
-**Location**: opencog/unity3d-opencog-game  
+**Location**: orc-oc/unity3d-opencog-game  
 **Purpose**: Integration of OpenCog with Unity3D for game character AI with dialogue and behavior scripting.
 
 **Prompt**:  
@@ -116,7 +136,7 @@ These prompts are designed to be starting points for interaction and can be modi
 
 The OpenCog Cognitive Pattern Encoding Skeleton provides a foundational framework for implementing sophisticated prompt-driven chatbot behaviors using AtomSpace hypergraph patterns. This system is optimized for neural-symbolic integration and emergent cognitive synergy, enabling the development of empathetic, adaptive, and contextually aware AI assistants.
 
-**Location**: `opencog/opencog/nlp/prompt-patterns/`
+**Location**: `orc-oc/opencog/opencog/nlp/prompt-patterns/`
 
 ### Core Architecture
 

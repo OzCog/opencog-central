@@ -55,66 +55,66 @@ echo "Starting build process..."
 echo ""
 
 # Core foundation
-build_component "cogutil" "../cogutil"
+build_component "cogutil" "../orc-oc/cogutil"
 
 # AtomSpace orchestration - all components in proper order
 build_component "atomspace-orchestration" "../orc-as"
 
 # URE (depends on atomspace)
-build_component "ure" "../ure"
+build_component "ure" "../orc-ai/ure"
 
 # Attention system
-build_component "attention" "../attention"
+build_component "attention" "../orc-ct/attention"
 
 # SpaceTime
-build_component "spacetime" "../spacetime"
+build_component "spacetime" "../orc-ct/spacetime"
 
 # CogServer
-build_component "cogserver" "../cogserver"
+build_component "cogserver" "../orc-sv/cogserver"
 
 # PLN
-build_component "pln" "../pln"
+build_component "pln" "../orc-ai/pln"
 
 # Pattern Miner
-build_component "miner" "../miner"
+build_component "miner" "../orc-ai/miner"
 
 # MOSES
-build_component "moses" "../moses"
+build_component "moses" "../orc-ai/moses"
 
 # AS-MOSES
-build_component "asmoses" "../asmoses"
+build_component "asmoses" "../orc-ai/asmoses"
 
 # Learning system (if exists)
-if [ -d "../learn" ]; then
-    build_component "learn" "../learn"
+if [ -d "../orc-ai/learn" ]; then
+    build_component "learn" "../orc-ai/learn"
 fi
 
 # Main OpenCog
-build_component "opencog" "../opencog"
+build_component "opencog" "../orc-oc/opencog"
 
 # Additional components
-build_component "unify" "../unify"
-build_component "generate" "../generate"
+build_component "unify" "../orc-ct/unify"
+build_component "generate" "../orc-ct/generate"
 
 # Optional components
-if [ -d "../vision" ]; then
-    build_component "vision" "../vision"
+if [ -d "../orc-ro/vision" ]; then
+    build_component "vision" "../orc-ro/vision"
 fi
 
-if [ -d "../cheminformatics" ]; then
-    build_component "cheminformatics" "../cheminformatics"
+if [ -d "../orc-bi/cheminformatics" ]; then
+    build_component "cheminformatics" "../orc-bi/cheminformatics"
 fi
 
-if [ -d "../lg-atomese" ]; then
-    build_component "lg-atomese" "../lg-atomese"
+if [ -d "../orc-nl/lg-atomese" ]; then
+    build_component "lg-atomese" "../orc-nl/lg-atomese"
 fi
 
-if [ -d "../sensory" ]; then
-    build_component "sensory" "../sensory"
+if [ -d "../orc-ro/sensory" ]; then
+    build_component "sensory" "../orc-ro/sensory"
 fi
 
-if [ -d "../agents" ]; then
-    build_component "agents" "../agents"
+if [ -d "../orc-sv/agents" ]; then
+    build_component "agents" "../orc-sv/agents"
 fi
 
 # Build unified main application
