@@ -38,7 +38,7 @@ static inline void check_null(const Handle& h)
 /// This only performs a very simple kind of type checking;
 /// it does not check deep types, nor does it check arity.
 
-// XXX FIXME Much of the onfusion below is due to a bug: if the
+// XXX FIXME Much of the confusion below is due to a bug: if the
 // types script says something like
 // FOOBAR <- FUNCTION_LINK,BOOL_INPUT_LINK,NUMBER_INPUT_LINK
 // then the Foobar function will fail if given a boolean input:
@@ -108,7 +108,7 @@ static bool check_bool_vect(const Handle& bool_atom)
 	for (const Handle& h: bool_atom->getOutgoingSet())
 	{
 		Type t = h->get_type();
-		// Explcitly allow variables.
+		// Explicitly allow variables.
 		if (VARIABLE_NODE == t) continue;
 
 		// Allow Lambdas and whatnot.
