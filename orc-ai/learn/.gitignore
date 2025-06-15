@@ -1,0 +1,6 @@
+build
+*.log
+*.lyx~
+.lg_history
+tests/.lg_history
+attic
