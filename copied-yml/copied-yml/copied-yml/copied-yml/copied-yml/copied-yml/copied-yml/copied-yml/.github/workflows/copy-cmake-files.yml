@@ -1,0 +1,36 @@
+name: Copy and Commit CMake files
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main  # adjust this if your default branch is different
+
+permissions:
+  contents: write
+
+jobs:
+  copy-commit-cmake:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Copy CMake files preserving directory structure
+        run: |
+          mkdir -p copied-cmake
+          find . \( -name 'CMakeLists.txt' -o -name '*.cmake' \) -print0 | cpio -pdmv0 copied-cmake
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add copied-cmake/
+          git commit -m "Automated: Copy CMake files preserving directory structure" || echo "No changes to commit"
+
+      - name: Push changes
+        run: git push origin main
