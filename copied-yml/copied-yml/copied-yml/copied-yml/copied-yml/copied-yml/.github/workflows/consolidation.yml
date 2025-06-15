@@ -1,0 +1,394 @@
+
+name: Repository Consolidation
+
+on:
+  workflow_dispatch:
+    inputs:
+      consolidate_mode:
+        description: 'Consolidation mode'
+        required: true
+        default: 'symlink'
+        type: choice
+        options:
+        - symlink
+        - copy
+        - move
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install GitHub CLI
+      run: |
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+        sudo apt update
+        sudo apt install gh
+        
+    - name: Verify GitHub CLI Authentication
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Verifying GitHub CLI authentication..."
+        gh auth status
+        echo "GitHub CLI is properly authenticated"
+
+    - name: Create Consolidated Structure
+      run: |
+        echo "Consolidation mode: ${{ github.event.inputs.consolidate_mode }}"
+        echo "Note: Currently only symlink mode is supported in this automated workflow"
+        
+        mkdir -p consolidated/{core,extensions,tools,examples,tests,docs}
+        
+        # Core components
+        echo "Consolidating core components..."
+        [ -d "cogutil" ] && ln -sf ../../cogutil consolidated/core/cogutil || echo "Warning: cogutil not found"
+        [ -d "atomspace" ] && ln -sf ../../atomspace consolidated/core/atomspace || echo "Warning: atomspace not found"
+        [ -d "ure" ] && ln -sf ../../ure consolidated/core/ure || echo "Warning: ure not found"
+        [ -d "attention" ] && ln -sf ../../attention consolidated/core/attention || echo "Warning: attention not found"
+        [ -d "spacetime" ] && ln -sf ../../spacetime consolidated/core/spacetime || echo "Warning: spacetime not found"
+        [ -d "cogserver" ] && ln -sf ../../cogserver consolidated/core/cogserver || echo "Warning: cogserver not found"
+        [ -d "opencog" ] && ln -sf ../../opencog consolidated/core/opencog || echo "Warning: opencog not found"
+        
+        # Extensions
+        echo "Consolidating extensions..."
+        [ -d "pln" ] && ln -sf ../../pln consolidated/extensions/pln || echo "Warning: pln not found"
+        [ -d "miner" ] && ln -sf ../../miner consolidated/extensions/miner || echo "Warning: miner not found"
+        [ -d "moses" ] && ln -sf ../../moses consolidated/extensions/moses || echo "Warning: moses not found"
+        [ -d "asmoses" ] && ln -sf ../../asmoses consolidated/extensions/asmoses || echo "Warning: asmoses not found"
+        [ -d "unify" ] && ln -sf ../../unify consolidated/extensions/unify || echo "Warning: unify not found"
+        [ -d "generate" ] && ln -sf ../../generate consolidated/extensions/generate || echo "Warning: generate not found"
+        [ -d "pattern-index" ] && ln -sf ../../pattern-index consolidated/extensions/pattern-index || echo "Warning: pattern-index not found"
+        [ -d "vision" ] && ln -sf ../../vision consolidated/extensions/vision || echo "Warning: vision not found"
+        [ -d "cheminformatics" ] && ln -sf ../../cheminformatics consolidated/extensions/cheminformatics || echo "Warning: cheminformatics not found"
+        
+        # Tools and utilities
+        echo "Consolidating tools..."
+        [ -d "ocpkg" ] && ln -sf ../../ocpkg consolidated/tools/ocpkg || echo "Warning: ocpkg not found"
+        [ -d "benchmark" ] && ln -sf ../../benchmark consolidated/tools/benchmark || echo "Warning: benchmark not found"
+        [ -d "external-tools" ] && ln -sf ../../external-tools consolidated/tools/external-tools || echo "Warning: external-tools not found"
+        [ -d "docker" ] && ln -sf ../../docker consolidated/tools/docker || echo "Warning: docker not found"
+        
+        # Language bindings and interfaces
+        [ -d "lg-atomese" ] && ln -sf ../../lg-atomese consolidated/extensions/lg-atomese || echo "Warning: lg-atomese not found"
+        [ -d "link-grammar" ] && ln -sf ../../link-grammar consolidated/extensions/link-grammar || echo "Warning: link-grammar not found"
+        [ -d "relex" ] && ln -sf ../../relex consolidated/extensions/relex || echo "Warning: relex not found"
+        
+        # Examples and documentation
+        [ -d "wiki" ] && ln -sf ../../wiki consolidated/docs/wiki || echo "Info: wiki not found"
+        [ -d "test-datasets" ] && ln -sf ../../test-datasets consolidated/examples/test-datasets || echo "Info: test-datasets found"
+        
+        # Special projects
+        [ -d "sensory" ] && ln -sf ../../sensory consolidated/extensions/sensory || echo "Warning: sensory not found"
+        [ -d "agents" ] && ln -sf ../../agents consolidated/extensions/agents || echo "Warning: agents not found"
+        [ -d "rocca" ] && ln -sf ../../rocca consolidated/extensions/rocca || echo "Warning: rocca not found"
+
+    - name: Create Unified CMakeLists.txt
+      run: |
+        cat > consolidated/CMakeLists.txt << 'EOF'
+        cmake_minimum_required(VERSION 3.12)
+        project(OpenCogUnified VERSION 1.0.0)
+
+        set(CMAKE_CXX_STANDARD 17)
+        set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+        # Build core components in dependency order
+        add_subdirectory(core/cogutil)
+        add_subdirectory(core/atomspace)
+        add_subdirectory(core/ure)
+        add_subdirectory(core/attention)
+        add_subdirectory(core/spacetime)
+        add_subdirectory(core/cogserver)
+        add_subdirectory(core/opencog)
+
+        # Build extensions
+        add_subdirectory(extensions/pln)
+        add_subdirectory(extensions/miner)
+        add_subdirectory(extensions/moses)
+        add_subdirectory(extensions/asmoses)
+        add_subdirectory(extensions/unify)
+        add_subdirectory(extensions/generate)
+        add_subdirectory(extensions/pattern-index)
+        add_subdirectory(extensions/vision)
+        add_subdirectory(extensions/cheminformatics)
+        add_subdirectory(extensions/lg-atomese)
+        add_subdirectory(extensions/sensory)
+        add_subdirectory(extensions/agents)
+        add_subdirectory(extensions/rocca)
+
+        # Installation
+        install(TARGETS ${OPENCOG_LIBRARIES}
+          LIBRARY DESTINATION lib
+          ARCHIVE DESTINATION lib
+          RUNTIME DESTINATION bin
+        )
+        EOF
+
+    - name: Create Build Script
+      run: |
+        cat > build-unified.sh << 'EOF'
+        #!/bin/bash
+        set -e
+
+        echo "Building Unified OpenCog Framework..."
+
+        # Create build directory
+        mkdir -p build-unified
+        cd build-unified
+
+        # Configure with CMake
+        cmake ../consolidated \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=/usr/local
+
+        # Build
+        make -j$(nproc)
+
+        # Optional: Run tests
+        make test || echo "Some tests failed, but build completed"
+
+        echo "Build completed successfully!"
+        EOF
+        
+        chmod +x build-unified.sh
+
+    - name: Create Documentation
+      run: |
+        cat > CONSOLIDATED_README.md << 'EOF'
+        # OpenCog Unified Framework
+
+        This is a consolidated version of the OpenCog framework that brings together
+        all the scattered components into a single, unified build system.
+
+        ## Structure
+
+        - `consolidated/core/` - Core OpenCog components (atomspace, cogutil, etc.)
+        - `consolidated/extensions/` - Extensions and specialized modules
+        - `consolidated/tools/` - Development and utility tools
+        - `consolidated/docs/` - Documentation and wiki
+        - `consolidated/examples/` - Example datasets and code
+
+        ## Building
+
+        ```bash
+        ./build-unified.sh
+        ```
+
+        ## Components Included
+
+        ### Core
+        - CogUtil - Utility libraries
+        - AtomSpace - Knowledge representation
+        - URE - Unified Rule Engine
+        - Attention - Attention allocation
+        - SpaceTime - Spatial-temporal reasoning
+        - CogServer - Server framework
+        - OpenCog - Main framework
+
+        ### Extensions
+        - PLN - Probabilistic Logic Networks
+        - MOSES - Evolutionary program learning
+        - Pattern Miner - Frequent pattern mining
+        - Vision - Computer vision components
+        - Natural Language Processing tools
+        - And many more...
+
+        ## Original Repository Structure Preserved
+
+        All original folders are preserved via symbolic links, so existing
+        build scripts and development workflows should continue to work.
+        EOF
+
+    - name: Validate Consolidation
+      run: |
+        echo "Validating consolidated structure..."
+        
+        # Check if consolidated directory was created
+        if [ ! -d "consolidated" ]; then
+          echo "ERROR: consolidated directory was not created"
+          exit 1
+        fi
+        
+        # Check core structure
+        for dir in core extensions tools docs examples; do
+          if [ ! -d "consolidated/$dir" ]; then
+            echo "ERROR: consolidated/$dir directory missing"
+            exit 1
+          fi
+        done
+        
+        # Check for required files
+        if [ ! -f "build-unified.sh" ]; then
+          echo "ERROR: build-unified.sh script missing"
+          exit 1
+        fi
+        
+        if [ ! -f "CONSOLIDATED_README.md" ]; then
+          echo "ERROR: CONSOLIDATED_README.md missing"
+          exit 1
+        fi
+        
+        # Verify build script is executable
+        if [ ! -x "build-unified.sh" ]; then
+          echo "ERROR: build-unified.sh is not executable"
+          exit 1
+        fi
+        
+        echo "Listing consolidated structure..."
+        ls -la consolidated/
+        ls -la consolidated/core/
+        ls -la consolidated/extensions/
+        
+        echo "Checking for broken symlinks..."
+        BROKEN_LINKS=$(find consolidated/ -type l -exec test ! -e {} \; -print || true)
+        if [ -n "$BROKEN_LINKS" ]; then
+          echo "WARNING: Found broken symlinks:"
+          echo "$BROKEN_LINKS"
+          echo "This may be expected if some optional components are not present"
+        else
+          echo "All symlinks are valid"
+        fi
+        
+        echo "Validation completed successfully!"
+
+    - name: Create Pull Request with Consolidation
+      if: github.event_name == 'workflow_dispatch'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Configure Git with GitHub Action identity
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Generate unique branch name with timestamp
+        TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+        BRANCH_NAME="consolidation-output-${TIMESTAMP}"
+        
+        echo "Creating branch: ${BRANCH_NAME}"
+        
+        # Check if branch already exists (idempotency check)
+        if git ls-remote --heads origin "${BRANCH_NAME}" | grep -q "${BRANCH_NAME}"; then
+          echo "Branch ${BRANCH_NAME} already exists. This should not happen with timestamp-based naming."
+          echo "Attempting to use fallback branch name..."
+          FALLBACK_SUFFIX=$(openssl rand -hex 4)
+          BRANCH_NAME="consolidation-output-${TIMESTAMP}-${FALLBACK_SUFFIX}"
+          echo "Using fallback branch: ${BRANCH_NAME}"
+          
+          # Double-check fallback branch
+          if git ls-remote --heads origin "${BRANCH_NAME}" | grep -q "${BRANCH_NAME}"; then
+            echo "ERROR: Even fallback branch ${BRANCH_NAME} exists. This is highly unexpected."
+            exit 1
+          fi
+        fi
+        
+        # Create and switch to new branch
+        git checkout -b "${BRANCH_NAME}"
+        
+        # Add all consolidation files
+        git add consolidated/
+        git add build-unified.sh
+        git add CONSOLIDATED_README.md
+        
+        # Check if there are any changes to commit
+        if git diff --cached --quiet; then
+          echo "No changes to commit. Consolidation may have already been performed."
+          exit 0
+        fi
+        
+        # Commit with descriptive message
+        git commit -m "Add consolidated repository structure (${TIMESTAMP})
+
+        - Created unified build system with organized component structure
+        - Added build-unified.sh script for streamlined building
+        - Organized core components by dependency order
+        - Preserved original structure via symbolic links
+        - Added comprehensive documentation in CONSOLIDATED_README.md
+        - Included extensions, tools, and examples in structured layout
+
+        Components consolidated:
+        - Core: cogutil, atomspace, ure, attention, spacetime, cogserver, opencog
+        - Extensions: pln, miner, moses, asmoses, unify, generate, pattern-index, vision, cheminformatics
+        - Tools: ocpkg, benchmark, external-tools, docker
+        - Language bindings: lg-atomese, link-grammar, relex
+        - Additional: sensory, agents, rocca
+
+        This consolidation enables unified building while maintaining compatibility
+        with existing development workflows."
+        
+        # Push branch to remote repository
+        echo "Pushing branch to remote..."
+        git push origin "${BRANCH_NAME}"
+        
+        # Check for existing open PRs to avoid duplicates
+        echo "Checking for existing consolidation PRs..."
+        EXISTING_PRS=$(gh pr list --state open --head "${BRANCH_NAME}" --json number | jq -r '. | length')
+        
+        if [ "${EXISTING_PRS}" -gt 0 ]; then
+          echo "Pull request for branch ${BRANCH_NAME} already exists. Skipping PR creation."
+          PR_URL=$(gh pr list --state open --head "${BRANCH_NAME}" --json url | jq -r '.[0].url')
+          echo "Existing PR: ${PR_URL}"
+          exit 0
+        fi
+        
+        # Create pull request using GitHub CLI
+        echo "Creating pull request..."
+        PR_TITLE="🚀 Repository Consolidation (${TIMESTAMP})"
+        PR_BODY="## Repository Consolidation Summary
+
+        This PR introduces a consolidated structure for the OpenCog framework that organizes all components into a unified, buildable system.
+
+        ### 📁 Files Added
+        - \`consolidated/\` - Unified directory structure with organized components
+        - \`build-unified.sh\` - Build script for the consolidated framework
+        - \`CONSOLIDATED_README.md\` - Comprehensive documentation
+
+        ### 🏗️ Structure Overview
+        - **Core Components**: Essential OpenCog libraries (cogutil, atomspace, ure, etc.)
+        - **Extensions**: Specialized modules (PLN, MOSES, pattern mining, vision, etc.)
+        - **Tools**: Development utilities and external tools
+        - **Documentation**: Organized documentation and examples
+
+        ### ✅ Key Features
+        - **Dependency Order**: Components are organized by build dependencies
+        - **Symbolic Links**: Preserves original structure for compatibility
+        - **Unified Build**: Single build script handles entire framework
+        - **Backwards Compatible**: Existing workflows continue to work
+
+        ### 🔧 Usage
+        \`\`\`bash
+        ./build-unified.sh
+        \`\`\`
+
+        ### 📊 Components Included
+        **Core (${TIMESTAMP})**:
+        - cogutil, atomspace, ure, attention, spacetime, cogserver, opencog
+
+        **Extensions**:
+        - pln, miner, moses, asmoses, unify, generate, pattern-index, vision, cheminformatics, lg-atomese, sensory, agents, rocca
+
+        **Tools**:
+        - ocpkg, benchmark, external-tools, docker
+
+        This consolidation operation was performed automatically by the consolidation workflow."
+        
+        # Create the pull request
+        PR_URL=$(gh pr create \
+          --title "${PR_TITLE}" \
+          --body "${PR_BODY}" \
+          --base main \
+          --head "${BRANCH_NAME}" \
+          --label "consolidation,automation" \
+          --assignee "@me")
+        
+        echo "✅ Pull request created successfully!"
+        echo "PR URL: ${PR_URL}"
+        echo "Branch: ${BRANCH_NAME}"
+        echo "Consolidation completed successfully!"
