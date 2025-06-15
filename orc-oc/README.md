@@ -34,38 +34,6 @@ The orchestration includes the following components, built in dependency order:
   - Efficient knowledge graph operations
   - Scalable graph analytics and traversal
 
-### Embodiment and Robotics Platforms
-- **ros_opencog_robot_embodiment** - ROS (Robot Operating System) integration
-  - Robot control and perception interfaces
-  - Real-time sensorimotor processing
-  - Cognitive robotics applications
-  - ROS message passing and service integration
-
-- **opencog_rpi** - Raspberry Pi embedded system support
-  - Lightweight OpenCog deployment for IoT
-  - Edge computing cognitive capabilities
-  - Embedded AI applications
-
-### Interactive and Gaming Platforms
-- **unity3d-opencog-game** - Unity3D game engine integration
-  - 3D virtual environments with AI agents
-  - Interactive cognitive simulations
-  - Game-based AI research platform
-  - Virtual world embodiment
-
-- **opencog-to-minecraft** - Minecraft world integration
-  - AI agents in Minecraft environments
-  - Block-world reasoning and planning
-  - Educational AI demonstrations
-  - Virtual sandbox for cognitive experiments
-
-### Web Presence and Documentation
-- **opencog.org** - Official OpenCog website and documentation
-  - Community portal and documentation
-  - Research publications and tutorials
-  - Project coordination and communication
-  - Educational resources
-
 ### Deployment and Distribution
 - **opencog-debian** - Debian/Ubuntu packaging system
   - APT-compatible package distribution
@@ -78,6 +46,13 @@ The orchestration includes the following components, built in dependency order:
   - Immutable package deployments
   - Cross-platform distribution
   - Development environment isolation
+
+### Web Presence and Documentation
+- **opencog.org** - Official OpenCog website and documentation
+  - Community portal and documentation
+  - Research publications and tutorials
+  - Project coordination and communication
+  - Educational resources
 
 ## Building
 
