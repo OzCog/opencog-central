@@ -1,0 +1,39 @@
+name: Build OpenCog Central Repositories
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    strategy:
+      matrix:
+        repo: [001-kokkos-ci-containers,Echo-State-Networks,MORK,ProgrammingGuide,PyPdnsRedis,RNN-RC-Chaos,TinyCog,Vereya,acme-client,agents,agi-bio,array_ref,asmoses,atlantis,atomspace,atomspace-agents,atomspace-bridge,atomspace-cog,atomspace-dht,atomspace-explorer,atomspace-ipfs,atomspace-js,atomspace-metta,atomspace-restful,atomspace-rocks,atomspace-rpc,atomspace-typescript,atomspace-websockets,attention,benchmark,blender_api,blender_api_msgs,blog,chaining,cheminformatics,ci-containers,cli,code-examples,cogprotolab,cogserver,cogutil,dav4rack,destin,dimensional-embedding,disposable-email-domains,distributional-value,doc,docker,element,emgithub,examples,external-tools,generate,ghost_bridge,github-markdown-css,governance,guile-dbi,hpcbind,hpcg,hshca,hshca-proxy,httpclient-fixcerts,hyperon-cpp,hyperon-experimental,hyperon-miner,hyperon-moses,hyperon-pln,inferno-1e0,inferno-1e1,inferno-2e,inferno-3e,inferno-os,json-jwt,koboldcpp,kokkos,kokkos-benchmark-results,kokkos-comm,kokkos-core-wiki,kokkos-docs,kokkos-fft,kokkos-fortran-interop,kokkos-kernels,kokkos-miniapps,kokkos-openmptarget-examples,kokkos-remote-spaces,kokkos-resilience,kokkos-tools,kokkos-tutorials,kokkos.github.io,language-learning,learn,lg-atomese,lib,link-grammar,link-grammar-website,linkgrammar-relex-web,list,llvm-project,logicmoo_cogserver,loving-ai,loving-ai-ghost,manet-dockerfile,mdarray,mdspan,metta-catalog,metta-examples,metta-morph,metta-wam,minecraft-demo,minecraft-experiments,miner,moses,multihash,neocities,neocities-docker,neocities-node,neocities-proxy,neocities-ruby,neocities.github.io,neveragaindottech.github.io,ngx_slowfs_cache,nvcc_wrapper,obsidian-importer,ocpkg,opencog,opencog-cycl,opencog-debian,opencog-env,opencog-neo4j,opencog-nix,opencog-to-minecraft,opencog.org,opencog_rpi,pattern-index,pau2motors,perception,pi_vision,pln,pln-brca-xp,protobuf-metta,puppeteer-ruby,pykokkos,pykokkos-base,python-attic,python-client,python-destin,python-neocities,pytorch-esn,rack_dav,relex,reservoirpy,rest-api-documentation,robots_config,rocca,ros-behavior-scripting,ros_opencog_robot_embodiment,screencap,scripts,semantic-vision,sensory,simd-math,simple_esn,skeuocard,smartos-live,spacetime,stdBLAS,stochastic-language-generation,test-datasets,testhooks,tests,triton,tv-toolbox,unify,unity3d-opencog-game,ure,ventivac,veocities,veocities-design,vision,visualization,www.opencompany.org]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@v3.26.4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential python3 python3-venv
+
+      - name: Build ${{ matrix.repo }}
+        run: |
+          mkdir -p build/${{ matrix.repo }}
+          cd build/${{ matrix.repo }}
+          cmake ../../repos/${{ matrix.repo }} -DCMAKE_BUILD_TYPE=Release
+          make -j$(nproc)
+
+      - name: Run tests for ${{ matrix.repo }}
+        run: |
+          cd build/${{ matrix.repo }}
+          ctest --output-on-failure
