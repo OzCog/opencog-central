@@ -4,65 +4,113 @@ This document outlines the optimal build order for the entire OpenCog ecosystem 
 
 ## Build Order Sequence
 
+# OpenCog Ecosystem Build Order Plan
+## Based on Actual CMakeLists.txt Dependency Analysis
+
+This document outlines the optimal build order for the entire OpenCog ecosystem based on analysis of actual CMakeLists.txt dependencies.
+
+## Build Order Sequence
+
 The following sequence ensures that all dependencies are satisfied at each step:
 
 ### Phase 1: Foundation (Parallel builds possible)
-1. **cogutil** - Core utilities, no dependencies
-2. **moses** - Evolutionary algorithms, depends only on cogutil
-3. **language-learning** - Basic NLP, depends only on cogutil
+1. **cogutil** - Core utilities, only external dependencies (Boost)
+2. **moses** - Evolutionary algorithms (depends on cogutil + Boost)
+3. **blender_api_msgs** - 3D integration APIs (Boost only)
+4. **perception** - Basic perception (Boost only) 
+5. **ghost_bridge** - Bridge components (Boost only)
+6. **pau2motors** - Motor control (Boost only)
+7. **robots_config** - Robot configuration (no dependencies)
 
 ### Phase 2: Core Systems (Sequential after cogutil)
-4. **atomspace** - Core knowledge representation (depends on cogutil)
+8. **atomspace** - Core knowledge representation (depends on cogutil + Boost)
 
 ### Phase 3: AtomSpace Extensions (Parallel after atomspace)
-5. **atomspace-rocks** - Persistence layer (depends on cogutil + atomspace)
-6. **atomspace-restful** - HTTP API (depends on cogutil + atomspace)
-7. **unify** - Unification engine (depends on cogutil + atomspace)
-8. **cogserver** - Network server (depends on cogutil + atomspace)
-9. **spacetime** - Spatiotemporal reasoning (depends on cogutil + atomspace)
-10. **lg-atomese** - Link Grammar integration (depends on cogutil + atomspace)
+9. **unify** - Unification engine (depends on cogutil + atomspace + Boost)
+10. **cogserver** - Network server (depends on cogutil + atomspace + Boost)
+11. **spacetime** - Spatiotemporal reasoning (depends on cogutil + atomspace + Boost)
+12. **lg-atomese** - Link Grammar integration (depends on cogutil + atomspace)
+13. **learn** - Language learning (depends on cogutil + atomspace)
+14. **generate** - Generation system (depends on cogutil + atomspace)
+15. **vision** - Computer vision (depends on cogutil + atomspace)
+16. **cheminformatics** - Chemical informatics (depends on cogutil + atomspace)
+17. **sensory** - Sensory processing (depends on cogutil + atomspace)
+18. **agi-bio** - AGI biology (depends on cogutil + atomspace)
+19. **atomspace-rocks** - RocksDB persistence (depends on cogutil + atomspace)
+20. **atomspace-restful** - HTTP API (depends on cogutil + atomspace + Boost)
+21. **atomspace-dht** - DHT persistence (depends on cogutil + atomspace)
+22. **atomspace-ipfs** - IPFS integration (depends on cogutil + atomspace)
+23. **atomspace-websockets** - WebSocket API (depends on cogutil + atomspace + Boost)
+24. **atomspace-metta** - MeTTa integration (depends on cogutil + atomspace)
+25. **atomspace-cog** - Cog integration (depends on cogutil + atomspace)
+26. **atomspace-bridge** - Bridge components (depends on cogutil + atomspace)
+27. **atomspace-agents** - Agent system (depends on cogutil + atomspace + Boost)
+28. **atomspace-rpc** - RPC interface (depends on cogutil + atomspace + Boost)
+29. **visualization** - Data visualization (depends on cogutil + atomspace + Boost)
+30. **dimensional-embedding** - Embedding system (depends on cogutil + atomspace + Boost)
+31. **pattern-index** - Pattern indexing (depends on cogutil + atomspace + Boost)
+32. **TinyCog** - Minimal OpenCog (depends on atomspace + Guile)
+33. **ros-behavior-scripting** - ROS integration (no external OpenCog deps)
 
 ### Phase 4: Logic Engine (Sequential after unify)
-11. **ure** - Unified Rule Engine (depends on cogutil + atomspace + unify)
+34. **ure** - Unified Rule Engine (depends on cogutil + atomspace + Boost)
 
-### Phase 5: Advanced Systems (Parallel after ure and other dependencies)
-12. **attention** - Attention allocation (depends on cogutil + atomspace + cogserver)
-13. **pln** - Probabilistic Logic Networks (depends on cogutil + atomspace + unify + ure + spacetime)
-14. **miner** - Pattern mining (depends on cogutil + atomspace + unify + ure)
-15. **asmoses** - AtomSpace MOSES (depends on cogutil + atomspace + unify + ure)
-16. **learn** - Language learning (depends on cogutil + atomspace + cogserver)
+### Phase 5: Cognitive Systems (After cogserver + ure)
+35. **attention** - Attention allocation (depends on cogutil + atomspace + cogserver + Boost)
 
-### Phase 6: Integration (Sequential after all dependencies)
-17. **opencog** - Main framework (depends on cogutil + atomspace + cogserver + attention + unify + ure + lg-atomese)
+### Phase 6: Advanced Systems (Parallel after ure and other dependencies)
+36. **pln** - Probabilistic Logic Networks (depends on cogutil + atomspace + ure + spacetime)
+37. **miner** - Pattern mining (depends on cogutil + atomspace + ure + Boost)
+38. **asmoses** - AtomSpace MOSES (depends on cogutil + atomspace + ure + Boost)
+39. **benchmark** - Performance testing (depends on cogutil + atomspace + ure + Boost)
+40. **python-attic** - Python bindings (depends on cogutil + atomspace + ure + Guile)
 
-### Phase 7: Packaging (Sequential after opencog)
-18. **package** - Distribution packages (depends on opencog)
+### Phase 7: Integration (Sequential after all dependencies)
+41. **opencog** - Main framework (depends on cogutil + atomspace + ure)
+
+### Phase 8: Packaging (Sequential after opencog)
+42. **package** - Distribution packages (depends on opencog)
 
 ## Build Parallelization Strategy
 
-### Parallel Groups
+## Build Parallelization Strategy
 
-**Group 1 (Independent foundation):**
-- cogutil
+### Parallel Groups (Based on CMakeLists.txt Analysis)
+
+**Group 1 (Foundation - Independent or cogutil-only):**
+- cogutil (foundation)
 - moses (after cogutil)
-- language-learning (after cogutil)
+- blender_api_msgs (independent)
+- perception (independent) 
+- ghost_bridge (independent)
+- pau2motors (independent)
+- robots_config (independent)
+- ros-behavior-scripting (independent)
 
 **Group 2 (AtomSpace extensions - parallel after atomspace):**
-- atomspace-rocks
-- atomspace-restful
-- unify
-- cogserver
-- spacetime
-- lg-atomese
+- unify, cogserver, spacetime, lg-atomese
+- learn, generate, vision, cheminformatics, sensory, agi-bio
+- atomspace-rocks, atomspace-restful, atomspace-dht, atomspace-ipfs
+- atomspace-websockets, atomspace-metta, atomspace-cog, atomspace-bridge
+- atomspace-agents, atomspace-rpc
+- visualization, dimensional-embedding, pattern-index
+- TinyCog
 
-**Group 3 (Advanced systems - parallel after dependencies met):**
-- attention (needs cogserver)
+**Group 3 (Advanced systems - parallel after ure + dependencies):**
+- pln (needs ure + spacetime)
 - miner (needs ure)
 - asmoses (needs ure)
-- learn (needs cogserver)
+- benchmark (needs ure)
+- python-attic (needs ure)
 
-**Group 4 (Late dependencies):**
-- pln (needs ure + spacetime)
+**Group 4 (Cognitive systems - after cogserver):**
+- attention (needs cogserver)
+
+**Group 5 (Integration):**
+- opencog (needs multiple dependencies)
+
+**Group 6 (Packaging):**
+- package (needs opencog)
 
 ## Estimated Build Times
 
