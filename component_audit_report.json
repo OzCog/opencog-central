@@ -1,0 +1,4510 @@
+{
+  "audit_metadata": {
+    "repository_root": "/home/runner/work/opencog-central/opencog-central",
+    "total_categories": 13,
+    "total_components": 92
+  },
+  "components": {
+    "orc-bi": {
+      "cheminformatics": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-bi/cheminformatics",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace"
+        ],
+        "description": "Cheminformatics",
+        "language": "rust"
+      },
+      "agi-bio": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-bi/agi-bio",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace"
+        ],
+        "description": "AGI-Bio",
+        "language": "rust"
+      },
+      "pln-brca-xp": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-bi/pln-brca-xp",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "-"
+        ],
+        "description": "This repo contains the code for inference experiments using Probabilistic Logic Networks, PLN, on breast cancer dataset. It is based on the work in [singnet/cancer](https://github.com/singnet/cancer)",
+        "language": "rust"
+      }
+    },
+    "orc-dv": {
+      "ocpkg": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/ocpkg",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "ocpkg"
+        ],
+        "description": "* This script installs an OpenCog development environment on a fresh",
+        "language": "rust"
+      },
+      "rust_crates": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/rust_crates",
+        "type": "unknown",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      },
+      "external-tools": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/external-tools",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "ment"
+        ],
+        "description": "External Tools",
+        "language": "rust"
+      },
+      "cogutil": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/cogutil",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "PThreads",
+          "STLPort",
+          "Boost",
+          "Boost",
+          "Cxxtest",
+          "GNUBacktrace",
+          "BFD",
+          "Iberty",
+          "ParallelSTL",
+          "Doxygen",
+          "d",
+          "and",
+          "not",
+          "really",
+          "optional",
+          "if",
+          "you",
+          "are",
+          "a",
+          "regular",
+          "OpenCog",
+          "developer",
+          "-------------",
+          "To",
+          "build",
+          "the",
+          "OpenCog",
+          "utilities",
+          "the",
+          "packages",
+          "listed",
+          "below",
+          "are",
+          "required",
+          "----------------------",
+          "The",
+          "following",
+          "are",
+          "optional",
+          "but",
+          "are",
+          "strongly",
+          "recommended",
+          "as",
+          "they",
+          "result",
+          "in"
+        ],
+        "description": "OpenCog Utilities",
+        "language": "rust"
+      },
+      "cogprotolab": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/cogprotolab",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "See [vis-word-pairs/README](vis-word-pairs/README.md).",
+        "language": "rust"
+      },
+      "benchmark": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/benchmark",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "URE",
+          "benchmark",
+          "Boost",
+          "Boost"
+        ],
+        "description": "Collection of tools and data to benchmark the AtomSpace, the pattern",
+        "language": "rust"
+      },
+      "src": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/src",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "rust"
+      },
+      "integrated_output": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/integrated_output",
+        "type": "unknown",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      },
+      "guile-dbi": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/guile-dbi",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "a",
+          "small",
+          "amount",
+          "of",
+          "C",
+          "coding",
+          "but",
+          "is",
+          "a",
+          "straightforward",
+          "task"
+        ],
+        "description": "Guile DBI",
+        "language": "rust"
+      },
+      "test-datasets": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/test-datasets",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "test-datasets",
+        "language": "rust"
+      },
+      "node_modules": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/node_modules",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "rust"
+      }
+    },
+    "orc-ro": {
+      "blender_api_msgs": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/blender_api_msgs",
+        "type": "python_package",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "catkin",
+          "catkin",
+          "Boost",
+          "catkin",
+          "catkin"
+        ],
+        "description": "blender_api_msgs",
+        "language": "python"
+      },
+      "opencog_rpi": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/opencog_rpi",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "d",
+          "for",
+          "cross-compiling"
+        ],
+        "description": "Opencog Cross Compile Toolchain for Raspberry Pi3",
+        "language": "rust"
+      },
+      "pau2motors": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/pau2motors",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "catkin",
+          "catkin",
+          "Boost",
+          "catkin"
+        ],
+        "description": "pau2motors",
+        "language": "rust"
+      },
+      "blender_api": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/blender_api",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "control",
+          "through",
+          "Child",
+          "Of",
+          "deform",
+          "through",
+          "Locked",
+          "Track"
+        ],
+        "description": "I was interested in reviving the Eva portion of the opencog/docker repo, and to that end I created the \"noetic\" folder, in which",
+        "language": "rust"
+      },
+      "perception": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/perception",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "catkin",
+          "catkin",
+          "Boost",
+          "catkin",
+          "pi_vision",
+          "is",
+          "needed"
+        ],
+        "description": "Perception Synthesizer",
+        "language": "rust"
+      },
+      "ros-behavior-scripting": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/ros-behavior-scripting",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "catkin"
+        ],
+        "description": "Eva Robot ROS Sensory+Motor API",
+        "language": "rust"
+      },
+      "semantic-vision": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/semantic-vision",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "This is a repository hosting public discussion, documentation and milestones of the semantic vision research initiative within OpenCog. Please see the [Wiki](https://github.com/opencog/semantic-vision/wiki) for more information! It is starting as of September 2017 and we are adding research material, code used for experimentation and results as we go along. Stay tuned for more!",
+        "language": "rust"
+      },
+      "robots_config": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/robots_config",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "catkin",
+          "catkin",
+          "d",
+          "d",
+          "for",
+          "basic",
+          "expressions",
+          "and",
+          "webui",
+          "to",
+          "work",
+          "d"
+        ],
+        "description": "Robots configuration package.",
+        "language": "rust"
+      },
+      "pi_vision": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/pi_vision",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "pi_vision",
+        "language": "rust"
+      },
+      "vision": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/vision",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "OpenCV",
+          "Catch2",
+          "VALGRIND",
+          "Doxygen",
+          "d",
+          "and",
+          "optional"
+        ],
+        "description": "> Atomese wrappers around a subset of OpenCV",
+        "language": "rust"
+      },
+      "sensory": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/sensory",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace"
+        ],
+        "description": "Sensory Atomese",
+        "language": "rust"
+      },
+      "ros_opencog_robot_embodiment": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/ros_opencog_robot_embodiment",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "rust"
+      }
+    },
+    "orc-em": {
+      "loving-ai-ghost": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-em/loving-ai-ghost",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "A port of [OpenCog's loving-ai ChatScripts](https://github.com/opencog/loving-ai) to Ghost.  Builds upon the [Loving AI Project](http://lovingai.org/#about).",
+        "language": "rust"
+      },
+      "loving-ai": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-em/loving-ai",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "ChatScript dialogue for the [Loving Artificial Intelligence](http://noetic.org/blog/communications-team/loving-artificial) project. This is a work in progress.",
+        "language": "rust"
+      },
+      "ghost_bridge": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-em/ghost_bridge",
+        "type": "python_package",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "catkin",
+          "catkin",
+          "Boost",
+          "catkin",
+          "catkin"
+        ],
+        "description": "ghost_bridge",
+        "language": "python"
+      }
+    },
+    "orc-wb": {
+      "rest-api-documentation": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/rest-api-documentation",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "rest-api-documentation",
+        "language": "rust"
+      },
+      "python-client": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/python-client",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "ments",
+          "-",
+          "Requires",
+          "the",
+          "REST",
+          "API",
+          "to",
+          "be",
+          "configured",
+          "as",
+          "described",
+          "d",
+          "d",
+          "d",
+          "d",
+          "d",
+          "d",
+          "d",
+          "d",
+          "d",
+          "d",
+          "a",
+          "RelExServer",
+          "to",
+          "be",
+          "running",
+          "a",
+          "Server",
+          "and",
+          "a",
+          "RelExServer",
+          "to",
+          "be",
+          "running"
+        ],
+        "description": "OpenCog Python Client",
+        "language": "rust"
+      },
+      "python-destin": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/python-destin",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "revision"
+        ],
+        "description": "PythonDeSTIN is a repo for the development of Python DeSTIN (PyDeSTIN).",
+        "language": "rust"
+      },
+      "python-attic": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/python-attic",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "CogServer",
+          "AttentionBank",
+          "URE",
+          "PLN",
+          "Cxxtest",
+          "GHC",
+          "Stack",
+          "Guile",
+          "LinkGrammar",
+          "UUID",
+          "VALGRIND",
+          "Doxygen"
+        ],
+        "description": "Old OpenCog Python Code",
+        "language": "rust"
+      },
+      "python_packages": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/python_packages",
+        "type": "unknown",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      }
+    },
+    "orc-nl": {
+      "relex": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/relex",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "Stanford Parser Compatibility Mode",
+        "language": "rust"
+      },
+      "linkgrammar-relex-web": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/linkgrammar-relex-web",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "Link Grammar and RelEx web demo",
+        "language": "rust"
+      },
+      "stochastic-language-generation": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/stochastic-language-generation",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "Stochastic Language Generation",
+        "language": "rust"
+      },
+      "language-learning": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/language-learning",
+        "type": "python_package",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "",
+        "language": "python"
+      },
+      "link-grammar": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/link-grammar",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "itself",
+          "Word2",
+          "then",
+          "Word2",
+          "cannot",
+          "depend",
+          "on",
+          "Word1",
+          "nouns",
+          "but",
+          "never",
+          "vice-versa",
+          "d",
+          "here",
+          "is",
+          "used",
+          "to",
+          "force",
+          "phonetic",
+          "agreement",
+          "distinguishing",
+          "d",
+          "python",
+          "versions",
+          "can",
+          "be",
+          "invoked",
+          "using",
+          "your",
+          "d",
+          "package",
+          "as",
+          "the",
+          "existing",
+          "d",
+          "because",
+          "the",
+          "libc",
+          "REGEX",
+          "implementation",
+          "is",
+          "not",
+          "capable",
+          "enough",
+          "d",
+          "because",
+          "the",
+          "libc",
+          "REGEX",
+          "implementation",
+          "is",
+          "not",
+          "capable",
+          "enough",
+          "d",
+          "is",
+          "to",
+          "understand",
+          "what",
+          "sort",
+          "of",
+          "theory",
+          "describes",
+          "link-crossing",
+          "in",
+          "a",
+          "coherent",
+          "grounding",
+          "only",
+          "a",
+          "fix",
+          "to",
+          "the",
+          "dictionary",
+          "and",
+          "not",
+          "to",
+          "the",
+          "parser",
+          "itself",
+          "two",
+          "different",
+          "parse",
+          "trees",
+          "if",
+          "the",
+          "no-links-cross",
+          "rule",
+          "is",
+          "to",
+          "be",
+          "enforced",
+          "link-crossing",
+          "two",
+          "words",
+          "not",
+          "one",
+          "a",
+          "graph",
+          "re-write",
+          "from",
+          "the",
+          "surface",
+          "syntax",
+          "parse",
+          "a",
+          "determiner",
+          "a",
+          "lot",
+          "of",
+          "different",
+          "links",
+          "to",
+          "be",
+          "hooked",
+          "together",
+          "tools",
+          "Tools",
+          "that",
+          "may",
+          "need",
+          "installation",
+          "before",
+          "you",
+          "can",
+          "build",
+          "link-grammar"
+        ],
+        "description": "Link Grammar Parser",
+        "language": "rust"
+      },
+      "lg-atomese": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/lg-atomese",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Cxxtest",
+          "LinkGrammar",
+          "UUID",
+          "Doxygen",
+          "-------------",
+          "The",
+          "following",
+          "packages",
+          "must",
+          "first",
+          "be",
+          "built",
+          "and",
+          "installed"
+        ],
+        "description": "Atomese API for Link Grammar",
+        "language": "rust"
+      },
+      "link-grammar-website": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/link-grammar-website",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "The Link Grammar Website",
+        "language": "rust"
+      }
+    },
+    "orc-as": {
+      "atomspace-agents": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-agents",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Boost",
+          "Cxxtest",
+          "VALGRIND",
+          "Doxygen"
+        ],
+        "description": "Obsolete",
+        "language": "rust"
+      },
+      "atomspace-dht": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-dht",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Cxxtest",
+          "Doxygen",
+          "the",
+          "actual",
+          "backend",
+          "in",
+          "use",
+          "the",
+          "actual",
+          "AtomSpace",
+          "an",
+          "Atom",
+          "might",
+          "be",
+          "in"
+        ],
+        "description": "[OpenDHT](https://github.com/savoirfairelinux/opendht/wiki)",
+        "language": "rust"
+      },
+      "atomspace": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "Boost",
+          "Cxxtest",
+          "Folly",
+          "OCaml",
+          "Stack",
+          "UnixODBC",
+          "PGSQL",
+          "VALGRIND",
+          "Doxygen",
+          "it",
+          "for",
+          "stable",
+          "correct",
+          "operation",
+          "in",
+          "a",
+          "day-to-day",
+          "production",
+          "environment",
+          "it",
+          "it",
+          "is",
+          "not",
+          "very",
+          "that",
+          "all",
+          "matches",
+          "contain",
+          "a",
+          "particular",
+          "subgraph",
+          "or",
+          "satisfy",
+          "a",
+          "particular",
+          "predicate",
+          "not",
+          "only",
+          "finding",
+          "the",
+          "baskets",
+          "making",
+          "sure",
+          "they",
+          "have",
+          "balls",
+          "in",
+          "them",
+          "but",
+          "also",
+          "testing",
+          "each",
+          "and",
+          "every",
+          "ball",
+          "in",
+          "a",
+          "basket",
+          "to",
+          "make",
+          "sure",
+          "they",
+          "are",
+          "d",
+          "large",
+          "indexes",
+          "on",
+          "those",
+          "tables",
+          "a",
+          "lot",
+          "of",
+          "RAM",
+          "ments",
+          "on",
+          "the",
+          "AtomSpace",
+          "architecture",
+          "d",
+          "d",
+          "d",
+          "for",
+          "running",
+          "unit",
+          "tests",
+          "To",
+          "build",
+          "the",
+          "OpenCog",
+          "AtomSpace",
+          "the",
+          "packages",
+          "listed",
+          "below",
+          "are",
+          "required",
+          "The",
+          "following",
+          "packages",
+          "are",
+          "optional"
+        ],
+        "description": "OpenCog AtomSpace",
+        "language": "rust"
+      },
+      "atomspace-rocks": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-rocks",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "RocksDB",
+          "Cxxtest",
+          "VALGRIND",
+          "Doxygen"
+        ],
+        "description": "AtomSpace RocksDB Backend",
+        "language": "rust"
+      },
+      "atomspace-ipfs": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-ipfs",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Cxxtest",
+          "Doxygen",
+          "ments",
+          "that",
+          "each",
+          "atom",
+          "will",
+          "get",
+          "it",
+          "ments",
+          "d"
+        ],
+        "description": "[IPFS](https://ipfs.io/) driver backend to the",
+        "language": "rust"
+      },
+      "atomspace-websockets": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-websockets",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "Boost",
+          "CogUtil",
+          "AtomSpace",
+          "Cxxtest",
+          "the",
+          "following",
+          "libraries",
+          "it",
+          "ments",
+          "d",
+          "if",
+          "you",
+          "are",
+          "working",
+          "with",
+          "bio",
+          "related",
+          "atomspace"
+        ],
+        "description": "The code here is now obsolete. It has been replaced by \"native\" support",
+        "language": "rust"
+      },
+      "atomspace-restful": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-restful",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "Boost",
+          "CogUtil",
+          "AtomSpace",
+          "CogServer",
+          "Cxxtest",
+          "PkgConfig",
+          "TBB",
+          "ZMQ",
+          "AttentionBank",
+          "Doxygen",
+          "jsoncpp",
+          "d",
+          "-------------",
+          "To",
+          "build",
+          "and",
+          "run",
+          "this",
+          "module",
+          "the",
+          "packages",
+          "listed",
+          "below",
+          "are",
+          "required"
+        ],
+        "description": "AtomSpace RESTful Web API",
+        "language": "rust"
+      },
+      "atomspace-typescript": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-typescript",
+        "type": "npm_package",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "ments",
+          "ments",
+          "subsection",
+          "ments",
+          "are",
+          "for",
+          "accepting",
+          "them",
+          "external",
+          "setup",
+          "such",
+          "as",
+          "starting",
+          "a",
+          "Selenium",
+          "server",
+          "for",
+          "testing",
+          "in",
+          "a",
+          "browser"
+        ],
+        "description": "Contains the code for a local AtomSpace browser react-app",
+        "language": "javascript"
+      },
+      "atomspace-explorer": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-explorer",
+        "type": "npm_package",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "d",
+          "for",
+          "earlier",
+          "versions",
+          "of",
+          "AtomSpace",
+          "Explorer",
+          "and",
+          "Issues",
+          "The",
+          "AtomSpace",
+          "Explorer",
+          "needs"
+        ],
+        "description": "The AtomSpace Explorer is a visualization tool for",
+        "language": "javascript"
+      },
+      "atomspace-js": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-js",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "the",
+          "cogserver",
+          "to",
+          "serialize",
+          "the",
+          "data"
+        ],
+        "description": "There is nothing here, except for this README file.",
+        "language": "rust"
+      },
+      "atomspace-bridge": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-bridge",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "PGSQL",
+          "Cxxtest",
+          "VALGRIND",
+          "Doxygen",
+          "a",
+          "bulk",
+          "import"
+        ],
+        "description": "AtomSpace-SQL DB Bridge",
+        "language": "rust"
+      },
+      "atomspace-metta": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-metta",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Cxxtest",
+          "Doxygen",
+          "d",
+          "To",
+          "build",
+          "the",
+          "MeTTa",
+          "layer",
+          "the",
+          "packages",
+          "listed",
+          "below",
+          "are",
+          "required"
+        ],
+        "description": "MeTTa on the AtomSpace",
+        "language": "rust"
+      },
+      "atomspace-rpc": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-rpc",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "Boost",
+          "CogUtil",
+          "AtomSpace",
+          "Cxxtest",
+          "the",
+          "following",
+          "libraries",
+          "ments",
+          "d",
+          "if",
+          "you",
+          "are",
+          "working",
+          "with",
+          "bio",
+          "related",
+          "atomspace",
+          "Guile",
+          "is",
+          "also",
+          "must",
+          "be",
+          "installed",
+          "to",
+          "use",
+          "the",
+          "scheme",
+          "bindings"
+        ],
+        "description": "This project uses [grpc](https://grpc.io) for executing pattern matching searches on a remote [AtomSpace](https://github.com/opencog).",
+        "language": "rust"
+      },
+      "atomspace-cog": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-cog",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "CogServer",
+          "Cxxtest",
+          "VALGRIND",
+          "Doxygen"
+        ],
+        "description": "AtomSpace CogStorage Client",
+        "language": "rust"
+      }
+    },
+    "orc-ct": {
+      "generate": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/generate",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Cxxtest",
+          "ment",
+          "that",
+          "the",
+          "type",
+          "of",
+          "the",
+          "value",
+          "must",
+          "correspond",
+          "to",
+          "the",
+          "type",
+          "of",
+          "the",
+          "variable",
+          "that",
+          "all",
+          "of",
+          "the",
+          "gluing",
+          "axioms",
+          "of",
+          "a",
+          "sheaf",
+          "must",
+          "be",
+          "satisfied",
+          "considerable",
+          "algorithmic",
+          "sophistication",
+          "e",
+          "ments",
+          "and",
+          "modify",
+          "it",
+          "to",
+          "fit",
+          "ments",
+          "d"
+        ],
+        "description": "![Example random network](./examples/n20.gml.png)",
+        "language": "rust"
+      },
+      "pattern-index": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/pattern-index",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Boost",
+          "Cxxtest",
+          "Doxygen",
+          "d",
+          "by",
+          "the",
+          "algorithm",
+          "4"
+        ],
+        "description": "This module provides two interfaces (C++ and Guile) for a data abstraction that",
+        "language": "rust"
+      },
+      "attention": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/attention",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "CogServer",
+          "Boost",
+          "Boost",
+          "Cxxtest",
+          "VALGRIND",
+          "Doxygen",
+          "d",
+          "-------------",
+          "To",
+          "build",
+          "and",
+          "run",
+          "the",
+          "Attention",
+          "Allocation",
+          "subsystem",
+          "the",
+          "packages",
+          "listed",
+          "below",
+          "are",
+          "required"
+        ],
+        "description": "Attention Allocation",
+        "language": "rust"
+      },
+      "tv-toolbox": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/tv-toolbox",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "ments",
+          "a",
+          "bit",
+          "of",
+          "tweaking",
+          "on",
+          "the",
+          "user"
+        ],
+        "description": "Tool box for experimenting with TV types.",
+        "language": "rust"
+      },
+      "kokkos_integrations": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/kokkos_integrations",
+        "type": "unknown",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      },
+      "dimensional-embedding": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/dimensional-embedding",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Boost",
+          "Cxxtest",
+          "Doxygen"
+        ],
+        "description": "= Dimensional Embedding",
+        "language": "rust"
+      },
+      "spacetime": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/spacetime",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Boost",
+          "Cxxtest",
+          "Octomap",
+          "Doxygen"
+        ],
+        "description": "SpaceTime Server",
+        "language": "rust"
+      },
+      "unify": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/unify",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Boost",
+          "Cxxtest",
+          "VALGRIND",
+          "To",
+          "build",
+          "the",
+          "Unifier",
+          "you",
+          "need",
+          "to",
+          "build",
+          "and",
+          "install",
+          "the"
+        ],
+        "description": "opencog | singnet",
+        "language": "rust"
+      },
+      "distributional-value": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/distributional-value",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "rust"
+      },
+      "profile": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/profile",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "[OpenCog aims to create AGI](https://wiki.opencog.org/w/The_Open_Cognition_Project)",
+        "language": "rust"
+      },
+      "visualization": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/visualization",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Boost",
+          "GTK3",
+          "Doxygen",
+          "APIs",
+          "that",
+          "no",
+          "longer",
+          "exist"
+        ],
+        "description": "Graphics and Visualization Tools",
+        "language": "rust"
+      }
+    },
+    "orc-gm": {
+      "unity3d-opencog-game": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-gm/unity3d-opencog-game",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "a",
+          "specific",
+          "process",
+          "to",
+          "make",
+          "it",
+          "safe",
+          "described",
+          "below",
+          "the",
+          "scene",
+          "to",
+          "change",
+          "dComponent",
+          "attribute",
+          "dComponent",
+          "attribute",
+          "is",
+          "a",
+          "hassel",
+          "normally",
+          "since",
+          "it",
+          "can",
+          "often",
+          "block",
+          "you",
+          "from",
+          "making",
+          "changes",
+          "in",
+          "the",
+          "editor"
+        ],
+        "description": "OpenCog-Unity3D-Game",
+        "language": "rust"
+      },
+      "opencog-to-minecraft": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-gm/opencog-to-minecraft",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "A ROS-based module linking OpenCog and the Minecraft world. This code serves as",
+        "language": "rust"
+      },
+      "TinyCog": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-gm/TinyCog",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "OpenCV",
+          "dlib",
+          "Protobuf",
+          "raspicam",
+          "Guile",
+          "PkgConfig",
+          "AtomSpace",
+          "OpenMP",
+          "PocketSphinx",
+          "Festival",
+          "EST",
+          "WiringPi",
+          "alsa",
+          "an",
+          "RPI3",
+          "computer",
+          "a",
+          "Pi",
+          "Camera",
+          "V2",
+          "and",
+          "a",
+          "USB",
+          "Microphone"
+        ],
+        "description": "A collection of speech, vision, and movement functionalities",
+        "language": "rust"
+      }
+    },
+    "orc-oc": {
+      "opencog-nix": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog-nix",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "d",
+          "dependencies",
+          "to",
+          "d",
+          "for",
+          "overridings",
+          "of",
+          "writting",
+          "to"
+        ],
+        "description": "A collection of WIP [Nix Package Manager](https://nixos.org/nix/) build expressions for opencog packages.",
+        "language": "rust"
+      },
+      "opencog": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "CogServer",
+          "AttentionBank",
+          "URE",
+          "PLN",
+          "LGAtomese",
+          "Cxxtest",
+          "GHC",
+          "Stack",
+          "VALGRIND",
+          "Doxygen",
+          "d",
+          "d",
+          "for",
+          "PLN",
+          "d",
+          "for",
+          "natural",
+          "language",
+          "generation",
+          "and",
+          "the",
+          "chatbot",
+          "-------------",
+          "To",
+          "build",
+          "and",
+          "run",
+          "the",
+          "system",
+          "here",
+          "the",
+          "packages",
+          "listed",
+          "below",
+          "are",
+          "required"
+        ],
+        "description": "OpenCog",
+        "language": "rust"
+      },
+      "opencog-cycl": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog-cycl",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "Opencog-Cycl",
+        "language": "rust"
+      },
+      "opencog-neo4j": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog-neo4j",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "Google Summer of Code 2015 Proposal to implement Neo4j Graph Backing Store as described in http://wiki.opencog.org/w/Neo4j_Backing_Store",
+        "language": "rust"
+      },
+      "opencog-debian": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog-debian",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "the",
+          "others",
+          "so"
+        ],
+        "description": "This repository contains files for packaging the [OpenCog](https://github.com/opencog) AI/AGI testbed for Debian / Ubuntu based GNU/Linux distributions.  For general information on OpenCog, visit [the official website](https://opencog.org/) or [the offcial Wiki](https://wiki.opencog.org/w/The_Open_Cognition_Project).",
+        "language": "rust"
+      },
+      "opencog.org": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog.org",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "* docs: contains landing page for docs.opencog.org. Initial Theme from",
+        "language": "rust"
+      }
+    },
+    "orc-in": {
+      "docs": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-in/docs",
+        "type": "unknown",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      },
+      "docker": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-in/docker",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "the",
+          "the",
+          "d",
+          "packages",
+          "and",
+          "dependencies",
+          "is",
+          "eliminated",
+          "an",
+          "older",
+          "version",
+          "of"
+        ],
+        "description": "[![publish](https://github.com/opencog/docker/actions/workflows/publish-images.yml/badge.svg)](https://github.com/opencog/docker/actions)",
+        "language": "rust"
+      },
+      "copied-yml": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-in/copied-yml",
+        "type": "unknown",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      },
+      "copied-scm": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-in/copied-scm",
+        "type": "unknown",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      },
+      "scripts": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-in/scripts",
+        "type": "unknown",
+        "has_cmake": false,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      },
+      "copied-cmake": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-in/copied-cmake",
+        "type": "cmake_project",
+        "has_cmake": true,
+        "has_readme": false,
+        "dependencies": [],
+        "description": "",
+        "language": "unknown"
+      }
+    },
+    "orc-ai": {
+      "miner": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/miner",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Unify",
+          "URE",
+          "Boost",
+          "Boost",
+          "Boost",
+          "Cxxtest",
+          "VALGRIND",
+          "To",
+          "build",
+          "the",
+          "miner",
+          "you",
+          "need",
+          "to",
+          "build",
+          "and",
+          "install",
+          "the"
+        ],
+        "description": "opencog | singnet",
+        "language": "rust"
+      },
+      "asmoses": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/asmoses",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "Boost",
+          "Boost",
+          "Cxxtest",
+          "AtomSpace",
+          "MPI",
+          "URE",
+          "VALGRIND",
+          "Doxygen",
+          "d",
+          "d",
+          "d",
+          "for",
+          "compute-cluster",
+          "version",
+          "of",
+          "MOSES",
+          "-------------",
+          "To",
+          "build",
+          "and",
+          "run",
+          "MOSES",
+          "the",
+          "packages",
+          "listed",
+          "below",
+          "are",
+          "required",
+          "----------------------",
+          "The",
+          "following",
+          "packages",
+          "are",
+          "optional"
+        ],
+        "description": "MOSES -- Meta-Optimizing Semantic Evolutionary Search",
+        "language": "rust"
+      },
+      "destin": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/destin",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "d"
+        ],
+        "description": "DeSTIN",
+        "language": "rust"
+      },
+      "ure": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/ure",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Unify",
+          "Boost",
+          "Cxxtest",
+          "VALGRIND",
+          "To",
+          "build",
+          "the",
+          "URE",
+          "you",
+          "need",
+          "to",
+          "first",
+          "build",
+          "and",
+          "install"
+        ],
+        "description": "opencog | singnet",
+        "language": "rust"
+      },
+      "learn": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/learn",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "CogServer",
+          "AtomSpaceRocks",
+          "establishing",
+          "long-distance",
+          "relationships",
+          "between",
+          "words",
+          "in",
+          "distinct",
+          "sentences"
+        ],
+        "description": "Extracting Meaning",
+        "language": "rust"
+      },
+      "pln": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/pln",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "SpaceTime",
+          "Unify",
+          "URE",
+          "Cxxtest",
+          "d",
+          "as",
+          "well"
+        ],
+        "description": "opencog | singnet",
+        "language": "rust"
+      },
+      "moses": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/moses",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "Boost",
+          "Boost",
+          "Cxxtest",
+          "MPI",
+          "VALGRIND",
+          "Doxygen",
+          "d",
+          "d",
+          "for",
+          "compute-cluster",
+          "version",
+          "of",
+          "MOSES",
+          "-------------",
+          "To",
+          "build",
+          "and",
+          "run",
+          "MOSES",
+          "the",
+          "packages",
+          "listed",
+          "below",
+          "are",
+          "required",
+          "----------------------",
+          "The",
+          "following",
+          "packages",
+          "are",
+          "optional"
+        ],
+        "description": "MOSES -- Meta-Optimizing Semantic Evolutionary Search",
+        "language": "rust"
+      }
+    },
+    "orc-sv": {
+      "logicmoo_cogserver": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-sv/logicmoo_cogserver",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "-------------",
+          "To",
+          "run",
+          "the",
+          "logicmoo_cogserver",
+          "you",
+          "need",
+          "to",
+          "install",
+          "the",
+          "SWI-Prolog",
+          "first"
+        ],
+        "description": "LOGICMOO's AtomSpace Blackboard Server (LABS)",
+        "language": "rust"
+      },
+      "rocca": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-sv/rocca",
+        "type": "python_package",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [
+          "ments",
+          "OpenCog",
+          "tools",
+          "-",
+          "cogutil",
+          "d",
+          "version",
+          "ments-dev"
+        ],
+        "description": "<p align=\"left\">",
+        "language": "python"
+      },
+      "agents": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-sv/agents",
+        "type": "rust_crate",
+        "has_cmake": false,
+        "has_readme": true,
+        "dependencies": [],
+        "description": "Atomese Agents",
+        "language": "rust"
+      },
+      "cogserver": {
+        "path": "/home/runner/work/opencog-central/opencog-central/orc-sv/cogserver",
+        "type": "rust_crate",
+        "has_cmake": true,
+        "has_readme": true,
+        "dependencies": [
+          "CogUtil",
+          "AtomSpace",
+          "Boost",
+          "OpenSSL",
+          "Cxxtest",
+          "VALGRIND",
+          "Doxygen",
+          "fiddling",
+          "with",
+          "complex",
+          "binary",
+          "formats",
+          "or",
+          "protocols",
+          "or",
+          "the",
+          "use",
+          "of",
+          "protocol",
+          "libraries",
+          "or",
+          "API",
+          "-------------",
+          "To",
+          "build",
+          "and",
+          "run",
+          "the",
+          "CogServer",
+          "you",
+          "need",
+          "to",
+          "install",
+          "the",
+          "AtomSpace",
+          "first"
+        ],
+        "description": "OpenCog CogServer",
+        "language": "rust"
+      }
+    }
+  },
+  "circleci_analysis": {
+    "jobs": {
+      "cogutil": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "atomspace": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "atomspace-rocks": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "atomspace-restful": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "unify": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "ure": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "cogserver": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "attention": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "spacetime": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "pln": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "miner": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "moses": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "asmoses": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "lg-atomese": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "learn": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "language-learning": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "opencog": {
+        "type": "circleci_job",
+        "dependencies": []
+      },
+      "package": {
+        "type": "circleci_job",
+        "dependencies": []
+      }
+    },
+    "workflow_dependencies": {}
+  },
+  "component_classification": {
+    "specialized": [
+      {
+        "name": "cheminformatics",
+        "category": "orc-bi",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-bi/cheminformatics",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace"
+          ],
+          "description": "Cheminformatics",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "semantic-vision",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/semantic-vision",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "This is a repository hosting public discussion, documentation and milestones of the semantic vision research initiative within OpenCog. Please see the [Wiki](https://github.com/opencog/semantic-vision/wiki) for more information! It is starting as of September 2017 and we are adding research material, code used for experimentation and results as we go along. Stay tuned for more!",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "pi_vision",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/pi_vision",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "pi_vision",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "vision",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/vision",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "OpenCV",
+            "Catch2",
+            "VALGRIND",
+            "Doxygen",
+            "d",
+            "and",
+            "optional"
+          ],
+          "description": "> Atomese wrappers around a subset of OpenCV",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "sensory",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/sensory",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace"
+          ],
+          "description": "Sensory Atomese",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "visualization",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/visualization",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Boost",
+            "GTK3",
+            "Doxygen",
+            "APIs",
+            "that",
+            "no",
+            "longer",
+            "exist"
+          ],
+          "description": "Graphics and Visualization Tools",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "agi-bio",
+        "category": "orc-bi",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-bi/agi-bio",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace"
+          ],
+          "description": "AGI-Bio",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "pau2motors",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/pau2motors",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "catkin",
+            "catkin",
+            "Boost",
+            "catkin"
+          ],
+          "description": "pau2motors",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "perception",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/perception",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "catkin",
+            "catkin",
+            "Boost",
+            "catkin",
+            "pi_vision",
+            "is",
+            "needed"
+          ],
+          "description": "Perception Synthesizer",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "ros-behavior-scripting",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/ros-behavior-scripting",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "catkin"
+          ],
+          "description": "Eva Robot ROS Sensory+Motor API",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "robots_config",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/robots_config",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "catkin",
+            "catkin",
+            "d",
+            "d",
+            "for",
+            "basic",
+            "expressions",
+            "and",
+            "webui",
+            "to",
+            "work",
+            "d"
+          ],
+          "description": "Robots configuration package.",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "loving-ai-ghost",
+        "category": "orc-em",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-em/loving-ai-ghost",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "A port of [OpenCog's loving-ai ChatScripts](https://github.com/opencog/loving-ai) to Ghost.  Builds upon the [Loving AI Project](http://lovingai.org/#about).",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "loving-ai",
+        "category": "orc-em",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-em/loving-ai",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "ChatScript dialogue for the [Loving Artificial Intelligence](http://noetic.org/blog/communications-team/loving-artificial) project. This is a work in progress.",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "ghost_bridge",
+        "category": "orc-em",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-em/ghost_bridge",
+          "type": "python_package",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "catkin",
+            "catkin",
+            "Boost",
+            "catkin",
+            "catkin"
+          ],
+          "description": "ghost_bridge",
+          "language": "python"
+        }
+      },
+      {
+        "name": "relex",
+        "category": "orc-nl",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/relex",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "Stanford Parser Compatibility Mode",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "linkgrammar-relex-web",
+        "category": "orc-nl",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/linkgrammar-relex-web",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "Link Grammar and RelEx web demo",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "stochastic-language-generation",
+        "category": "orc-nl",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/stochastic-language-generation",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "Stochastic Language Generation",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "link-grammar",
+        "category": "orc-nl",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/link-grammar",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "itself",
+            "Word2",
+            "then",
+            "Word2",
+            "cannot",
+            "depend",
+            "on",
+            "Word1",
+            "nouns",
+            "but",
+            "never",
+            "vice-versa",
+            "d",
+            "here",
+            "is",
+            "used",
+            "to",
+            "force",
+            "phonetic",
+            "agreement",
+            "distinguishing",
+            "d",
+            "python",
+            "versions",
+            "can",
+            "be",
+            "invoked",
+            "using",
+            "your",
+            "d",
+            "package",
+            "as",
+            "the",
+            "existing",
+            "d",
+            "because",
+            "the",
+            "libc",
+            "REGEX",
+            "implementation",
+            "is",
+            "not",
+            "capable",
+            "enough",
+            "d",
+            "because",
+            "the",
+            "libc",
+            "REGEX",
+            "implementation",
+            "is",
+            "not",
+            "capable",
+            "enough",
+            "d",
+            "is",
+            "to",
+            "understand",
+            "what",
+            "sort",
+            "of",
+            "theory",
+            "describes",
+            "link-crossing",
+            "in",
+            "a",
+            "coherent",
+            "grounding",
+            "only",
+            "a",
+            "fix",
+            "to",
+            "the",
+            "dictionary",
+            "and",
+            "not",
+            "to",
+            "the",
+            "parser",
+            "itself",
+            "two",
+            "different",
+            "parse",
+            "trees",
+            "if",
+            "the",
+            "no-links-cross",
+            "rule",
+            "is",
+            "to",
+            "be",
+            "enforced",
+            "link-crossing",
+            "two",
+            "words",
+            "not",
+            "one",
+            "a",
+            "graph",
+            "re-write",
+            "from",
+            "the",
+            "surface",
+            "syntax",
+            "parse",
+            "a",
+            "determiner",
+            "a",
+            "lot",
+            "of",
+            "different",
+            "links",
+            "to",
+            "be",
+            "hooked",
+            "together",
+            "tools",
+            "Tools",
+            "that",
+            "may",
+            "need",
+            "installation",
+            "before",
+            "you",
+            "can",
+            "build",
+            "link-grammar"
+          ],
+          "description": "Link Grammar Parser",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "lg-atomese",
+        "category": "orc-nl",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/lg-atomese",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Cxxtest",
+            "LinkGrammar",
+            "UUID",
+            "Doxygen",
+            "-------------",
+            "The",
+            "following",
+            "packages",
+            "must",
+            "first",
+            "be",
+            "built",
+            "and",
+            "installed"
+          ],
+          "description": "Atomese API for Link Grammar",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "link-grammar-website",
+        "category": "orc-nl",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/link-grammar-website",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "The Link Grammar Website",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "TinyCog",
+        "category": "orc-gm",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-gm/TinyCog",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "OpenCV",
+            "dlib",
+            "Protobuf",
+            "raspicam",
+            "Guile",
+            "PkgConfig",
+            "AtomSpace",
+            "OpenMP",
+            "PocketSphinx",
+            "Festival",
+            "EST",
+            "WiringPi",
+            "alsa",
+            "an",
+            "RPI3",
+            "computer",
+            "a",
+            "Pi",
+            "Camera",
+            "V2",
+            "and",
+            "a",
+            "USB",
+            "Microphone"
+          ],
+          "description": "A collection of speech, vision, and movement functionalities",
+          "language": "rust"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "name": "pln-brca-xp",
+        "category": "orc-bi",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-bi/pln-brca-xp",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "-"
+          ],
+          "description": "This repo contains the code for inference experiments using Probabilistic Logic Networks, PLN, on breast cancer dataset. It is based on the work in [singnet/cancer](https://github.com/singnet/cancer)",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "benchmark",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/benchmark",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "URE",
+            "benchmark",
+            "Boost",
+            "Boost"
+          ],
+          "description": "Collection of tools and data to benchmark the AtomSpace, the pattern",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "miner",
+        "category": "orc-ai",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/miner",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Unify",
+            "URE",
+            "Boost",
+            "Boost",
+            "Boost",
+            "Cxxtest",
+            "VALGRIND",
+            "To",
+            "build",
+            "the",
+            "miner",
+            "you",
+            "need",
+            "to",
+            "build",
+            "and",
+            "install",
+            "the"
+          ],
+          "description": "opencog | singnet",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "pln",
+        "category": "orc-ai",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/pln",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "SpaceTime",
+            "Unify",
+            "URE",
+            "Cxxtest",
+            "d",
+            "as",
+            "well"
+          ],
+          "description": "opencog | singnet",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "destin",
+        "category": "orc-ai",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/destin",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "d"
+          ],
+          "description": "DeSTIN",
+          "language": "rust"
+        }
+      }
+    ],
+    "foundation": [
+      {
+        "name": "cogutil",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/cogutil",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "PThreads",
+            "STLPort",
+            "Boost",
+            "Boost",
+            "Cxxtest",
+            "GNUBacktrace",
+            "BFD",
+            "Iberty",
+            "ParallelSTL",
+            "Doxygen",
+            "d",
+            "and",
+            "not",
+            "really",
+            "optional",
+            "if",
+            "you",
+            "are",
+            "a",
+            "regular",
+            "OpenCog",
+            "developer",
+            "-------------",
+            "To",
+            "build",
+            "the",
+            "OpenCog",
+            "utilities",
+            "the",
+            "packages",
+            "listed",
+            "below",
+            "are",
+            "required",
+            "----------------------",
+            "The",
+            "following",
+            "are",
+            "optional",
+            "but",
+            "are",
+            "strongly",
+            "recommended",
+            "as",
+            "they",
+            "result",
+            "in"
+          ],
+          "description": "OpenCog Utilities",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "blender_api_msgs",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/blender_api_msgs",
+          "type": "python_package",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "catkin",
+            "catkin",
+            "Boost",
+            "catkin",
+            "catkin"
+          ],
+          "description": "blender_api_msgs",
+          "language": "python"
+        }
+      },
+      {
+        "name": "blender_api",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/blender_api",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "control",
+            "through",
+            "Child",
+            "Of",
+            "deform",
+            "through",
+            "Locked",
+            "Track"
+          ],
+          "description": "I was interested in reviving the Eva portion of the opencog/docker repo, and to that end I created the \"noetic\" folder, in which",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "asmoses",
+        "category": "orc-ai",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/asmoses",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "Boost",
+            "Boost",
+            "Cxxtest",
+            "AtomSpace",
+            "MPI",
+            "URE",
+            "VALGRIND",
+            "Doxygen",
+            "d",
+            "d",
+            "d",
+            "for",
+            "compute-cluster",
+            "version",
+            "of",
+            "MOSES",
+            "-------------",
+            "To",
+            "build",
+            "and",
+            "run",
+            "MOSES",
+            "the",
+            "packages",
+            "listed",
+            "below",
+            "are",
+            "required",
+            "----------------------",
+            "The",
+            "following",
+            "packages",
+            "are",
+            "optional"
+          ],
+          "description": "MOSES -- Meta-Optimizing Semantic Evolutionary Search",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "moses",
+        "category": "orc-ai",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/moses",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "Boost",
+            "Boost",
+            "Cxxtest",
+            "MPI",
+            "VALGRIND",
+            "Doxygen",
+            "d",
+            "d",
+            "for",
+            "compute-cluster",
+            "version",
+            "of",
+            "MOSES",
+            "-------------",
+            "To",
+            "build",
+            "and",
+            "run",
+            "MOSES",
+            "the",
+            "packages",
+            "listed",
+            "below",
+            "are",
+            "required",
+            "----------------------",
+            "The",
+            "following",
+            "packages",
+            "are",
+            "optional"
+          ],
+          "description": "MOSES -- Meta-Optimizing Semantic Evolutionary Search",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "ocpkg",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/ocpkg",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "ocpkg"
+          ],
+          "description": "* This script installs an OpenCog development environment on a fresh",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "rust_crates",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/rust_crates",
+          "type": "unknown",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      },
+      {
+        "name": "external-tools",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/external-tools",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "ment"
+          ],
+          "description": "External Tools",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "cogprotolab",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/cogprotolab",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "See [vis-word-pairs/README](vis-word-pairs/README.md).",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "src",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/src",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "integrated_output",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/integrated_output",
+          "type": "unknown",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      },
+      {
+        "name": "guile-dbi",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/guile-dbi",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "a",
+            "small",
+            "amount",
+            "of",
+            "C",
+            "coding",
+            "but",
+            "is",
+            "a",
+            "straightforward",
+            "task"
+          ],
+          "description": "Guile DBI",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "test-datasets",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/test-datasets",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "test-datasets",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "node_modules",
+        "category": "orc-dv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-dv/node_modules",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "rust"
+        }
+      }
+    ],
+    "integration": [
+      {
+        "name": "opencog_rpi",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/opencog_rpi",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "d",
+            "for",
+            "cross-compiling"
+          ],
+          "description": "Opencog Cross Compile Toolchain for Raspberry Pi3",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "ros_opencog_robot_embodiment",
+        "category": "orc-ro",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ro/ros_opencog_robot_embodiment",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "unity3d-opencog-game",
+        "category": "orc-gm",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-gm/unity3d-opencog-game",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "a",
+            "specific",
+            "process",
+            "to",
+            "make",
+            "it",
+            "safe",
+            "described",
+            "below",
+            "the",
+            "scene",
+            "to",
+            "change",
+            "dComponent",
+            "attribute",
+            "dComponent",
+            "attribute",
+            "is",
+            "a",
+            "hassel",
+            "normally",
+            "since",
+            "it",
+            "can",
+            "often",
+            "block",
+            "you",
+            "from",
+            "making",
+            "changes",
+            "in",
+            "the",
+            "editor"
+          ],
+          "description": "OpenCog-Unity3D-Game",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "opencog-to-minecraft",
+        "category": "orc-gm",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-gm/opencog-to-minecraft",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "A ROS-based module linking OpenCog and the Minecraft world. This code serves as",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "opencog-nix",
+        "category": "orc-oc",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog-nix",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "d",
+            "dependencies",
+            "to",
+            "d",
+            "for",
+            "overridings",
+            "of",
+            "writting",
+            "to"
+          ],
+          "description": "A collection of WIP [Nix Package Manager](https://nixos.org/nix/) build expressions for opencog packages.",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "opencog",
+        "category": "orc-oc",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "CogServer",
+            "AttentionBank",
+            "URE",
+            "PLN",
+            "LGAtomese",
+            "Cxxtest",
+            "GHC",
+            "Stack",
+            "VALGRIND",
+            "Doxygen",
+            "d",
+            "d",
+            "for",
+            "PLN",
+            "d",
+            "for",
+            "natural",
+            "language",
+            "generation",
+            "and",
+            "the",
+            "chatbot",
+            "-------------",
+            "To",
+            "build",
+            "and",
+            "run",
+            "the",
+            "system",
+            "here",
+            "the",
+            "packages",
+            "listed",
+            "below",
+            "are",
+            "required"
+          ],
+          "description": "OpenCog",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "opencog-cycl",
+        "category": "orc-oc",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog-cycl",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "Opencog-Cycl",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "opencog-neo4j",
+        "category": "orc-oc",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog-neo4j",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "Google Summer of Code 2015 Proposal to implement Neo4j Graph Backing Store as described in http://wiki.opencog.org/w/Neo4j_Backing_Store",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "opencog-debian",
+        "category": "orc-oc",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog-debian",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "the",
+            "others",
+            "so"
+          ],
+          "description": "This repository contains files for packaging the [OpenCog](https://github.com/opencog) AI/AGI testbed for Debian / Ubuntu based GNU/Linux distributions.  For general information on OpenCog, visit [the official website](https://opencog.org/) or [the offcial Wiki](https://wiki.opencog.org/w/The_Open_Cognition_Project).",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "opencog.org",
+        "category": "orc-oc",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-oc/opencog.org",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "* docs: contains landing page for docs.opencog.org. Initial Theme from",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "rest-api-documentation",
+        "category": "orc-wb",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/rest-api-documentation",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "rest-api-documentation",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "python-client",
+        "category": "orc-wb",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/python-client",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "ments",
+            "-",
+            "Requires",
+            "the",
+            "REST",
+            "API",
+            "to",
+            "be",
+            "configured",
+            "as",
+            "described",
+            "d",
+            "d",
+            "d",
+            "d",
+            "d",
+            "d",
+            "d",
+            "d",
+            "d",
+            "d",
+            "a",
+            "RelExServer",
+            "to",
+            "be",
+            "running",
+            "a",
+            "Server",
+            "and",
+            "a",
+            "RelExServer",
+            "to",
+            "be",
+            "running"
+          ],
+          "description": "OpenCog Python Client",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "python-destin",
+        "category": "orc-wb",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/python-destin",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "revision"
+          ],
+          "description": "PythonDeSTIN is a repo for the development of Python DeSTIN (PyDeSTIN).",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "python-attic",
+        "category": "orc-wb",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/python-attic",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "CogServer",
+            "AttentionBank",
+            "URE",
+            "PLN",
+            "Cxxtest",
+            "GHC",
+            "Stack",
+            "Guile",
+            "LinkGrammar",
+            "UUID",
+            "VALGRIND",
+            "Doxygen"
+          ],
+          "description": "Old OpenCog Python Code",
+          "language": "rust"
+        }
+      }
+    ],
+    "packaging": [
+      {
+        "name": "python_packages",
+        "category": "orc-wb",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-wb/python_packages",
+          "type": "unknown",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      },
+      {
+        "name": "docs",
+        "category": "orc-in",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-in/docs",
+          "type": "unknown",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      },
+      {
+        "name": "docker",
+        "category": "orc-in",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-in/docker",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "the",
+            "the",
+            "d",
+            "packages",
+            "and",
+            "dependencies",
+            "is",
+            "eliminated",
+            "an",
+            "older",
+            "version",
+            "of"
+          ],
+          "description": "[![publish](https://github.com/opencog/docker/actions/workflows/publish-images.yml/badge.svg)](https://github.com/opencog/docker/actions)",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "copied-yml",
+        "category": "orc-in",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-in/copied-yml",
+          "type": "unknown",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      },
+      {
+        "name": "copied-scm",
+        "category": "orc-in",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-in/copied-scm",
+          "type": "unknown",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      },
+      {
+        "name": "scripts",
+        "category": "orc-in",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-in/scripts",
+          "type": "unknown",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      },
+      {
+        "name": "copied-cmake",
+        "category": "orc-in",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-in/copied-cmake",
+          "type": "cmake_project",
+          "has_cmake": true,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      }
+    ],
+    "learning": [
+      {
+        "name": "language-learning",
+        "category": "orc-nl",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-nl/language-learning",
+          "type": "python_package",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "",
+          "language": "python"
+        }
+      },
+      {
+        "name": "generate",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/generate",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Cxxtest",
+            "ment",
+            "that",
+            "the",
+            "type",
+            "of",
+            "the",
+            "value",
+            "must",
+            "correspond",
+            "to",
+            "the",
+            "type",
+            "of",
+            "the",
+            "variable",
+            "that",
+            "all",
+            "of",
+            "the",
+            "gluing",
+            "axioms",
+            "of",
+            "a",
+            "sheaf",
+            "must",
+            "be",
+            "satisfied",
+            "considerable",
+            "algorithmic",
+            "sophistication",
+            "e",
+            "ments",
+            "and",
+            "modify",
+            "it",
+            "to",
+            "fit",
+            "ments",
+            "d"
+          ],
+          "description": "![Example random network](./examples/n20.gml.png)",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "learn",
+        "category": "orc-ai",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/learn",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "CogServer",
+            "AtomSpaceRocks",
+            "establishing",
+            "long-distance",
+            "relationships",
+            "between",
+            "words",
+            "in",
+            "distinct",
+            "sentences"
+          ],
+          "description": "Extracting Meaning",
+          "language": "rust"
+        }
+      }
+    ],
+    "core": [
+      {
+        "name": "atomspace-agents",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-agents",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Boost",
+            "Cxxtest",
+            "VALGRIND",
+            "Doxygen"
+          ],
+          "description": "Obsolete",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-dht",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-dht",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Cxxtest",
+            "Doxygen",
+            "the",
+            "actual",
+            "backend",
+            "in",
+            "use",
+            "the",
+            "actual",
+            "AtomSpace",
+            "an",
+            "Atom",
+            "might",
+            "be",
+            "in"
+          ],
+          "description": "[OpenDHT](https://github.com/savoirfairelinux/opendht/wiki)",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "Boost",
+            "Cxxtest",
+            "Folly",
+            "OCaml",
+            "Stack",
+            "UnixODBC",
+            "PGSQL",
+            "VALGRIND",
+            "Doxygen",
+            "it",
+            "for",
+            "stable",
+            "correct",
+            "operation",
+            "in",
+            "a",
+            "day-to-day",
+            "production",
+            "environment",
+            "it",
+            "it",
+            "is",
+            "not",
+            "very",
+            "that",
+            "all",
+            "matches",
+            "contain",
+            "a",
+            "particular",
+            "subgraph",
+            "or",
+            "satisfy",
+            "a",
+            "particular",
+            "predicate",
+            "not",
+            "only",
+            "finding",
+            "the",
+            "baskets",
+            "making",
+            "sure",
+            "they",
+            "have",
+            "balls",
+            "in",
+            "them",
+            "but",
+            "also",
+            "testing",
+            "each",
+            "and",
+            "every",
+            "ball",
+            "in",
+            "a",
+            "basket",
+            "to",
+            "make",
+            "sure",
+            "they",
+            "are",
+            "d",
+            "large",
+            "indexes",
+            "on",
+            "those",
+            "tables",
+            "a",
+            "lot",
+            "of",
+            "RAM",
+            "ments",
+            "on",
+            "the",
+            "AtomSpace",
+            "architecture",
+            "d",
+            "d",
+            "d",
+            "for",
+            "running",
+            "unit",
+            "tests",
+            "To",
+            "build",
+            "the",
+            "OpenCog",
+            "AtomSpace",
+            "the",
+            "packages",
+            "listed",
+            "below",
+            "are",
+            "required",
+            "The",
+            "following",
+            "packages",
+            "are",
+            "optional"
+          ],
+          "description": "OpenCog AtomSpace",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-rocks",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-rocks",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "RocksDB",
+            "Cxxtest",
+            "VALGRIND",
+            "Doxygen"
+          ],
+          "description": "AtomSpace RocksDB Backend",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-ipfs",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-ipfs",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Cxxtest",
+            "Doxygen",
+            "ments",
+            "that",
+            "each",
+            "atom",
+            "will",
+            "get",
+            "it",
+            "ments",
+            "d"
+          ],
+          "description": "[IPFS](https://ipfs.io/) driver backend to the",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-websockets",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-websockets",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "Boost",
+            "CogUtil",
+            "AtomSpace",
+            "Cxxtest",
+            "the",
+            "following",
+            "libraries",
+            "it",
+            "ments",
+            "d",
+            "if",
+            "you",
+            "are",
+            "working",
+            "with",
+            "bio",
+            "related",
+            "atomspace"
+          ],
+          "description": "The code here is now obsolete. It has been replaced by \"native\" support",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-restful",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-restful",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "Boost",
+            "CogUtil",
+            "AtomSpace",
+            "CogServer",
+            "Cxxtest",
+            "PkgConfig",
+            "TBB",
+            "ZMQ",
+            "AttentionBank",
+            "Doxygen",
+            "jsoncpp",
+            "d",
+            "-------------",
+            "To",
+            "build",
+            "and",
+            "run",
+            "this",
+            "module",
+            "the",
+            "packages",
+            "listed",
+            "below",
+            "are",
+            "required"
+          ],
+          "description": "AtomSpace RESTful Web API",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-typescript",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-typescript",
+          "type": "npm_package",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "ments",
+            "ments",
+            "subsection",
+            "ments",
+            "are",
+            "for",
+            "accepting",
+            "them",
+            "external",
+            "setup",
+            "such",
+            "as",
+            "starting",
+            "a",
+            "Selenium",
+            "server",
+            "for",
+            "testing",
+            "in",
+            "a",
+            "browser"
+          ],
+          "description": "Contains the code for a local AtomSpace browser react-app",
+          "language": "javascript"
+        }
+      },
+      {
+        "name": "atomspace-explorer",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-explorer",
+          "type": "npm_package",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "d",
+            "for",
+            "earlier",
+            "versions",
+            "of",
+            "AtomSpace",
+            "Explorer",
+            "and",
+            "Issues",
+            "The",
+            "AtomSpace",
+            "Explorer",
+            "needs"
+          ],
+          "description": "The AtomSpace Explorer is a visualization tool for",
+          "language": "javascript"
+        }
+      },
+      {
+        "name": "atomspace-js",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-js",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "the",
+            "cogserver",
+            "to",
+            "serialize",
+            "the",
+            "data"
+          ],
+          "description": "There is nothing here, except for this README file.",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-bridge",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-bridge",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "PGSQL",
+            "Cxxtest",
+            "VALGRIND",
+            "Doxygen",
+            "a",
+            "bulk",
+            "import"
+          ],
+          "description": "AtomSpace-SQL DB Bridge",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-metta",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-metta",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Cxxtest",
+            "Doxygen",
+            "d",
+            "To",
+            "build",
+            "the",
+            "MeTTa",
+            "layer",
+            "the",
+            "packages",
+            "listed",
+            "below",
+            "are",
+            "required"
+          ],
+          "description": "MeTTa on the AtomSpace",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-rpc",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-rpc",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "Boost",
+            "CogUtil",
+            "AtomSpace",
+            "Cxxtest",
+            "the",
+            "following",
+            "libraries",
+            "ments",
+            "d",
+            "if",
+            "you",
+            "are",
+            "working",
+            "with",
+            "bio",
+            "related",
+            "atomspace",
+            "Guile",
+            "is",
+            "also",
+            "must",
+            "be",
+            "installed",
+            "to",
+            "use",
+            "the",
+            "scheme",
+            "bindings"
+          ],
+          "description": "This project uses [grpc](https://grpc.io) for executing pattern matching searches on a remote [AtomSpace](https://github.com/opencog).",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "atomspace-cog",
+        "category": "orc-as",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-as/atomspace-cog",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "CogServer",
+            "Cxxtest",
+            "VALGRIND",
+            "Doxygen"
+          ],
+          "description": "AtomSpace CogStorage Client",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "agents",
+        "category": "orc-sv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-sv/agents",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "Atomese Agents",
+          "language": "rust"
+        }
+      }
+    ],
+    "cognitive": [
+      {
+        "name": "attention",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/attention",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "CogServer",
+            "Boost",
+            "Boost",
+            "Cxxtest",
+            "VALGRIND",
+            "Doxygen",
+            "d",
+            "-------------",
+            "To",
+            "build",
+            "and",
+            "run",
+            "the",
+            "Attention",
+            "Allocation",
+            "subsystem",
+            "the",
+            "packages",
+            "listed",
+            "below",
+            "are",
+            "required"
+          ],
+          "description": "Attention Allocation",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "spacetime",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/spacetime",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Boost",
+            "Cxxtest",
+            "Octomap",
+            "Doxygen"
+          ],
+          "description": "SpaceTime Server",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "logicmoo_cogserver",
+        "category": "orc-sv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-sv/logicmoo_cogserver",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "-------------",
+            "To",
+            "run",
+            "the",
+            "logicmoo_cogserver",
+            "you",
+            "need",
+            "to",
+            "install",
+            "the",
+            "SWI-Prolog",
+            "first"
+          ],
+          "description": "LOGICMOO's AtomSpace Blackboard Server (LABS)",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "cogserver",
+        "category": "orc-sv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-sv/cogserver",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Boost",
+            "OpenSSL",
+            "Cxxtest",
+            "VALGRIND",
+            "Doxygen",
+            "fiddling",
+            "with",
+            "complex",
+            "binary",
+            "formats",
+            "or",
+            "protocols",
+            "or",
+            "the",
+            "use",
+            "of",
+            "protocol",
+            "libraries",
+            "or",
+            "API",
+            "-------------",
+            "To",
+            "build",
+            "and",
+            "run",
+            "the",
+            "CogServer",
+            "you",
+            "need",
+            "to",
+            "install",
+            "the",
+            "AtomSpace",
+            "first"
+          ],
+          "description": "OpenCog CogServer",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "pattern-index",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/pattern-index",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Boost",
+            "Cxxtest",
+            "Doxygen",
+            "d",
+            "by",
+            "the",
+            "algorithm",
+            "4"
+          ],
+          "description": "This module provides two interfaces (C++ and Guile) for a data abstraction that",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "tv-toolbox",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/tv-toolbox",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "ments",
+            "a",
+            "bit",
+            "of",
+            "tweaking",
+            "on",
+            "the",
+            "user"
+          ],
+          "description": "Tool box for experimenting with TV types.",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "kokkos_integrations",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/kokkos_integrations",
+          "type": "unknown",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "unknown"
+        }
+      },
+      {
+        "name": "dimensional-embedding",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/dimensional-embedding",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Boost",
+            "Cxxtest",
+            "Doxygen"
+          ],
+          "description": "= Dimensional Embedding",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "distributional-value",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/distributional-value",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": false,
+          "dependencies": [],
+          "description": "",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "profile",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/profile",
+          "type": "rust_crate",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [],
+          "description": "[OpenCog aims to create AGI](https://wiki.opencog.org/w/The_Open_Cognition_Project)",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "rocca",
+        "category": "orc-sv",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-sv/rocca",
+          "type": "python_package",
+          "has_cmake": false,
+          "has_readme": true,
+          "dependencies": [
+            "ments",
+            "OpenCog",
+            "tools",
+            "-",
+            "cogutil",
+            "d",
+            "version",
+            "ments-dev"
+          ],
+          "description": "<p align=\"left\">",
+          "language": "python"
+        }
+      }
+    ],
+    "logic": [
+      {
+        "name": "unify",
+        "category": "orc-ct",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ct/unify",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Boost",
+            "Cxxtest",
+            "VALGRIND",
+            "To",
+            "build",
+            "the",
+            "Unifier",
+            "you",
+            "need",
+            "to",
+            "build",
+            "and",
+            "install",
+            "the"
+          ],
+          "description": "opencog | singnet",
+          "language": "rust"
+        }
+      },
+      {
+        "name": "ure",
+        "category": "orc-ai",
+        "info": {
+          "path": "/home/runner/work/opencog-central/opencog-central/orc-ai/ure",
+          "type": "rust_crate",
+          "has_cmake": true,
+          "has_readme": true,
+          "dependencies": [
+            "CogUtil",
+            "AtomSpace",
+            "Unify",
+            "Boost",
+            "Cxxtest",
+            "VALGRIND",
+            "To",
+            "build",
+            "the",
+            "URE",
+            "you",
+            "need",
+            "to",
+            "first",
+            "build",
+            "and",
+            "install"
+          ],
+          "description": "opencog | singnet",
+          "language": "rust"
+        }
+      }
+    ]
+  },
+  "summary": {
+    "total_categories": 13,
+    "total_components": 92,
+    "components_by_category": {
+      "orc-bi": {
+        "count": 3,
+        "components": [
+          "cheminformatics",
+          "agi-bio",
+          "pln-brca-xp"
+        ]
+      },
+      "orc-dv": {
+        "count": 11,
+        "components": [
+          "ocpkg",
+          "rust_crates",
+          "external-tools",
+          "cogutil",
+          "cogprotolab",
+          "benchmark",
+          "src",
+          "integrated_output",
+          "guile-dbi",
+          "test-datasets",
+          "node_modules"
+        ]
+      },
+      "orc-ro": {
+        "count": 12,
+        "components": [
+          "blender_api_msgs",
+          "opencog_rpi",
+          "pau2motors",
+          "blender_api",
+          "perception",
+          "ros-behavior-scripting",
+          "semantic-vision",
+          "robots_config",
+          "pi_vision",
+          "vision",
+          "sensory",
+          "ros_opencog_robot_embodiment"
+        ]
+      },
+      "orc-em": {
+        "count": 3,
+        "components": [
+          "loving-ai-ghost",
+          "loving-ai",
+          "ghost_bridge"
+        ]
+      },
+      "orc-wb": {
+        "count": 5,
+        "components": [
+          "rest-api-documentation",
+          "python-client",
+          "python-destin",
+          "python-attic",
+          "python_packages"
+        ]
+      },
+      "orc-nl": {
+        "count": 7,
+        "components": [
+          "relex",
+          "linkgrammar-relex-web",
+          "stochastic-language-generation",
+          "language-learning",
+          "link-grammar",
+          "lg-atomese",
+          "link-grammar-website"
+        ]
+      },
+      "orc-as": {
+        "count": 14,
+        "components": [
+          "atomspace-agents",
+          "atomspace-dht",
+          "atomspace",
+          "atomspace-rocks",
+          "atomspace-ipfs",
+          "atomspace-websockets",
+          "atomspace-restful",
+          "atomspace-typescript",
+          "atomspace-explorer",
+          "atomspace-js",
+          "atomspace-bridge",
+          "atomspace-metta",
+          "atomspace-rpc",
+          "atomspace-cog"
+        ]
+      },
+      "orc-ct": {
+        "count": 11,
+        "components": [
+          "generate",
+          "pattern-index",
+          "attention",
+          "tv-toolbox",
+          "kokkos_integrations",
+          "dimensional-embedding",
+          "spacetime",
+          "unify",
+          "distributional-value",
+          "profile",
+          "visualization"
+        ]
+      },
+      "orc-gm": {
+        "count": 3,
+        "components": [
+          "unity3d-opencog-game",
+          "opencog-to-minecraft",
+          "TinyCog"
+        ]
+      },
+      "orc-oc": {
+        "count": 6,
+        "components": [
+          "opencog-nix",
+          "opencog",
+          "opencog-cycl",
+          "opencog-neo4j",
+          "opencog-debian",
+          "opencog.org"
+        ]
+      },
+      "orc-in": {
+        "count": 6,
+        "components": [
+          "docs",
+          "docker",
+          "copied-yml",
+          "copied-scm",
+          "scripts",
+          "copied-cmake"
+        ]
+      },
+      "orc-ai": {
+        "count": 7,
+        "components": [
+          "miner",
+          "asmoses",
+          "destin",
+          "ure",
+          "learn",
+          "pln",
+          "moses"
+        ]
+      },
+      "orc-sv": {
+        "count": 4,
+        "components": [
+          "logicmoo_cogserver",
+          "rocca",
+          "agents",
+          "cogserver"
+        ]
+      }
+    },
+    "components_by_type": {
+      "rust_crate": 77,
+      "unknown": 8,
+      "python_package": 4,
+      "npm_package": 2,
+      "cmake_project": 1
+    },
+    "components_by_language": {
+      "rust": 77,
+      "unknown": 9,
+      "python": 4,
+      "javascript": 2
+    },
+    "components_with_cmake": 42,
+    "components_with_readme": 79
+  }
+}
