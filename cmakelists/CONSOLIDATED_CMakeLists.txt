@@ -1,0 +1,373 @@
+#
+# OpenCog Central - Consolidated CMake Configuration
+#
+# This file provides a unified build system for the entire OpenCog ecosystem,
+# integrating all component CMakeLists.txt files with proper dependency management.
+#
+# Component organization based on dependency analysis:
+# 1. Foundation layer (cogutil, external deps)
+# 2. Core layer (atomspace)  
+# 3. AtomSpace extensions (parallel after atomspace)
+# 4. Logic engines (ure after unify)
+# 5. Cognitive systems (cogserver, attention, spacetime)
+# 6. Advanced systems (pln, miner, asmoses)
+# 7. Integration layer (opencog)
+# 8. Optional components
+#
+
+# CMake version requirement - highest needed across all components
+CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
+
+IF (COMMAND CMAKE_POLICY)
+    CMAKE_POLICY(SET CMP0003 NEW)
+ENDIF (COMMAND CMAKE_POLICY)
+
+IF(CMAKE_VERSION VERSION_GREATER 3.0.2)
+    CMAKE_POLICY(SET CMP0037 OLD)
+ENDIF(CMAKE_VERSION VERSION_GREATER 3.0.2)
+
+PROJECT(opencog-central-consolidated)
+
+# ----------------------------------------------------------
+# Build configuration options
+#
+
+# Default build type
+IF (CMAKE_BUILD_TYPE STREQUAL "")
+    SET(CMAKE_BUILD_TYPE Release)
+ENDIF (CMAKE_BUILD_TYPE STREQUAL "")
+
+MESSAGE(STATUS "OpenCog Central Consolidated Build")
+MESSAGE(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+
+ADD_DEFINITIONS(-DPROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
+                -DPROJECT_BINARY_DIR="${CMAKE_BINARY_DIR}")
+
+# ----------------------------------------------------------
+# Component Build Orchestration
+#
+# Components are built in strict dependency order based on analysis
+# of FIND_PACKAGE dependencies in individual CMakeLists.txt files
+#
+
+MESSAGE(STATUS "========================================")
+MESSAGE(STATUS "OpenCog Central Component Build Order")  
+MESSAGE(STATUS "========================================")
+
+# ===================================================================
+# PHASE 1: Foundation Components
+# These have minimal external dependencies and form the base layer
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 1: Foundation Components")
+
+# 1.1 CogUtil - Base utilities (no OpenCog dependencies)
+OPTION(BUILD_COGUTIL "Build CogUtil component" ON)
+IF(BUILD_COGUTIL AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/cogutil/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding cogutil (foundation utilities)")
+    ADD_SUBDIRECTORY(cogutil)
+    SET(HAVE_COGUTIL ON)
+ENDIF()
+
+# 1.2 Moses - Evolutionary algorithms (depends only on cogutil)
+OPTION(BUILD_MOSES "Build MOSES component" ON)
+IF(BUILD_MOSES AND HAVE_COGUTIL AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/moses/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding moses (evolutionary algorithms)")
+    ADD_SUBDIRECTORY(moses)
+    SET(HAVE_MOSES ON)
+ENDIF()
+
+# 1.3 Basic infrastructure components
+OPTION(BUILD_BLENDER_API "Build Blender API component" OFF)
+IF(BUILD_BLENDER_API AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/blender_api_msgs/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding blender_api_msgs (Blender integration)")
+    ADD_SUBDIRECTORY(blender_api_msgs)
+ENDIF()
+
+# ===================================================================
+# PHASE 2: Core Knowledge Representation
+# AtomSpace is the central knowledge representation system
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 2: Core Knowledge Representation")
+
+# 2.1 AtomSpace - Core knowledge representation (depends on cogutil)
+OPTION(BUILD_ATOMSPACE "Build AtomSpace component" ON)
+IF(BUILD_ATOMSPACE AND HAVE_COGUTIL AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding atomspace (knowledge representation)")
+    ADD_SUBDIRECTORY(atomspace)
+    SET(HAVE_ATOMSPACE ON)
+ENDIF()
+
+# ===================================================================
+# PHASE 3: AtomSpace Extensions
+# These components extend AtomSpace functionality and can build in parallel
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 3: AtomSpace Extensions")
+
+# 3.1 Unification system (depends on cogutil + atomspace)
+OPTION(BUILD_UNIFY "Build Unify component" ON)
+IF(BUILD_UNIFY AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/unify/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding unify (unification engine)")
+    ADD_SUBDIRECTORY(unify)
+    SET(HAVE_UNIFY ON)
+ENDIF()
+
+# 3.2 CogServer - Network server (depends on cogutil + atomspace)
+OPTION(BUILD_COGSERVER "Build CogServer component" ON)
+IF(BUILD_COGSERVER AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/cogserver/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding cogserver (network server)")
+    ADD_SUBDIRECTORY(cogserver)
+    SET(HAVE_COGSERVER ON)
+ENDIF()
+
+# 3.3 SpaceTime reasoning (depends on cogutil + atomspace)
+OPTION(BUILD_SPACETIME "Build SpaceTime component" ON)
+IF(BUILD_SPACETIME AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/spacetime/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding spacetime (spatiotemporal reasoning)")
+    ADD_SUBDIRECTORY(spacetime)
+    SET(HAVE_SPACETIME ON)
+ENDIF()
+
+# 3.4 Link Grammar integration (depends on cogutil + atomspace)
+OPTION(BUILD_LG_ATOMESE "Build LG-AtomESE component" ON)
+IF(BUILD_LG_ATOMESE AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/lg-atomese/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding lg-atomese (Link Grammar integration)")
+    ADD_SUBDIRECTORY(lg-atomese)
+    SET(HAVE_LG_ATOMESE ON)
+ENDIF()
+
+# 3.5 AtomSpace persistence and API extensions
+OPTION(BUILD_ATOMSPACE_ROCKS "Build AtomSpace-Rocks component" OFF)
+IF(BUILD_ATOMSPACE_ROCKS AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace-rocks/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding atomspace-rocks (RocksDB persistence)")
+    ADD_SUBDIRECTORY(atomspace-rocks)
+ENDIF()
+
+OPTION(BUILD_ATOMSPACE_RESTFUL "Build AtomSpace-RESTful component" OFF)
+IF(BUILD_ATOMSPACE_RESTFUL AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace-restful/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding atomspace-restful (HTTP API)")
+    ADD_SUBDIRECTORY(atomspace-restful)
+ENDIF()
+
+# ===================================================================
+# PHASE 4: Logic and Reasoning Engines
+# URE requires unify, must be sequential
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 4: Logic and Reasoning Engines")
+
+# 4.1 Unified Rule Engine (depends on cogutil + atomspace + unify)
+OPTION(BUILD_URE "Build URE component" ON)
+IF(BUILD_URE AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND HAVE_UNIFY AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/ure/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding ure (Unified Rule Engine)")
+    ADD_SUBDIRECTORY(ure)
+    SET(HAVE_URE ON)
+ENDIF()
+
+# ===================================================================
+# PHASE 5: Cognitive Systems
+# Attention system and other cognitive components
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 5: Cognitive Systems")
+
+# 5.1 Attention allocation (depends on cogutil + atomspace + cogserver)
+OPTION(BUILD_ATTENTION "Build Attention component" ON)
+IF(BUILD_ATTENTION AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND HAVE_COGSERVER AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/attention/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding attention (attention allocation)")
+    ADD_SUBDIRECTORY(attention)
+    SET(HAVE_ATTENTION ON)
+ENDIF()
+
+# ===================================================================
+# PHASE 6: Advanced Reasoning Systems
+# PLN, miner, and other advanced systems requiring URE
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 6: Advanced Reasoning Systems")
+
+# 6.1 Probabilistic Logic Networks (depends on cogutil + atomspace + ure + spacetime)
+OPTION(BUILD_PLN "Build PLN component" ON)
+IF(BUILD_PLN AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND HAVE_URE AND HAVE_SPACETIME AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/pln/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding pln (Probabilistic Logic Networks)")
+    ADD_SUBDIRECTORY(pln)
+    SET(HAVE_PLN ON)
+ENDIF()
+
+# 6.2 Pattern miner (depends on cogutil + atomspace + ure)
+OPTION(BUILD_MINER "Build Miner component" ON)
+IF(BUILD_MINER AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND HAVE_URE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/miner/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding miner (pattern mining)")
+    ADD_SUBDIRECTORY(miner)
+    SET(HAVE_MINER ON)
+ENDIF()
+
+# 6.3 AS-MOSES integration (depends on cogutil + atomspace + ure)
+OPTION(BUILD_ASMOSES "Build AS-MOSES component" ON)
+IF(BUILD_ASMOSES AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND HAVE_URE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/asmoses/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding asmoses (AtomSpace MOSES)")
+    ADD_SUBDIRECTORY(asmoses)
+    SET(HAVE_ASMOSES ON)
+ENDIF()
+
+# ===================================================================
+# PHASE 7: Learning and Language Systems
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 7: Learning and Language Systems")
+
+# 7.1 Learning system (depends on cogutil + atomspace + cogserver)
+OPTION(BUILD_LEARN "Build Learn component" ON)
+IF(BUILD_LEARN AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND HAVE_COGSERVER AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/learn/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding learn (learning systems)")
+    ADD_SUBDIRECTORY(learn)
+    SET(HAVE_LEARN ON)
+ENDIF()
+
+# 7.2 Generation system (depends on cogutil + atomspace)
+OPTION(BUILD_GENERATE "Build Generate component" ON)
+IF(BUILD_GENERATE AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/generate/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding generate (generation system)")
+    ADD_SUBDIRECTORY(generate)
+    SET(HAVE_GENERATE ON)
+ENDIF()
+
+# ===================================================================
+# PHASE 8: Integration Layer
+# Main OpenCog framework that integrates multiple components
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 8: Integration Layer")
+
+# 8.1 Main OpenCog framework (depends on multiple components)
+OPTION(BUILD_OPENCOG "Build OpenCog component" ON)
+IF(BUILD_OPENCOG AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND HAVE_URE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/opencog/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding opencog (main integration framework)")
+    ADD_SUBDIRECTORY(opencog)
+    SET(HAVE_OPENCOG ON)
+ENDIF()
+
+# ===================================================================
+# PHASE 9: Optional Specialized Components
+# These components provide specialized functionality
+# ===================================================================
+
+MESSAGE(STATUS "PHASE 9: Optional Specialized Components")
+
+# 9.1 Computer vision
+OPTION(BUILD_VISION "Build Vision component" OFF)
+IF(BUILD_VISION AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/vision/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding vision (computer vision)")
+    ADD_SUBDIRECTORY(vision)
+ENDIF()
+
+# 9.2 Chemical informatics
+OPTION(BUILD_CHEMINFORMATICS "Build Cheminformatics component" OFF)
+IF(BUILD_CHEMINFORMATICS AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/cheminformatics/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding cheminformatics (chemical informatics)")
+    ADD_SUBDIRECTORY(cheminformatics)
+ENDIF()
+
+# 9.3 Sensory processing
+OPTION(BUILD_SENSORY "Build Sensory component" OFF)
+IF(BUILD_SENSORY AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/sensory/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding sensory (sensory processing)")
+    ADD_SUBDIRECTORY(sensory)
+ENDIF()
+
+# 9.4 Additional AtomSpace extensions
+OPTION(BUILD_ATOMSPACE_ADDITIONAL "Build additional AtomSpace components" OFF)
+IF(BUILD_ATOMSPACE_ADDITIONAL AND HAVE_COGUTIL AND HAVE_ATOMSPACE)
+    IF(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace-dht/CMakeLists.txt")
+        MESSAGE(STATUS "  Adding atomspace-dht (DHT persistence)")
+        ADD_SUBDIRECTORY(atomspace-dht)
+    ENDIF()
+    
+    IF(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace-ipfs/CMakeLists.txt")
+        MESSAGE(STATUS "  Adding atomspace-ipfs (IPFS integration)")
+        ADD_SUBDIRECTORY(atomspace-ipfs)
+    ENDIF()
+    
+    IF(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace-websockets/CMakeLists.txt")
+        MESSAGE(STATUS "  Adding atomspace-websockets (WebSocket API)")
+        ADD_SUBDIRECTORY(atomspace-websockets)
+    ENDIF()
+ENDIF()
+
+# ===================================================================
+# Build Summary
+# ===================================================================
+
+MESSAGE(STATUS "")
+MESSAGE(STATUS "========================================")
+MESSAGE(STATUS "OpenCog Central Consolidated Build Summary")
+MESSAGE(STATUS "========================================")
+
+IF(HAVE_COGUTIL)
+    MESSAGE(STATUS "✓ CogUtil - Foundation utilities")
+ENDIF()
+
+IF(HAVE_ATOMSPACE)
+    MESSAGE(STATUS "✓ AtomSpace - Knowledge representation")
+ENDIF()
+
+IF(HAVE_UNIFY)
+    MESSAGE(STATUS "✓ Unify - Unification engine")
+ENDIF()
+
+IF(HAVE_URE)
+    MESSAGE(STATUS "✓ URE - Unified Rule Engine")
+ENDIF()
+
+IF(HAVE_COGSERVER)
+    MESSAGE(STATUS "✓ CogServer - Network server")
+ENDIF()
+
+IF(HAVE_ATTENTION)
+    MESSAGE(STATUS "✓ Attention - Attention allocation")
+ENDIF()
+
+IF(HAVE_SPACETIME)
+    MESSAGE(STATUS "✓ SpaceTime - Spatiotemporal reasoning")
+ENDIF()
+
+IF(HAVE_PLN)
+    MESSAGE(STATUS "✓ PLN - Probabilistic Logic Networks")
+ENDIF()
+
+IF(HAVE_MINER)
+    MESSAGE(STATUS "✓ Miner - Pattern mining")
+ENDIF()
+
+IF(HAVE_MOSES)
+    MESSAGE(STATUS "✓ MOSES - Evolutionary algorithms")
+ENDIF()
+
+IF(HAVE_ASMOSES)
+    MESSAGE(STATUS "✓ AS-MOSES - AtomSpace MOSES")
+ENDIF()
+
+IF(HAVE_LG_ATOMESE)
+    MESSAGE(STATUS "✓ LG-AtomESE - Link Grammar integration")
+ENDIF()
+
+IF(HAVE_LEARN)
+    MESSAGE(STATUS "✓ Learn - Learning systems")
+ENDIF()
+
+IF(HAVE_GENERATE)
+    MESSAGE(STATUS "✓ Generate - Generation system")
+ENDIF()
+
+IF(HAVE_OPENCOG)
+    MESSAGE(STATUS "✓ OpenCog - Main integration framework")
+ENDIF()
+
+MESSAGE(STATUS "")
+MESSAGE(STATUS "All configured components will be built in dependency order.")
+MESSAGE(STATUS "Use 'make' to build all enabled components.")
+MESSAGE(STATUS "Use 'make install' to install all enabled components.")
+MESSAGE(STATUS "========================================")
+MESSAGE(STATUS "")

@@ -1,0 +1,479 @@
+{
+  "attention": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "examples",
+      "tests",
+      "doc"
+    ]
+  },
+  "unify": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "opencog",
+      "lib",
+      "tests"
+    ]
+  },
+  "atomspace-restful": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests",
+      "examples",
+      "doc"
+    ]
+  },
+  "cogutil": {
+    "packages": [
+      "Boost"
+    ],
+    "internal_deps": [
+      "cmake",
+      "etc",
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "atomspace": {
+    "packages": [
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "cmake",
+      "opencog",
+      "lib",
+      "tests",
+      "examples",
+      "doc"
+    ]
+  },
+  "cheminformatics": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "cheminformatics"
+    ]
+  },
+  "pln": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "URE"
+    ],
+    "internal_deps": [
+      "opencog",
+      "lib",
+      "tests"
+    ]
+  },
+  "TinyCog": {
+    "packages": [
+      "AtomSpace",
+      "Guile"
+    ],
+    "internal_deps": []
+  },
+  "learn": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "fake",
+      "scm",
+      "run-common",
+      "tests"
+    ]
+  },
+  "benchmark": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost",
+      "URE"
+    ],
+    "internal_deps": [
+      "atomspace",
+      "micro",
+      "query-trite"
+    ]
+  },
+  "python-attic": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Guile",
+      "URE"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "tests",
+      "examples",
+      "experiments",
+      "doc"
+    ]
+  },
+  "sensory": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests"
+    ]
+  },
+  "ros-behavior-scripting": {
+    "packages": [],
+    "internal_deps": [
+      "movement",
+      "webui"
+    ]
+  },
+  "dimensional-embedding": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "atomspace-websockets": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "src",
+      "tests"
+    ]
+  },
+  "perception": {
+    "packages": [
+      "Boost"
+    ],
+    "internal_deps": []
+  },
+  "atomspace-metta": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "visualization": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "opencog",
+      "doc"
+    ]
+  },
+  "miner": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost",
+      "URE"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests"
+    ]
+  },
+  "atomspace-ipfs": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "ure": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "opencog",
+      "lib",
+      "tests"
+    ]
+  },
+  "main": {
+    "packages": [],
+    "internal_deps": [
+      "cogutil",
+      "orc-as",
+      "ure",
+      "attention",
+      "spacetime",
+      "cogserver",
+      "pln",
+      "miner",
+      "moses",
+      "asmoses",
+      "learn",
+      "opencog",
+      "unify",
+      "generate",
+      "vision",
+      "cheminformatics",
+      "lg-atomese",
+      "sensory"
+    ]
+  },
+  "blender_api_msgs": {
+    "packages": [
+      "Boost"
+    ],
+    "internal_deps": []
+  },
+  "atomspace-dht": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "asmoses": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost",
+      "URE"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests",
+      "examples",
+      "doc",
+      "lib"
+    ]
+  },
+  "opencog": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "URE"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "tests",
+      "examples",
+      "doc"
+    ]
+  },
+  "generate": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests"
+    ]
+  },
+  "agi-bio": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "bioscience"
+    ]
+  },
+  "atomspace-agents": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "vision": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "spacetime": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "opencog",
+      "lib",
+      "tests",
+      "doc"
+    ]
+  },
+  "pattern-index": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "atomspace-rpc": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "src",
+      "tests"
+    ]
+  },
+  "lg-atomese": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "tests",
+      "examples",
+      "doc"
+    ]
+  },
+  "moses": {
+    "packages": [
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "moses",
+      "tests",
+      "examples",
+      "doc",
+      "lib"
+    ]
+  },
+  "atomspace-bridge": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "ghost_bridge": {
+    "packages": [
+      "Boost"
+    ],
+    "internal_deps": []
+  },
+  "cogserver": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil",
+      "Boost"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "examples",
+      "tests",
+      "doc"
+    ]
+  },
+  "robots_config": {
+    "packages": [],
+    "internal_deps": []
+  },
+  "atomspace-cog": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  },
+  "pau2motors": {
+    "packages": [
+      "Boost"
+    ],
+    "internal_deps": []
+  },
+  "atomspace-rocks": {
+    "packages": [
+      "AtomSpace",
+      "CogUtil"
+    ],
+    "internal_deps": [
+      "lib",
+      "opencog",
+      "tests",
+      "doc"
+    ]
+  }
+}
