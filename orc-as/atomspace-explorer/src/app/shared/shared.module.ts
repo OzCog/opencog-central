@@ -17,7 +17,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { OpencogAPIService } from './services/opencog_API.service';
-import { AtomService } from 'ng2-atomspace-visualizer';
+import { AtomService } from '../visualizer/atom.service';
 import { EqualValidator } from './directives/equal-validator.directive';
 
 @NgModule({
