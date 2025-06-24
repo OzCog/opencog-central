@@ -26,10 +26,12 @@
         "core-js": "^2.5.1",
         "d3": "^7.9.0",
         "d3-context-menu": "^0.1.2",
+        "diff": "^5.2.0",
         "gulp": "^5.0.0",
         "hammerjs": "^2.0.8",
         "jquery": "^3.7.1",
         "lodash": "^4.17.21",
+        "lodash.template": "^4.5.0",
         "material-design-lite": "^1.3.0",
         "md-collapse": "0.0.1-alpha.1",
         "md2-accordion": "0.0.1-alpha.0",
@@ -5737,9 +5739,10 @@
       "dev": true
     },
     "node_modules/diff": {
-      "version": "1.0.8",
-      "resolved": "https://registry.npmjs.org/diff/-/diff-1.0.8.tgz",
-      "integrity": "sha512-1zEb73vemXFpUmfh3fsta4YHz3lwebxXvaWmPbFv9apujQBWDnkrPDLXLQs1gZo4RCWMDsT89r0Pf/z8/02TGA==",
+      "version": "5.2.0",
+      "resolved": "https://registry.npmjs.org/diff/-/diff-5.2.0.tgz",
+      "integrity": "sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==",
+      "license": "BSD-3-Clause",
       "engines": {
         "node": ">=0.3.1"
       }
@@ -7975,6 +7978,14 @@
         "node": ">=0.10"
       }
     },
+    "node_modules/gulp-dedupe/node_modules/diff": {
+      "version": "1.0.8",
+      "resolved": "https://registry.npmjs.org/diff/-/diff-1.0.8.tgz",
+      "integrity": "sha512-1zEb73vemXFpUmfh3fsta4YHz3lwebxXvaWmPbFv9apujQBWDnkrPDLXLQs1gZo4RCWMDsT89r0Pf/z8/02TGA==",
+      "engines": {
+        "node": ">=0.3.1"
+      }
+    },
     "node_modules/gulp-dedupe/node_modules/lodash.defaults": {
       "version": "2.4.1",
       "resolved": "https://registry.npmjs.org/lodash.defaults/-/lodash.defaults-2.4.1.tgz",
@@ -8125,26 +8136,6 @@
       "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz",
       "integrity": "sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==",
       "license": "MIT"
-    },
-    "node_modules/gulp-header/node_modules/lodash.template": {
-      "version": "4.5.0",
-      "resolved": "https://registry.npmjs.org/lodash.template/-/lodash.template-4.5.0.tgz",
-      "integrity": "sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==",
-      "deprecated": "This package is deprecated. Use https://socket.dev/npm/package/eta instead.",
-      "license": "MIT",
-      "dependencies": {
-        "lodash._reinterpolate": "^3.0.0",
-        "lodash.templatesettings": "^4.0.0"
-      }
-    },
-    "node_modules/gulp-header/node_modules/lodash.templatesettings": {
-      "version": "4.2.0",
-      "resolved": "https://registry.npmjs.org/lodash.templatesettings/-/lodash.templatesettings-4.2.0.tgz",
-      "integrity": "sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==",
-      "license": "MIT",
-      "dependencies": {
-        "lodash._reinterpolate": "^3.0.0"
-      }
     },
     "node_modules/gulp-header/node_modules/readable-stream": {
       "version": "2.3.8",
@@ -8861,6 +8852,34 @@
       "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz",
       "integrity": "sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==",
       "license": "MIT"
+    },
+    "node_modules/gulp-util/node_modules/lodash.template": {
+      "version": "3.6.2",
+      "resolved": "https://registry.npmjs.org/lodash.template/-/lodash.template-3.6.2.tgz",
+      "integrity": "sha512-0B4Y53I0OgHUJkt+7RmlDFWKjVAI/YUpWNiL9GQz5ORDr4ttgfQGo+phBWKFLJbBdtOwgMuUkdOHOnPg45jKmQ==",
+      "deprecated": "This package is deprecated. Use https://socket.dev/npm/package/eta instead.",
+      "license": "MIT",
+      "dependencies": {
+        "lodash._basecopy": "^3.0.0",
+        "lodash._basetostring": "^3.0.0",
+        "lodash._basevalues": "^3.0.0",
+        "lodash._isiterateecall": "^3.0.0",
+        "lodash._reinterpolate": "^3.0.0",
+        "lodash.escape": "^3.0.0",
+        "lodash.keys": "^3.0.0",
+        "lodash.restparam": "^3.0.0",
+        "lodash.templatesettings": "^3.0.0"
+      }
+    },
+    "node_modules/gulp-util/node_modules/lodash.templatesettings": {
+      "version": "3.1.1",
+      "resolved": "https://registry.npmjs.org/lodash.templatesettings/-/lodash.templatesettings-3.1.1.tgz",
+      "integrity": "sha512-TcrlEr31tDYnWkHFWDCV3dHYroKEXpJZ2YJYvJdhN+y4AkWMDZ5I4I8XDtUKqSAyG81N7w+I1mFEJtcED+tGqQ==",
+      "license": "MIT",
+      "dependencies": {
+        "lodash._reinterpolate": "^3.0.0",
+        "lodash.escape": "^3.0.0"
+      }
     },
     "node_modules/gulp-util/node_modules/readable-stream": {
       "version": "2.3.8",
@@ -11149,12 +11168,14 @@
     "node_modules/lodash._basetostring": {
       "version": "3.0.1",
       "resolved": "https://registry.npmjs.org/lodash._basetostring/-/lodash._basetostring-3.0.1.tgz",
-      "integrity": "sha1-0YYdh3+CSlL2aYMtyvPuFVZqB9U="
+      "integrity": "sha512-mTzAr1aNAv/i7W43vOR/uD/aJ4ngbtsRaCubp2BfZhlGU/eORUjg/7F6X0orNMdv33JOrdgGybtvMN/po3EWrA==",
+      "license": "MIT"
     },
     "node_modules/lodash._basevalues": {
       "version": "3.0.0",
       "resolved": "https://registry.npmjs.org/lodash._basevalues/-/lodash._basevalues-3.0.0.tgz",
-      "integrity": "sha1-W3dXYoAr3j0yl1A+JjAIIP32Ybc="
+      "integrity": "sha512-H94wl5P13uEqlCg7OcNNhMQ8KvWSIyqXzOPusRgHC9DK3o54P6P3xtbXlVbRABG4q5gSmp7EDdJ0MSuW9HX6Mg==",
+      "license": "MIT"
     },
     "node_modules/lodash._bindcallback": {
       "version": "3.0.1",
@@ -11213,7 +11234,8 @@
     "node_modules/lodash._root": {
       "version": "3.0.1",
       "resolved": "https://registry.npmjs.org/lodash._root/-/lodash._root-3.0.1.tgz",
-      "integrity": "sha1-+6HEUkwZ7ppfgTa0YJ8BfPTe1pI="
+      "integrity": "sha512-O0pWuFSK6x4EXhM1dhZ8gchNtG7JMqBtrHdoUFUWXD7dJnNSUze1GuyQr5sOs0aCvgGeI3o/OJW8f4ca7FDxmQ==",
+      "license": "MIT"
     },
     "node_modules/lodash._shimkeys": {
       "version": "2.4.1",
@@ -11248,7 +11270,8 @@
     "node_modules/lodash.escape": {
       "version": "3.2.0",
       "resolved": "https://registry.npmjs.org/lodash.escape/-/lodash.escape-3.2.0.tgz",
-      "integrity": "sha1-mV7g3BjBtIzJLv+ucaEKq1tIdpg=",
+      "integrity": "sha512-n1PZMXgaaDWZDSvuNZ/8XOcYO2hOKDqZel5adtR30VKQAtoWs/5AOeFA0vPV8moiPzlqe7F4cP2tzpFewQyelQ==",
+      "license": "MIT",
       "dependencies": {
         "lodash._root": "^3.0.0"
       }
@@ -11294,30 +11317,23 @@
       "integrity": "sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU="
     },
     "node_modules/lodash.template": {
-      "version": "3.6.2",
-      "resolved": "https://registry.npmjs.org/lodash.template/-/lodash.template-3.6.2.tgz",
-      "integrity": "sha512-0B4Y53I0OgHUJkt+7RmlDFWKjVAI/YUpWNiL9GQz5ORDr4ttgfQGo+phBWKFLJbBdtOwgMuUkdOHOnPg45jKmQ==",
+      "version": "4.5.0",
+      "resolved": "https://registry.npmjs.org/lodash.template/-/lodash.template-4.5.0.tgz",
+      "integrity": "sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==",
       "deprecated": "This package is deprecated. Use https://socket.dev/npm/package/eta instead.",
       "license": "MIT",
       "dependencies": {
-        "lodash._basecopy": "^3.0.0",
-        "lodash._basetostring": "^3.0.0",
-        "lodash._basevalues": "^3.0.0",
-        "lodash._isiterateecall": "^3.0.0",
         "lodash._reinterpolate": "^3.0.0",
-        "lodash.escape": "^3.0.0",
-        "lodash.keys": "^3.0.0",
-        "lodash.restparam": "^3.0.0",
-        "lodash.templatesettings": "^3.0.0"
+        "lodash.templatesettings": "^4.0.0"
       }
     },
     "node_modules/lodash.templatesettings": {
-      "version": "3.1.1",
-      "resolved": "https://registry.npmjs.org/lodash.templatesettings/-/lodash.templatesettings-3.1.1.tgz",
-      "integrity": "sha1-+zB4RHU7Zrnxr6VOJix0UwfbqOU=",
+      "version": "4.2.0",
+      "resolved": "https://registry.npmjs.org/lodash.templatesettings/-/lodash.templatesettings-4.2.0.tgz",
+      "integrity": "sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==",
+      "license": "MIT",
       "dependencies": {
-        "lodash._reinterpolate": "^3.0.0",
-        "lodash.escape": "^3.0.0"
+        "lodash._reinterpolate": "^3.0.0"
       }
     },
     "node_modules/log-symbols": {
@@ -14125,6 +14141,36 @@
       "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz",
       "integrity": "sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=",
       "dev": true
+    },
+    "node_modules/remap-istanbul/node_modules/lodash.template": {
+      "version": "3.6.2",
+      "resolved": "https://registry.npmjs.org/lodash.template/-/lodash.template-3.6.2.tgz",
+      "integrity": "sha512-0B4Y53I0OgHUJkt+7RmlDFWKjVAI/YUpWNiL9GQz5ORDr4ttgfQGo+phBWKFLJbBdtOwgMuUkdOHOnPg45jKmQ==",
+      "deprecated": "This package is deprecated. Use https://socket.dev/npm/package/eta instead.",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "lodash._basecopy": "^3.0.0",
+        "lodash._basetostring": "^3.0.0",
+        "lodash._basevalues": "^3.0.0",
+        "lodash._isiterateecall": "^3.0.0",
+        "lodash._reinterpolate": "^3.0.0",
+        "lodash.escape": "^3.0.0",
+        "lodash.keys": "^3.0.0",
+        "lodash.restparam": "^3.0.0",
+        "lodash.templatesettings": "^3.0.0"
+      }
+    },
+    "node_modules/remap-istanbul/node_modules/lodash.templatesettings": {
+      "version": "3.1.1",
+      "resolved": "https://registry.npmjs.org/lodash.templatesettings/-/lodash.templatesettings-3.1.1.tgz",
+      "integrity": "sha512-TcrlEr31tDYnWkHFWDCV3dHYroKEXpJZ2YJYvJdhN+y4AkWMDZ5I4I8XDtUKqSAyG81N7w+I1mFEJtcED+tGqQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "lodash._reinterpolate": "^3.0.0",
+        "lodash.escape": "^3.0.0"
+      }
     },
     "node_modules/remap-istanbul/node_modules/process-nextick-args": {
       "version": "1.0.7",
