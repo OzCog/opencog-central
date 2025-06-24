@@ -4,7 +4,7 @@ import { AuthRoutes } from './core/auth/auth.routes';
 import { MainContainer } from './shared/ui/main-container.component';
 import { AuthService } from './core/auth/services/auth.service';
 import { UrlConnectComponent } from './connect/url-connect/url-connect.component';
-import { VisualizerComponent } from 'ng2-atomspace-visualizer';
+import { VisualizerComponent } from './visualizer/visualizer.component';
 
 export const APP_ROUTES: Routes = [
     { path: '',
