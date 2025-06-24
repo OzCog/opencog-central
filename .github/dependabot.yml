@@ -5,7 +5,20 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
+  # Enable version updates for npm (package.json)
+  - package-ecosystem: "npm"
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  
+  # Enable version updates for Cargo (Rust dependencies)
+  - package-ecosystem: "cargo"
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  
+  # Enable version updates for pip (Python dependencies)
+  - package-ecosystem: "pip"
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
