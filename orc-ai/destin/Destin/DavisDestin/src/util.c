@@ -104,7 +104,7 @@ Destin * CreateDestin( char *filename ) {
     //TODO: fix test config file
     // applies boltzman distibution
     // 0 = off, 1 = on
-    char bts[80]; //belief transform string
+    char bts[81]; //belief transform string
 
     fscanfResult = fscanf(configFile, "%80s", bts);
 
