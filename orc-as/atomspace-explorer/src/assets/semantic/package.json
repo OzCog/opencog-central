@@ -15,6 +15,6 @@
     "url": "https://github.com/Semantic-Org/Semantic-UI/issues"
   },
   "dependencies": {
-    "jquery": "x.*"
+    "jquery": ">=3.0.0"
   }
 }
