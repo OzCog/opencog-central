@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateConfig } from '../../core/translate/translate-config';
 import { TranslateService } from '../../core/translate/translate.service';
 import { AuthService } from '../../core/auth/services/auth.service';
-import { AtomService, AtomServiceData } from 'ng2-atomspace-visualizer';
+import { AtomService, AtomServiceData } from '../visualizer/atom.service';
 import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({

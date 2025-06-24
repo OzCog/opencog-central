@@ -19,7 +19,7 @@ import { TranslateModule } from './core/translate/translate.module';
 import { InitializeDropdown } from './shared/directives/intitialise-dropdown.directive';
 import { ConnectModule } from './connect/connect.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { AtomspaceVisualizerModule } from 'ng2-atomspace-visualizer';
+import { VisualizerModule } from './visualizer/visualizer.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { AtomspaceVisualizerModule } from 'ng2-atomspace-visualizer';
       prefix: 'my-app',
       storageType: 'localStorage'
     }),
-    AtomspaceVisualizerModule.forRoot()
+    VisualizerModule.forRoot()
   ],
   providers: [ APIService ],
   bootstrap: [ AppComponent ],

@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UrlConnectService } from './url-connect.service';
 import { OpencogAPIService } from './../../shared/services/opencog_API.service';
-import { AtomService, AtomServiceData } from 'ng2-atomspace-visualizer';
+import { AtomService, AtomServiceData } from '../../visualizer/atom.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { configs } from '../../app.config';
