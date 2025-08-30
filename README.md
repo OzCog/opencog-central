@@ -2,12 +2,20 @@
 
 A comprehensive cognitive architecture implementing artificial general intelligence through neural-symbolic integration and hypergraph-based knowledge representation.
 
-## 🏛️ Architecture Documentation
-
-- **[📋 Architecture Overview](ARCHITECTURE.md)** - Comprehensive architecture documentation with Mermaid diagrams
-- **[📚 Architecture Index](docs/ARCHITECTURE_INDEX.md)** - Complete documentation navigation guide
-
 ## 🚀 Quick Start
+
+### 🐳 GNU Guix Shepherd DevContainer (Recommended)
+
+For reproducible development with pure free software tools:
+
+1. Open this repository in VS Code
+2. Select "Reopen in Container" when prompted
+3. The devcontainer will automatically set up GNU Guix + Shepherd
+4. Run `herd start opencog-build` to build with Guix
+
+See [`.devcontainer/README.md`](.devcontainer/README.md) for detailed setup instructions.
+
+### 🏗️ Manual Setup
 
 The OpenCog Central system consists of multiple integrated cognitive components:
 
@@ -16,6 +24,11 @@ The OpenCog Central system consists of multiple integrated cognitive components:
 - **Sensory-Motor**: Link Grammar-based environment interaction
 - **Learning**: Structure discovery and pattern learning systems
 - **Agents**: Interactive cognitive agents with adaptive behavior
+
+## 🏛️ Architecture Documentation
+
+- **[📋 Architecture Overview](ARCHITECTURE.md)** - Comprehensive architecture documentation with Mermaid diagrams
+- **[📚 Architecture Index](docs/ARCHITECTURE_INDEX.md)** - Complete documentation navigation guide
 
 ## 🧠 Cognitive Components
 

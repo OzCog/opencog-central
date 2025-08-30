@@ -1,0 +1,24 @@
+{
+  "name": "Guix Shepherd OpenCog Packaging",
+  "build": { 
+    "dockerfile": "Dockerfile" 
+  },
+  "settings": {},
+  "postCreateCommand": "chmod +x /workspace/.devcontainer/setup.sh && /workspace/.devcontainer/setup.sh",
+  "customizations": { 
+    "vscode": { 
+      "extensions": [
+        "ms-vscode.vscode-scheme",
+        "bbenoist.Nix",
+        "ms-vscode.vscode-json"
+      ] 
+    } 
+  },
+  "forwardPorts": [],
+  "remoteUser": "opencog",
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "features": {}
+}
