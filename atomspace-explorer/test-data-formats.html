@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtomSpace Data Format Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .data-display {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        button {
+            background-color: #007acc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #005a9e; }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AtomSpace Data Format Converter Test</h1>
+        <p>Test the conversion between old and new AtomSpace data formats</p>
+
+        <div class="test-section">
+            <h3>Test 1: Load New Format Sample Data</h3>
+            <button onclick="loadNewFormatData()">Load New Format</button>
+            <div id="newFormatStatus" class="status"></div>
+            <div id="newFormatDisplay" class="data-display"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 2: Convert New Format to Old Format</h3>
+            <button onclick="convertToOldFormat()">Convert to Old Format</button>
+            <div id="oldFormatStatus" class="status"></div>
+            <div id="oldFormatDisplay" class="data-display"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 3: Load Original Old Format Data</h3>
+            <button onclick="loadOriginalOldFormat()">Load Original Old Format</button>
+            <div id="originalStatus" class="status"></div>
+            <div id="originalDisplay" class="data-display"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 4: Live Sample Data File</h3>
+            <button onclick="fetchSampleFile()">Fetch atoms-new-format.json</button>
+            <div id="fileStatus" class="status"></div>
+            <div id="fileDisplay" class="data-display"></div>
+        </div>
+    </div>
+
+    <script>
+        let newFormatData = null;
+
+        // Sample new format data
+        const sampleNewFormat = [
+            {
+                "type": "ConceptNode",
+                "name": "human"
+            },
+            {
+                "type": "ConceptNode", 
+                "name": "Socrates"
+            },
+            {
+                "type": "ConceptNode",
+                "name": "man"
+            },
+            {
+                "type": "ConceptNode",
+                "name": "mortal"
+            },
+            {
+                "type": "InheritanceLink",
+                "outgoing": [
+                    {
+                        "type": "ConceptNode",
+                        "name": "Socrates"
+                    },
+                    {
+                        "type": "ConceptNode", 
+                        "name": "man"
+                    }
+                ]
+            },
+            {
+                "type": "InheritanceLink",
+                "outgoing": [
+                    {
+                        "type": "ConceptNode",
+                        "name": "man"
+                    },
+                    {
+                        "type": "ConceptNode",
+                        "name": "mortal"
+                    }
+                ]
+            }
+        ];
+
+        function updateStatus(elementId, message, isSuccess = true) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = `status ${isSuccess ? 'success' : 'error'}`;
+        }
+
+        function displayData(elementId, data) {
+            const element = document.getElementById(elementId);
+            element.textContent = JSON.stringify(data, null, 2);
+        }
+
+        function loadNewFormatData() {
+            newFormatData = sampleNewFormat;
+            displayData('newFormatDisplay', newFormatData);
+            updateStatus('newFormatStatus', `✓ Loaded ${newFormatData.length} atoms in new format`);
+        }
+
+        function getAtomKey(atom) {
+            if (atom.name) {
+                return `${atom.type}:${atom.name}`;
+            }
+            if (atom.outgoing) {
+                const outgoingKeys = atom.outgoing.map(a => getAtomKey(a)).join(',');
+                return `${atom.type}:[${outgoingKeys}]`;
+            }
+            return `${atom.type}:anonymous`;
+        }
+
+        function convertNewToOldFormat(newFormatAtoms) {
+            const convertedAtoms = [];
+            const atomMap = new Map();
+            let handleCounter = 0;
+
+            // First pass: create all atoms and assign handles
+            newFormatAtoms.forEach(atom => {
+                const atomKey = getAtomKey(atom);
+                if (!atomMap.has(atomKey)) {
+                    atomMap.set(atomKey, handleCounter++);
+                }
+            });
+
+            // Second pass: convert atoms
+            newFormatAtoms.forEach(atom => {
+                const converted = {
+                    handle: atomMap.get(getAtomKey(atom)),
+                    name: atom.name || '',
+                    type: atom.type,
+                    outgoing: [],
+                    incoming: [],
+                    truthvalue: {
+                        type: 'simple',
+                        details: {
+                            count: 1.0,
+                            confidence: 1.0,
+                            strength: 1.0
+                        }
+                    },
+                    attentionvalue: {
+                        lti: 0,
+                        sti: 0,
+                        vlti: false
+                    }
+                };
+
+                // Convert outgoing links from atoms to handles
+                if (atom.outgoing) {
+                    atom.outgoing.forEach(outgoingAtom => {
+                        const outgoingKey = getAtomKey(outgoingAtom);
+                        const outgoingHandle = atomMap.get(outgoingKey);
+                        if (outgoingHandle !== undefined) {
+                            converted.outgoing.push(outgoingHandle);
+                        }
+                    });
+                }
+
+                convertedAtoms.push(converted);
+            });
+
+            // Third pass: calculate incoming links
+            convertedAtoms.forEach((atom, index) => {
+                atom.outgoing.forEach(outgoingHandle => {
+                    if (convertedAtoms[outgoingHandle]) {
+                        convertedAtoms[outgoingHandle].incoming.push(index);
+                    }
+                });
+            });
+
+            return {
+                result: {
+                    atoms: convertedAtoms
+                }
+            };
+        }
+
+        function convertToOldFormat() {
+            if (!newFormatData) {
+                updateStatus('oldFormatStatus', '✗ Load new format data first', false);
+                return;
+            }
+
+            try {
+                const oldFormatData = convertNewToOldFormat(newFormatData);
+                displayData('oldFormatDisplay', oldFormatData);
+                updateStatus('oldFormatStatus', 
+                    `✓ Converted to old format: ${oldFormatData.result.atoms.length} atoms`);
+            } catch (error) {
+                updateStatus('oldFormatStatus', `✗ Conversion failed: ${error.message}`, false);
+            }
+        }
+
+        // Sample original old format data
+        function loadOriginalOldFormat() {
+            fetch('./src/assets/atoms.json')
+                .then(response => response.json())
+                .then(data => {
+                    displayData('originalDisplay', data);
+                    updateStatus('originalStatus', 
+                        `✓ Loaded original old format: ${data.result.atoms.length} atoms`);
+                })
+                .catch(error => {
+                    // Fallback to inline sample if file not accessible
+                    const sampleOldFormat = {
+                        "result": {
+                            "atoms": [
+                                {
+                                    "outgoing": [1, 4],
+                                    "handle": 0,
+                                    "name": "",
+                                    "truthvalue": {
+                                        "type": "simple",
+                                        "details": {
+                                            "count": 0.0,
+                                            "confidence": 0.0,
+                                            "strength": 1.0
+                                        }
+                                    },
+                                    "attentionvalue": {
+                                        "lti": 0,
+                                        "sti": 0,
+                                        "vlti": false
+                                    },
+                                    "incoming": [],
+                                    "type": "InheritanceLink"
+                                },
+                                {
+                                    "outgoing": [],
+                                    "handle": 1,
+                                    "name": "Socrates",
+                                    "truthvalue": {
+                                        "type": "simple",
+                                        "details": {
+                                            "count": 0.0,
+                                            "confidence": 0.0,
+                                            "strength": 1.0
+                                        }
+                                    },
+                                    "attentionvalue": {
+                                        "lti": 0,
+                                        "sti": 0,
+                                        "vlti": false
+                                    },
+                                    "incoming": [0],
+                                    "type": "ConceptNode"
+                                }
+                            ]
+                        }
+                    };
+                    displayData('originalDisplay', sampleOldFormat);
+                    updateStatus('originalStatus', 
+                        `✓ Loaded sample old format: ${sampleOldFormat.result.atoms.length} atoms`);
+                });
+        }
+
+        function fetchSampleFile() {
+            fetch('./src/assets/atoms-new-format.json')
+                .then(response => response.json())
+                .then(data => {
+                    displayData('fileDisplay', data);
+                    updateStatus('fileStatus', 
+                        `✓ Fetched file successfully: ${data.length} atoms`);
+                })
+                .catch(error => {
+                    updateStatus('fileStatus', 
+                        `✗ Failed to fetch file: ${error.message}`, false);
+                    // Show what the file should contain
+                    displayData('fileDisplay', sampleNewFormat);
+                });
+        }
+
+        // Initialize
+        window.onload = function() {
+            console.log('AtomSpace Data Format Test initialized');
+            updateStatus('newFormatStatus', 'Ready to load new format data');
+            updateStatus('oldFormatStatus', 'Ready to convert data');
+            updateStatus('originalStatus', 'Ready to load original format');
+            updateStatus('fileStatus', 'Ready to fetch sample file');
+        };
+    </script>
+</body>
+</html>

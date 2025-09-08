@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UrlConnectService } from './url-connect.service';
+import { AtomDataAdapter } from './atom-data-adapter.service';
 import { OpencogAPIService } from './../../shared/services/opencog_API.service';
 import { AtomService, AtomServiceData } from '../../visualizer/atom.service';
 import { Router } from '@angular/router';
@@ -47,6 +48,7 @@ export class UrlConnectComponent implements OnInit {
 
   constructor(@Inject(FormBuilder) fb: FormBuilder,
     private service: UrlConnectService,
+    private dataAdapter: AtomDataAdapter,
     private cogAPIService: OpencogAPIService,
     private atomsService: AtomService,
     private router: Router,
@@ -62,6 +64,9 @@ export class UrlConnectComponent implements OnInit {
     const savedURL: string = this.localStorageService.get(this.urlKey);
     if (savedURL !== null) {
       this.url = savedURL;
+    } else {
+      // Set default WebSocket URL if no saved URL
+      this.url = configs.atomspace_websocket_url || 'ws://localhost:18080/json';
     }
 
     setInterval(() => {
@@ -105,15 +110,39 @@ export class UrlConnectComponent implements OnInit {
     this.connecting = true;
     this.subscription = this.service.get(this.url)
       .subscribe(res => {
-        // const json = JSON.stringify(res); console.log(json);
-        const numAtoms = res.result.atoms.length;
-        numberAtoms = res.result.atoms.length;
-        console.log('numberAtoms in fetchJson =',numberAtoms);
-        // Add default attentionvalue data to prevent error while visualizing
+        // Handle both old and new format responses
+        let numAtoms = 0;
+        let atomsData = null;
+
+        // Check if it's old format with res.result.atoms
+        if (res.result && res.result.atoms) {
+          atomsData = res.result.atoms;
+          numAtoms = atomsData.length;
+        } 
+        // Check if it's new format (direct array)
+        else if (Array.isArray(res)) {
+          // Convert new format to old format
+          const oldFormat = this.dataAdapter.convertNewToOldFormat(res);
+          atomsData = oldFormat.result.atoms;
+          numAtoms = atomsData.length;
+          res = oldFormat; // Replace res with converted format
+        }
+        else {
+          this.errMsg = 'Unknown data format received';
+          this.connecting = false;
+          return;
+        }
+
+        numberAtoms = numAtoms;
+        console.log('numberAtoms in fetchJson =', numberAtoms);
+        
+        // Add default attentionvalue data to prevent error while visualizing (for old format compatibility)
         for (var i = 0; i < numAtoms; i++){
-          res.result.atoms[i]['attentionvalue'] =  {"lti": 0, "sti": 0, "vlti": false};
-         }
-        // console.log(res);
+          if (!atomsData[i]['attentionvalue']) {
+            atomsData[i]['attentionvalue'] =  {"lti": 0, "sti": 0, "vlti": false};
+          }
+        }
+        
         console.log('Fetched ' + numAtoms + ' atoms from ' + this.url);
         this.localStorageService.set(this.urlKey, this.url);
 
