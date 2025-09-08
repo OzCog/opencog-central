@@ -98,6 +98,18 @@ The setup can be extended to:
 - Add CI/CD integration
 - Support cross-compilation
 
+## Troubleshooting
+
+### Network Issues During Build
+
+If you encounter network connectivity issues when building the container (e.g., unable to download the Guix installer), this is typically due to restricted network access in the build environment. In such cases:
+
+1. **Use a pre-built container**: The devcontainer will work with any container that has Guix and Shepherd pre-installed
+2. **Manual installation**: You can modify the Dockerfile to use package manager installation of Guix if available
+3. **Alternative base images**: Consider using a base image that already includes GNU Guix
+
+The core devcontainer configuration will work with any properly configured Guix environment.
+
 ## License
 
 This devcontainer configuration is provided under the same license as OpenCog Central (AGPL3+).
