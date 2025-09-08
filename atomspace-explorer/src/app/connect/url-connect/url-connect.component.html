@@ -13,6 +13,14 @@
                 <input [(ngModel)]="url" formControlName="url" type="text" placeholder="{{ 'Placeholder-URL' | translate }}">
                 <i [ngClass]="{'search icon': connecting}"></i>
               </div>
+              
+              <div class="ui tiny text" style="margin-top: 10px; color: #666;">
+                <strong>Examples:</strong><br>
+                • WebSocket: <code>ws://localhost:18080/json</code><br>
+                • Sample file: <code>assets/atoms-new-format.json</code><br>
+                • Legacy HTTP: <code>http://localhost:5000</code>
+              </div>
+              
               <div class="error" *ngIf="errMsg != ''">{{ errMsg }}</div>
               <div *ngIf="errMsg != ''"><br></div>
               <div class="ui two buttons">

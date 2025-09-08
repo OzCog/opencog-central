@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UrlConnectComponent } from './url-connect/url-connect.component';
 import { UrlConnectService } from './url-connect/url-connect.service';
+import { AtomSpaceWebSocketService } from './url-connect/atomspace-websocket.service';
+import { AtomDataAdapter } from './url-connect/atom-data-adapter.service';
 import { SharedModule } from '../shared/shared.module';
-
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 
 @NgModule({
   imports: [
@@ -16,7 +15,7 @@ import { HttpModule } from '@angular/http';
     SharedModule
   ],
   declarations: [UrlConnectComponent],
-  providers: [UrlConnectService]
+  providers: [UrlConnectService, AtomSpaceWebSocketService, AtomDataAdapter]
 })
 
 export class ConnectModule { }

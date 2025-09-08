@@ -1,0 +1,78 @@
+[
+  {
+    "type": "ConceptNode",
+    "name": "human"
+  },
+  {
+    "type": "ConceptNode", 
+    "name": "Socrates"
+  },
+  {
+    "type": "ConceptNode",
+    "name": "man"
+  },
+  {
+    "type": "ConceptNode",
+    "name": "mortal"
+  },
+  {
+    "type": "InheritanceLink",
+    "outgoing": [
+      {
+        "type": "ConceptNode",
+        "name": "Socrates"
+      },
+      {
+        "type": "ConceptNode", 
+        "name": "man"
+      }
+    ]
+  },
+  {
+    "type": "InheritanceLink",
+    "outgoing": [
+      {
+        "type": "ConceptNode",
+        "name": "man"
+      },
+      {
+        "type": "ConceptNode",
+        "name": "mortal"
+      }
+    ]
+  },
+  {
+    "type": "InheritanceLink",
+    "outgoing": [
+      {
+        "type": "ConceptNode",
+        "name": "Socrates"
+      },
+      {
+        "type": "ConceptNode",
+        "name": "mortal"
+      }
+    ]
+  },
+  {
+    "type": "ConceptNode",
+    "name": "AtomSpace"
+  },
+  {
+    "type": "ConceptNode",
+    "name": "OpenCog"
+  },
+  {
+    "type": "InheritanceLink",
+    "outgoing": [
+      {
+        "type": "ConceptNode",
+        "name": "AtomSpace"
+      },
+      {
+        "type": "ConceptNode",
+        "name": "OpenCog"
+      }
+    ]
+  }
+]

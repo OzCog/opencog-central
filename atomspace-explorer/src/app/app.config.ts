@@ -7,8 +7,12 @@ export const configs = {
   'atomspace_api': '/api/v1.1',
   'opencog_url_timeout': '10000',
 
+  // WebSocket configuration for modern AtomSpace API
+  'atomspace_websocket_url': 'ws://localhost:18080/json',
+  'use_websocket_api': true,
+
   // Built-in 'Load Sample Data' options from assets directory. Uncomment one of the following:
-  'sample_data_file': 'atoms.json'
+  'sample_data_file': 'atoms-new-format.json'
   // 'sample_data_file': 'atoms.sample1.json'
   // 'sample_data_file': 'atoms.sample1a.json'
   // 'sample_data_file': 'atoms.sample1b.json'
