@@ -230,6 +230,21 @@
             return res;
         }
 
+        // Escapes HTML special characters to prevent XSS
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>"'\/]/g, function (s) {
+                switch (s) {
+                    case '&': return '&amp;';
+                    case '<': return '&lt;';
+                    case '>': return '&gt;';
+                    case '"': return '&quot;';
+                    case "'": return '&#39;';
+                    case '/': return '&#x2F;';
+                    default: return s;
+                }
+            });
+        }
+
         function displayAtoms(atoms) {
             const display = document.getElementById('atomsDisplay');
             display.innerHTML = '';
@@ -243,12 +258,13 @@
                 const card = document.createElement('div');
                 card.className = 'atom-card';
                 
-                let content = `<div class="atom-type">${atom.type || 'Unknown'}</div>`;
+                let content = `<div class="atom-type">${escapeHTML(atom.type || 'Unknown')}</div>`;
                 if (atom.name) {
-                    content += `<div class="atom-name">${atom.name}</div>`;
+                    content += `<div class="atom-name">${escapeHTML(atom.name)}</div>`;
                 }
                 if (atom.outgoing && atom.outgoing.length > 0) {
-                    content += `<div>Outgoing: ${atom.outgoing.length}</div>`;
+                    // outgoing.length should be a number, but escape just in case
+                    content += `<div>Outgoing: ${escapeHTML(atom.outgoing.length)}</div>`;
                 }
                 
                 card.innerHTML = content;
