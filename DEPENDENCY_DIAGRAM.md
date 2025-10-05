@@ -11,21 +11,22 @@ graph TD
     moses["🧬 MOSES<br/>Evolutionary algorithms<br/>(CogUtil + Boost)"]
     blender["🎨 Blender API<br/>3D integration<br/>(Boost only)"]
     
-    %% Core Layer - AtomSpace and extensions
+    %% Core Layer - AtomSpace and storage abstraction
     atomspace["🧠 AtomSpace<br/>Core knowledge representation<br/>(CogUtil + Boost)"]
+    atomspace-storage["💾 AtomSpace-Storage<br/>Storage abstraction layer<br/>(CogUtil + AtomSpace)"]
     
-    %% AtomSpace Extensions (parallel after atomspace)
-    unify["🔗 Unify<br/>Unification engine<br/>(CogUtil + AtomSpace + Boost)"]
-    cogserver["🖥️ CogServer<br/>Network server<br/>(CogUtil + AtomSpace + Boost)"]
-    spacetime["🌌 SpaceTime<br/>Spatiotemporal reasoning<br/>(CogUtil + AtomSpace + Boost)"]
-    lg-atomese["📝 LG-AtomESE<br/>Link Grammar integration<br/>(CogUtil + AtomSpace)"]
+    %% AtomSpace Extensions (parallel after atomspace-storage)
+    unify["🔗 Unify<br/>Unification engine<br/>(CogUtil + AtomSpace-Storage + Boost)"]
+    cogserver["🖥️ CogServer<br/>Network server<br/>(CogUtil + AtomSpace-Storage + Boost)"]
+    spacetime["🌌 SpaceTime<br/>Spatiotemporal reasoning<br/>(CogUtil + AtomSpace-Storage + Boost)"]
+    lg-atomese["📝 LG-AtomESE<br/>Link Grammar integration<br/>(CogUtil + AtomSpace-Storage)"]
     
-    %% AtomSpace Persistence & APIs
-    atomspace-rocks["💾 AtomSpace-Rocks<br/>RocksDB persistence<br/>(CogUtil + AtomSpace)"]
-    atomspace-restful["🌐 AtomSpace-RESTful<br/>HTTP API<br/>(CogUtil + AtomSpace + Boost)"]
-    atomspace-dht["🔗 AtomSpace-DHT<br/>DHT persistence<br/>(CogUtil + AtomSpace)"]
-    atomspace-ipfs["🌍 AtomSpace-IPFS<br/>IPFS integration<br/>(CogUtil + AtomSpace)"]
-    atomspace-websockets["🔌 AtomSpace-WebSockets<br/>WebSocket API<br/>(CogUtil + AtomSpace + Boost)"]
+    %% AtomSpace Persistence & APIs (depend on atomspace-storage)
+    atomspace-rocks["💾 AtomSpace-Rocks<br/>RocksDB persistence<br/>(CogUtil + AtomSpace + AtomSpace-Storage)"]
+    atomspace-restful["🌐 AtomSpace-RESTful<br/>HTTP API<br/>(CogUtil + AtomSpace-Storage + Boost)"]
+    atomspace-dht["🔗 AtomSpace-DHT<br/>DHT persistence<br/>(CogUtil + AtomSpace-Storage)"]
+    atomspace-ipfs["🌍 AtomSpace-IPFS<br/>IPFS integration<br/>(CogUtil + AtomSpace-Storage)"]
+    atomspace-websockets["🔌 AtomSpace-WebSockets<br/>WebSocket API<br/>(CogUtil + AtomSpace-Storage + Boost)"]
     
     %% Logic Layer (sequential after unify)
     ure["⚡ URE<br/>Unified Rule Engine<br/>(CogUtil + AtomSpace + Boost)"]
@@ -61,21 +62,22 @@ graph TD
     cogutil --> atomspace
     cogutil --> moses
     
-    atomspace --> unify
-    atomspace --> cogserver
-    atomspace --> spacetime
-    atomspace --> lg-atomese
-    atomspace --> atomspace-rocks
-    atomspace --> atomspace-restful
-    atomspace --> atomspace-dht
-    atomspace --> atomspace-ipfs
-    atomspace --> atomspace-websockets
-    atomspace --> learn
-    atomspace --> generate
-    atomspace --> vision
-    atomspace --> cheminformatics
-    atomspace --> sensory
-    atomspace --> visualization
+    atomspace --> atomspace-storage
+    atomspace-storage --> unify
+    atomspace-storage --> cogserver
+    atomspace-storage --> spacetime
+    atomspace-storage --> lg-atomese
+    atomspace-storage --> atomspace-rocks
+    atomspace-storage --> atomspace-restful
+    atomspace-storage --> atomspace-dht
+    atomspace-storage --> atomspace-ipfs
+    atomspace-storage --> atomspace-websockets
+    atomspace-storage --> learn
+    atomspace-storage --> generate
+    atomspace-storage --> vision
+    atomspace-storage --> cheminformatics
+    atomspace-storage --> sensory
+    atomspace-storage --> visualization
     
     unify --> ure
     ure --> pln
@@ -129,17 +131,20 @@ graph TD
 ### 2. Core Layer
 - **AtomSpace**: Central knowledge representation system (CogUtil + Boost)
 
+### 2.1 Storage Abstraction Layer
+- **AtomSpace-Storage**: Storage interface abstraction (CogUtil + AtomSpace)
+
 ### 3. AtomSpace Extensions Layer
-These components extend AtomSpace and can build in parallel:
-- **Unify**: Unification algorithms for pattern matching (CogUtil + AtomSpace + Boost)
-- **CogServer**: Network server for distributed cognition (CogUtil + AtomSpace + Boost)
-- **SpaceTime**: Spatiotemporal reasoning capabilities (CogUtil + AtomSpace + Boost)
-- **LG-AtomESE**: Link Grammar parser integration (CogUtil + AtomSpace)
-- **AtomSpace-Rocks**: RocksDB-based persistence (CogUtil + AtomSpace)
-- **AtomSpace-RESTful**: HTTP API for AtomSpace access (CogUtil + AtomSpace + Boost)
-- **AtomSpace-DHT**: DHT-based persistence (CogUtil + AtomSpace)
-- **AtomSpace-IPFS**: IPFS integration (CogUtil + AtomSpace)
-- **AtomSpace-WebSockets**: WebSocket API (CogUtil + AtomSpace + Boost)
+These components extend AtomSpace and can build in parallel after AtomSpace-Storage:
+- **Unify**: Unification algorithms for pattern matching (CogUtil + AtomSpace-Storage + Boost)
+- **CogServer**: Network server for distributed cognition (CogUtil + AtomSpace-Storage + Boost)
+- **SpaceTime**: Spatiotemporal reasoning capabilities (CogUtil + AtomSpace-Storage + Boost)
+- **LG-AtomESE**: Link Grammar parser integration (CogUtil + AtomSpace-Storage)
+- **AtomSpace-Rocks**: RocksDB-based persistence (CogUtil + AtomSpace + AtomSpace-Storage)
+- **AtomSpace-RESTful**: HTTP API for AtomSpace access (CogUtil + AtomSpace-Storage + Boost)
+- **AtomSpace-DHT**: DHT-based persistence (CogUtil + AtomSpace-Storage)
+- **AtomSpace-IPFS**: IPFS integration (CogUtil + AtomSpace-Storage)
+- **AtomSpace-WebSockets**: WebSocket API (CogUtil + AtomSpace-Storage + Boost)
 
 ### 4. Logic Layer
 - **URE**: Unified Rule Engine for forward/backward chaining (CogUtil + AtomSpace + Boost)
@@ -175,21 +180,46 @@ These require URE and can build in parallel:
 ## Critical Dependencies (From CMakeLists.txt Analysis)
 
 1. **CogUtil** is the foundation - 31 out of 42 components depend on it
-2. **AtomSpace** is the core - 29 components require it after CogUtil  
-3. **URE** requires **AtomSpace** and **Unify** - enables advanced reasoning
-4. **CogServer** enables distributed systems - required by **Attention** and **Learn**
-5. **SpaceTime** is required by **PLN** for temporal reasoning
-6. **OpenCog** requires **CogUtil**, **AtomSpace**, and **URE** - final integration point
-7. **Package** depends on **OpenCog** - final distribution
+2. **AtomSpace** is the core knowledge representation system
+3. **AtomSpace-Storage** provides storage abstraction layer
+4. **AtomSpace-Rocks** is the primary storage implementation - 29+ components now depend on it
+5. **URE** requires **AtomSpace-Rocks** and **Unify** - enables advanced reasoning
+6. **CogServer** enables distributed systems - required by **Attention** and **Learn**
+7. **SpaceTime** is required by **PLN** for temporal reasoning
+8. **OpenCog** requires **CogUtil**, **AtomSpace-Rocks**, and **URE** - final integration point
+9. **Package** depends on **OpenCog** - final distribution
 
 ### Dependency Chains
 The longest dependency chain is:
 ```
-CogUtil → AtomSpace → Unify → URE → PLN/Miner/AS-MOSES → OpenCog → Package
+CogUtil → AtomSpace → AtomSpace-Storage → AtomSpace-Rocks → Unify → URE → PLN/Miner/AS-MOSES → OpenCog → Package
 ```
 
+Key dependency levels:
+- **1.0**: CogUtil (foundation)
+- **2.0**: AtomSpace (core knowledge representation)
+- **2.1**: AtomSpace-Storage (storage abstraction)
+- **2.2**: AtomSpace-Rocks (RocksDB storage implementation - new core dependency)
+- **3.0**: Extensions and higher-level components
+
+## New Dependency Structure (Post-Restructuring)
+
+The dependency chain has been restructured so that **AtomSpace-Rocks** becomes the primary dependency for all AtomSpace extension components, implementing the following pattern:
+
+### Build Sequence:
+1. **Level 1.0**: CogUtil (foundation utilities)
+2. **Level 2.0**: AtomSpace (core knowledge representation)  
+3. **Level 2.1**: AtomSpace-Storage (storage abstraction layer)
+4. **Level 2.2**: AtomSpace-Rocks (RocksDB persistence backend)
+5. **Level 3.0+**: All other components depend on AtomSpace-Rocks
+
+### Impact:
+- **Before**: Components depended directly on AtomSpace
+- **After**: Components depend on AtomSpace-Rocks, providing consistent storage backend
+- **Benefit**: Unified storage layer, better persistence guarantees, cleaner dependency management
+
 ### Parallelization Opportunities
-After **AtomSpace** is built, these can build in parallel:
+After **AtomSpace-Storage** is built, these can build in parallel:
 - Unify, CogServer, SpaceTime, LG-AtomESE, Learn, Generate
 - All AtomSpace persistence extensions (Rocks, RESTful, DHT, IPFS, WebSockets)
 - Specialized components (Vision, Cheminformatics, Sensory, Visualization)
