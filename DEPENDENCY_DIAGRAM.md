@@ -180,12 +180,14 @@ These require URE and can build in parallel:
 ## Critical Dependencies (From CMakeLists.txt Analysis)
 
 1. **CogUtil** is the foundation - 31 out of 42 components depend on it
-2. **AtomSpace** is the core - 29 components require it after CogUtil  
-3. **URE** requires **AtomSpace** and **Unify** - enables advanced reasoning
-4. **CogServer** enables distributed systems - required by **Attention** and **Learn**
-5. **SpaceTime** is required by **PLN** for temporal reasoning
-6. **OpenCog** requires **CogUtil**, **AtomSpace**, and **URE** - final integration point
-7. **Package** depends on **OpenCog** - final distribution
+2. **AtomSpace** is the core knowledge representation system
+3. **AtomSpace-Storage** provides storage abstraction layer
+4. **AtomSpace-Rocks** is the primary storage implementation - 29+ components now depend on it
+5. **URE** requires **AtomSpace-Rocks** and **Unify** - enables advanced reasoning
+6. **CogServer** enables distributed systems - required by **Attention** and **Learn**
+7. **SpaceTime** is required by **PLN** for temporal reasoning
+8. **OpenCog** requires **CogUtil**, **AtomSpace-Rocks**, and **URE** - final integration point
+9. **Package** depends on **OpenCog** - final distribution
 
 ### Dependency Chains
 The longest dependency chain is:
@@ -197,8 +199,24 @@ Key dependency levels:
 - **1.0**: CogUtil (foundation)
 - **2.0**: AtomSpace (core knowledge representation)
 - **2.1**: AtomSpace-Storage (storage abstraction)
-- **2.2**: AtomSpace-Rocks (specific storage implementation)
+- **2.2**: AtomSpace-Rocks (RocksDB storage implementation - new core dependency)
 - **3.0**: Extensions and higher-level components
+
+## New Dependency Structure (Post-Restructuring)
+
+The dependency chain has been restructured so that **AtomSpace-Rocks** becomes the primary dependency for all AtomSpace extension components, implementing the following pattern:
+
+### Build Sequence:
+1. **Level 1.0**: CogUtil (foundation utilities)
+2. **Level 2.0**: AtomSpace (core knowledge representation)  
+3. **Level 2.1**: AtomSpace-Storage (storage abstraction layer)
+4. **Level 2.2**: AtomSpace-Rocks (RocksDB persistence backend)
+5. **Level 3.0+**: All other components depend on AtomSpace-Rocks
+
+### Impact:
+- **Before**: Components depended directly on AtomSpace
+- **After**: Components depend on AtomSpace-Rocks, providing consistent storage backend
+- **Benefit**: Unified storage layer, better persistence guarantees, cleaner dependency management
 
 ### Parallelization Opportunities
 After **AtomSpace-Storage** is built, these can build in parallel:
