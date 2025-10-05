@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'orc-as/cogutil/**'
+      - 'orc-in/copied-cmake/cogutil/**'
       - 'orc-as/atomspace/**'
       - 'orc-as/atomspace-storage/**'
       - 'orc-as/atomspace-rocks/**'
@@ -12,7 +12,7 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-      - 'orc-as/cogutil/**'
+      - 'orc-in/copied-cmake/cogutil/**'
       - 'orc-as/atomspace/**'
       - 'orc-as/atomspace-storage/**'
       - 'orc-as/atomspace-rocks/**'
@@ -45,7 +45,7 @@ jobs:
 
       - name: Build CogUtil
         id: build
-        working-directory: orc-as/cogutil
+        working-directory: orc-in/copied-cmake/cogutil
         run: |
           if [ -f "CMakeLists.txt" ]; then
             mkdir -p build && cd build
@@ -82,7 +82,7 @@ jobs:
             python3-venv
 
       - name: Build CogUtil (dependency)
-        working-directory: orc-as/cogutil
+        working-directory: orc-in/copied-cmake/cogutil
         run: |
           if [ -f "CMakeLists.txt" ]; then
             mkdir -p build && cd build
@@ -130,7 +130,7 @@ jobs:
             python3-venv
 
       - name: Build CogUtil (dependency)
-        working-directory: orc-as/cogutil
+        working-directory: orc-in/copied-cmake/cogutil
         run: |
           if [ -f "CMakeLists.txt" ]; then
             mkdir -p build && cd build
@@ -189,7 +189,7 @@ jobs:
             librocksdb-dev
 
       - name: Build CogUtil (dependency)
-        working-directory: orc-as/cogutil
+        working-directory: orc-in/copied-cmake/cogutil
         run: |
           if [ -f "CMakeLists.txt" ]; then
             mkdir -p build && cd build
