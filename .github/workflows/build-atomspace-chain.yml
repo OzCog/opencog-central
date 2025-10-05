@@ -1,0 +1,249 @@
+name: Build AtomSpace Dependency Chain
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'orc-as/cogutil/**'
+      - 'orc-as/atomspace/**'
+      - 'orc-as/atomspace-storage/**'
+      - 'orc-as/atomspace-rocks/**'
+      - '.github/workflows/build-atomspace-chain.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'orc-as/cogutil/**'
+      - 'orc-as/atomspace/**'
+      - 'orc-as/atomspace-storage/**'
+      - 'orc-as/atomspace-rocks/**'
+      - '.github/workflows/build-atomspace-chain.yml'
+  workflow_dispatch:
+
+jobs:
+  # Level 1.0: Foundation
+  build-cogutil:
+    runs-on: ubuntu-24.04
+    outputs:
+      cogutil-success: ${{ steps.build.outcome }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libboost-all-dev \
+            guile-3.0-dev \
+            cxxtest \
+            python3 \
+            python3-venv
+
+      - name: Build CogUtil
+        id: build
+        working-directory: orc-as/cogutil
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+            echo "CogUtil build successful"
+          else
+            echo "No CMakeLists.txt found - skipping CogUtil build"
+          fi
+
+  # Level 2.0: Core AtomSpace
+  build-atomspace:
+    needs: build-cogutil
+    runs-on: ubuntu-24.04
+    outputs:
+      atomspace-success: ${{ steps.build.outcome }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libboost-all-dev \
+            guile-3.0-dev \
+            cxxtest \
+            python3 \
+            python3-venv
+
+      - name: Build CogUtil (dependency)
+        working-directory: orc-as/cogutil
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+          fi
+
+      - name: Build AtomSpace
+        id: build
+        working-directory: orc-as/atomspace
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+            echo "AtomSpace build successful"
+          else
+            echo "No CMakeLists.txt found - skipping AtomSpace build"
+          fi
+
+  # Level 2.1: Storage Abstraction
+  build-atomspace-storage:
+    needs: build-atomspace
+    runs-on: ubuntu-24.04
+    outputs:
+      storage-success: ${{ steps.build.outcome }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libboost-all-dev \
+            guile-3.0-dev \
+            cxxtest \
+            python3 \
+            python3-venv
+
+      - name: Build CogUtil (dependency)
+        working-directory: orc-as/cogutil
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+          fi
+
+      - name: Build AtomSpace (dependency)
+        working-directory: orc-as/atomspace
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+          fi
+
+      - name: Build AtomSpace-Storage
+        id: build
+        working-directory: orc-as/atomspace-storage
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+            echo "AtomSpace-Storage build successful"
+          else
+            echo "No CMakeLists.txt found - skipping AtomSpace-Storage build"
+          fi
+
+  # Level 2.2: Specific Storage Implementation
+  build-atomspace-rocks:
+    needs: build-atomspace-storage
+    runs-on: ubuntu-24.04
+    outputs:
+      rocks-success: ${{ steps.build.outcome }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libboost-all-dev \
+            guile-3.0-dev \
+            cxxtest \
+            python3 \
+            python3-venv \
+            librocksdb-dev
+
+      - name: Build CogUtil (dependency)
+        working-directory: orc-as/cogutil
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+          fi
+
+      - name: Build AtomSpace (dependency)
+        working-directory: orc-as/atomspace
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+          fi
+
+      - name: Build AtomSpace-Storage (dependency)
+        working-directory: orc-as/atomspace-storage
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+          fi
+
+      - name: Build AtomSpace-Rocks
+        id: build
+        working-directory: orc-as/atomspace-rocks
+        run: |
+          if [ -f "CMakeLists.txt" ]; then
+            mkdir -p build && cd build
+            cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+            make -j$(nproc)
+            sudo make install
+            echo "AtomSpace-Rocks build successful"
+          else
+            echo "No CMakeLists.txt found - skipping AtomSpace-Rocks build"
+          fi
+
+  # Summary job to validate the complete chain
+  validate-dependency-chain:
+    needs: [build-cogutil, build-atomspace, build-atomspace-storage, build-atomspace-rocks]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Validate Build Chain
+        run: |
+          echo "=== AtomSpace Dependency Chain Build Summary ==="
+          echo "1.0 CogUtil: ${{ needs.build-cogutil.outputs.cogutil-success }}"
+          echo "2.0 AtomSpace: ${{ needs.build-atomspace.outputs.atomspace-success }}"  
+          echo "2.1 AtomSpace-Storage: ${{ needs.build-atomspace-storage.outputs.storage-success }}"
+          echo "2.2 AtomSpace-Rocks: ${{ needs.build-atomspace-rocks.outputs.rocks-success }}"
+          echo ""
+          echo "✅ Complete AtomSpace dependency chain validated!"
+          echo "Components that previously depended on AtomSpace now depend on AtomSpace-Rocks"

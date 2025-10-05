@@ -99,6 +99,14 @@ IF(BUILD_ATOMSPACE AND HAVE_COGUTIL AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atom
     SET(HAVE_ATOMSPACE ON)
 ENDIF()
 
+# 2.2 AtomSpace-Storage - Storage abstraction layer (depends on cogutil + atomspace)  
+OPTION(BUILD_ATOMSPACE_STORAGE "Build AtomSpace-Storage component" ON)
+IF(BUILD_ATOMSPACE_STORAGE AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace-storage/CMakeLists.txt")
+    MESSAGE(STATUS "  Adding atomspace-storage (storage abstraction)")
+    ADD_SUBDIRECTORY(atomspace-storage)
+    SET(HAVE_ATOMSPACE_STORAGE ON)
+ENDIF()
+
 # ===================================================================
 # PHASE 3: AtomSpace Extensions
 # These components extend AtomSpace functionality and can build in parallel
@@ -106,33 +114,33 @@ ENDIF()
 
 MESSAGE(STATUS "PHASE 3: AtomSpace Extensions")
 
-# 3.1 Unification system (depends on cogutil + atomspace)
+# 3.1 Unification system (depends on cogutil + atomspace-storage)
 OPTION(BUILD_UNIFY "Build Unify component" ON)
-IF(BUILD_UNIFY AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/unify/CMakeLists.txt")
+IF(BUILD_UNIFY AND HAVE_COGUTIL AND HAVE_ATOMSPACE_STORAGE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/unify/CMakeLists.txt")
     MESSAGE(STATUS "  Adding unify (unification engine)")
     ADD_SUBDIRECTORY(unify)
     SET(HAVE_UNIFY ON)
 ENDIF()
 
-# 3.2 CogServer - Network server (depends on cogutil + atomspace)
+# 3.2 CogServer - Network server (depends on cogutil + atomspace-storage)
 OPTION(BUILD_COGSERVER "Build CogServer component" ON)
-IF(BUILD_COGSERVER AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/cogserver/CMakeLists.txt")
+IF(BUILD_COGSERVER AND HAVE_COGUTIL AND HAVE_ATOMSPACE_STORAGE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/cogserver/CMakeLists.txt")
     MESSAGE(STATUS "  Adding cogserver (network server)")
     ADD_SUBDIRECTORY(cogserver)
     SET(HAVE_COGSERVER ON)
 ENDIF()
 
-# 3.3 SpaceTime reasoning (depends on cogutil + atomspace)
+# 3.3 SpaceTime reasoning (depends on cogutil + atomspace-storage)
 OPTION(BUILD_SPACETIME "Build SpaceTime component" ON)
-IF(BUILD_SPACETIME AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/spacetime/CMakeLists.txt")
+IF(BUILD_SPACETIME AND HAVE_COGUTIL AND HAVE_ATOMSPACE_STORAGE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/spacetime/CMakeLists.txt")
     MESSAGE(STATUS "  Adding spacetime (spatiotemporal reasoning)")
     ADD_SUBDIRECTORY(spacetime)
     SET(HAVE_SPACETIME ON)
 ENDIF()
 
-# 3.4 Link Grammar integration (depends on cogutil + atomspace)
+# 3.4 Link Grammar integration (depends on cogutil + atomspace-storage)
 OPTION(BUILD_LG_ATOMESE "Build LG-AtomESE component" ON)
-IF(BUILD_LG_ATOMESE AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/lg-atomese/CMakeLists.txt")
+IF(BUILD_LG_ATOMESE AND HAVE_COGUTIL AND HAVE_ATOMSPACE_STORAGE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/lg-atomese/CMakeLists.txt")
     MESSAGE(STATUS "  Adding lg-atomese (Link Grammar integration)")
     ADD_SUBDIRECTORY(lg-atomese)
     SET(HAVE_LG_ATOMESE ON)
@@ -140,9 +148,10 @@ ENDIF()
 
 # 3.5 AtomSpace persistence and API extensions
 OPTION(BUILD_ATOMSPACE_ROCKS "Build AtomSpace-Rocks component" OFF)
-IF(BUILD_ATOMSPACE_ROCKS AND HAVE_COGUTIL AND HAVE_ATOMSPACE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace-rocks/CMakeLists.txt")
+IF(BUILD_ATOMSPACE_ROCKS AND HAVE_COGUTIL AND HAVE_ATOMSPACE_STORAGE AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/atomspace-rocks/CMakeLists.txt")
     MESSAGE(STATUS "  Adding atomspace-rocks (RocksDB persistence)")
     ADD_SUBDIRECTORY(atomspace-rocks)
+    SET(HAVE_ATOMSPACE_ROCKS ON)
 ENDIF()
 
 OPTION(BUILD_ATOMSPACE_RESTFUL "Build AtomSpace-RESTful component" OFF)
